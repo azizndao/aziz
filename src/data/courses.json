@@ -1,0 +1,103 @@
+[
+  {
+    "href": "/courses/python",
+    "title": "Python",
+    "imageUrl": "/logo/python.svg",
+    "description": "Python is a general-purpose programming language.",
+    "duration": "2 months",
+    "tags": [
+      "Programming",
+      "Python",
+      "Data Science",
+      "Machine Learning",
+      "Deep Learning",
+      "Natural Language Processing",
+      "Artificial Intelligence",
+      "Web Development",
+      "Computer Vision",
+      "Data Visualization"
+    ]
+  },
+  {
+    "href": "/courses/next.js",
+    "title": "Next.js",
+    "imageUrl": "/logo/nextjs.svg",
+    "description": "Next.js is a React framework.",
+    "duration": "2 months",
+    "tags": [
+      "Programming",
+      "React",
+      "Next.js",
+      "Web Development",
+      "Frontend",
+      "Fullstack"
+    ]
+  },
+  {
+    "href": "/courses/react.js",
+    "title": "React.js",
+    "imageUrl": "/logo/react.svg",
+    "description": "React.js is a JavaScript library for building user interfaces.",
+    "duration": "2 months",
+    "tags": ["Programming", "React", "Web Development", "Frontend"]
+  },
+  {
+    "href": "/courses/html",
+    "title": "HTML",
+    "imageUrl": "/logo/html5.svg",
+    "description": "HTML is the standard markup language for documents",
+    "duration": "2 months",
+    "tags": ["Programming", "HTML", "Web Development", "Frontend", "Fullstack"]
+  },
+  {
+    "href": "/courses/css",
+    "title": "CSS",
+    "imageUrl": "/logo/css3.svg",
+    "description": "CSS is the standard stylesheet language for documents",
+    "duration": "2 months",
+    "tags": ["Programming", "CSS", "Web Development", "Frontend", "Fullstack"]
+  },
+  {
+    "href": "/courses/javascript",
+    "title": "Javascript",
+    "imageUrl": "/logo/javascript.svg",
+    "description": "Javascript is a high-level, interpreted programming language.",
+    "duration": "2 months",
+    "tags": [
+      "Programming",
+      "Javascript",
+      "Web Development",
+      "Frontend",
+      "Fullstack"
+    ]
+  },
+  {
+    "href": "/courses/typescript",
+    "title": "Typescript",
+    "imageUrl": "/logo/react.svg",
+    "description": "Typescript is a typed superset of JavaScript.",
+    "duration": "2 months",
+    "tags": [
+      "Programming",
+      "Typescript",
+      "Web Development",
+      "Frontend",
+      "Fullstack"
+    ]
+  },
+  {
+    "href": "/courses/markdown",
+    "title": "Markdown",
+    "imageUrl": "/logo/react.svg",
+    "description": "Markdown is a lightweight markup language.",
+    "duration": "2 months",
+    "tags": [
+      "Programming",
+      "Markdown",
+      "Web Development",
+      "Frontend",
+      "Blog",
+      "Content Writing"
+    ]
+  }
+]

@@ -1,0 +1,21 @@
+---
+interface Props {
+  href: string;
+  active: boolean;
+}
+const { href, active } = Astro.props;
+---
+
+<a
+  href={href}
+  aria-active={active}
+  class:list={{ "font-medium underline text-primary-500": active }}
+>
+  <slot />
+</a>
+
+<style>
+  a[aria-active="true"] {
+    text-decoration-thickness: 4px;
+  }
+</style>

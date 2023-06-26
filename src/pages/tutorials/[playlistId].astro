@@ -1,0 +1,24 @@
+---
+export const prerender = false;
+
+import TutorialPlaylist from "@components/tutotials/TutorialPlaylist";
+import MainLayout from "@layouts/MainLayout.astro";
+import { getPlaylist } from "@lib/youtube";
+
+const playlistId = Astro.params.playlistId as string;
+
+const data = await getPlaylist(playlistId);
+
+if (!data) {
+  Astro.redirect("/404");
+}
+
+const videos = data?.items ?? [];
+---
+
+<MainLayout
+  title="My tutorials on youtube"
+  description="My tutorials on youtube"
+>
+  <TutorialPlaylist client:load videos={videos} />
+</MainLayout>

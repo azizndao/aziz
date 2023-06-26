@@ -1,0 +1,20 @@
+[
+  {
+    "id": 4,
+    "title": "Fullstack Developer",
+    "icon": "/images/fullstack.svg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."
+  },
+  {
+    "id": 5,
+    "title": "Mobile Developer",
+    "icon": "/images/mobile.svg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."
+  },
+  {
+    "id": 3,
+    "title": "UI/UX Designer",
+    "icon": "/images/uiux.svg",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod."
+  }
+]

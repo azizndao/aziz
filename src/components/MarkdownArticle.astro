@@ -1,0 +1,201 @@
+<article class="markdown md:px-4 py-4">
+    <slot/>
+</article>
+
+<style is:global>
+    * {
+        scroll-padding-top: calc(var(--header-height) * 1.5);
+    }
+
+    .markdown h1 {
+        @apply text-4xl md:text-5xl;
+    }
+
+    .markdown :is(h1, h2, h3, h4, h5, h6) {
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        font-weight: 700;
+
+        @apply md:mt-8;
+    }
+
+    .markdown :is(h1, h2, h3, h4, h5, h6) a {
+        @apply text-primary-600 no-underline;
+    }
+
+    .markdown :is(h1, h2, h3, h4, h5, h6) a:after {
+        content: "#";
+        @apply px-3 opacity-0;
+    }
+
+    .markdown :is(h1, h2, h3, h4, h5, h6):hover a:after {
+        opacity: 1;
+    }
+
+    .markdown h2 {
+        @apply text-3xl md:text-4xl;
+    }
+
+    .markdown h3 {
+        @apply text-2xl md:text-3xl;
+    }
+
+    .markdown h4 {
+        @apply text-xl md:text-2xl;
+    }
+
+    .markdown h5 {
+        @apply text-lg md:text-xl;
+    }
+
+    .markdown p {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        font-size: 16px;
+        @apply text-base lg:text-lg leading-relaxed;
+    }
+
+    .markdown :is(ul, ol) {
+        @apply list-inside px-4 py-2;
+    }
+
+    .markdown ul li {
+        @apply list-disc my-4;
+    }
+
+    .markdown ol li {
+        @apply list-decimal my-4;
+    }
+
+    .markdown :is(ul, ol) li {
+        /* display: inline-block; */
+    }
+
+    .markdown :is(ul, ol) li::marker {
+        @apply list-inside  font-extrabold text-primary-600 dark:text-primary-400;
+    }
+
+    .markdown a {
+        @apply underline decoration-primary-600 text-primary-500 decoration-2;
+    }
+
+    .markdown code {
+        font-family: var(--font-monospace);
+        padding: 4px 6px;
+        border-radius: 6px;
+        @apply bg-neutral-900/10 border-b border-neutral-950/20 dark:bg-neutral-700;
+    }
+
+    .markdown code::selection {
+        background: transparent;
+        border-radius: 0%;
+    }
+
+    .markdown pre {
+        padding: 1rem;
+        border-radius: 0.4rem;
+        overflow-x: auto;
+        margin: 0;
+    }
+
+    .markdown pre code {
+        background-color: transparent;
+        margin: 0;
+        padding: 0;
+        border: none;
+        @apply text-sm md:text-base;
+        @apply bg-neutral-900/10;
+    }
+
+    .markdown pre code .line {
+        line-height: 1.8;
+    }
+
+    [data-rehype-pretty-code-fragment] {
+        overflow: auto;
+        color: white;
+        background-color: rgb(1 31 51);
+        border-radius: 8px;
+        margin: 20px 0;
+    }
+
+    [data-rehype-pretty-code-fragment] pre {
+        --pretty-code-fragment-max-height: 600px;
+        overflow: auto;
+        border-radius: 8px;
+        max-height: var(--pretty-code-fragment-max-height);
+    }
+
+    [data-rehype-pretty-code-title] {
+        padding: 5px 15px;
+        font-family: monospace;
+        font-weight: bold;
+        @apply bg-primary-600;
+    }
+
+    .markdown .text-gradient {
+        --accent-gradient: linear-gradient(
+                45deg,
+                #f09433 0%,
+                #e6683c 25%,
+                #dc2743 50%,
+                #cc2366 75%,
+                #bc1888 100%
+        );
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 400%;
+        background-position: 0%;
+    }
+
+    .markdown .instructions {
+        line-height: 1.6;
+        margin: 1rem 0;
+        border: 1px solid rgba(var(--accent), 25%);
+        background-color: white;
+        padding: 1rem;
+        border-radius: 0.4rem;
+    }
+
+    .markdown table {
+        @apply border-collapse table-auto w-full text-sm;
+    }
+
+    .markdown table th {
+        @apply border-b dark:border-neutral-600 font-medium p-4 pl-8 pt-0 pb-3 text-neutral-400 dark:text-neutral-200 text-left;
+    }
+
+    .markdown table tbody {
+        @apply bg-white dark:bg-neutral-800;
+    }
+
+    .markdown table td {
+        @apply border-b border-neutral-300 dark:border-neutral-700 p-4 pl-8 text-neutral-500 dark:text-neutral-400;
+    }
+
+    .markdown blockquote {
+        padding: 20px 13px 20px 10px;
+        margin: 30px 0;
+        @apply border-l-[10px] bg-primary-500/10 border-primary-600;
+    }
+
+    .markdown blockquote p:first-child {
+        margin-top: 0;
+    }
+
+    .markdown blockquote p:last-child {
+        margin-bottom: 0;
+    }
+
+    .markdown img {
+        border-radius: 5px;
+        overflow: hidden;
+        max-width: 100%;
+        object-fit: cover;
+    }
+
+    .markdown img:hover {
+        @apply shadow-lg dark:shadow-xl;
+    }
+</style>

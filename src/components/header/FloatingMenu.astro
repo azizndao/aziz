@@ -1,0 +1,61 @@
+---
+import MenuIcon from "@components/svgs/MenuIcon.astro";
+import HeaderLink from "./HeaderLink.astro";
+import mainMenu from "./main-menu.json";
+import CloseIcon from "@components/svgs/CloseIcon.astro";
+import { twMerge } from "tailwind-merge";
+const pathname = Astro.url.pathname;
+
+interface Props {
+  class?: string;
+}
+---
+
+<div class={Astro.props.class}>
+  <dialog
+    id="main-menu"
+    class="w-11/12 rounded-3xl bg-primary-50 shadow-2xl text-neutral-800 dark:bg-neutral-800 dark:text-neutral-100 backdrop:backdrop-blur-sm backdrop:bg-black/20 dark:backdrop:bg-neutral-800/30"
+  >
+    <ul class="md:flex flex-col px-4 items-center gap-6">
+      {
+        mainMenu.map(({ href, title }) => (
+          <li>
+            <a
+              href={href}
+              class={twMerge(
+                "block py-6 text-center text-2xl font-bold text-neutral-500",
+                (href == "/" ? pathname === "/" : pathname.startsWith(href)) &&
+                  "underline decoration-primary-600 text-primary-600"
+              )}
+            >
+              {title}
+            </a>
+          </li>
+        ))
+      }
+      <li class="self-center flex justify-center mb-4 mt-2">
+        <button
+          class="close-button bg-danger-800/10 rounded-full p-2 border-4 border-danger-800/30"
+        >
+          <CloseIcon class="stroke-[4px] stroke-danger-700" />
+        </button>
+      </li>
+    </ul>
+  </dialog>
+  <button class="open-button border-2 rounded-md p-1">
+    <MenuIcon />
+  </button>
+</div>
+<script>
+  const menu = document.querySelector("dialog#main-menu") as HTMLDialogElement;
+  const menuButton = document.querySelector(".open-button");
+  const closeButton = document.querySelector(".close-button");
+
+  menuButton?.addEventListener("click", (event) => {
+    menu?.showModal();
+  });
+
+  closeButton?.addEventListener("click", (event) => {
+    menu?.close();
+  });
+</script>

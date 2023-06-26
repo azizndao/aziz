@@ -1,0 +1,142 @@
+---
+title: "Understanding Object-Oriented Programming (OOP) in Python"
+description: "Understanding Object-Oriented Programming (OOP) in Python"
+pubDate: "Jul 15 2022"
+index: 9
+type: python
+---
+
+# Object-Oriented Programming
+
+Object-Oriented Programming (OOP) is a powerful paradigm that allows programmers to create reusable and structured code by representing real-world entities as objects. Python, being an object-oriented programming language, provides robust support for OOP concepts. In this article, we will explore the fundamentals of OOP in Python and understand how to define classes, create objects, and utilize inheritance. Let's dive in!
+
+## Classes and Objects
+
+At the core of OOP in Python are classes and objects. A class is a blueprint or template for creating objects, while an object is an instance of a class. Let's see an example of a simple class definition:
+
+```python
+class Car:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+
+    def start_engine(self):
+        print("Engine started!")
+
+# Creating an object of the Car class
+my_car = Car("Toyota", "Corolla", 2022)
+
+# Accessing object attributes
+print(my_car.make)  # Output: Toyota
+
+# Calling object methods
+my_car.start_engine()  # Output: Engine started!
+```
+
+In this code snippet, we define a class called `Car` with attributes `make`, `model`, and `year`. The `__init__` method is a special method that gets called when an object of the class is instantiated. We create an object `my_car` of the `Car` class and access its attributes and methods using dot notation.
+
+## Inheritance
+
+Inheritance is a fundamental concept in OOP that allows classes to inherit properties and methods from other classes. It enables code reuse and promotes a hierarchical structure. Let's illustrate inheritance with an example:
+
+```python
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def make_sound(self):
+        pass
+
+class Dog(Animal):
+    def make_sound(self):
+        print("Woof!")
+
+class Cat(Animal):
+    def make_sound(self):
+        print("Meow!")
+
+# Creating objects of the derived classes
+my_dog = Dog("Buddy")
+my_cat = Cat("Whiskers")
+
+# Calling the inherited method
+my_dog.make_sound()  # Output: Woof!
+my_cat.make_sound()  # Output: Meow!
+```
+
+In this code snippet, we have a base class `Animal` with an `__init__` method and a method called `make_sound`. We then define derived classes `Dog` and `Cat` that inherit from the `Animal` class. Each derived class overrides the `make_sound` method to provide their specific sound. We create objects `my_dog` and `my_cat` and call the `make_sound` method, which executes the respective sound.
+
+## Encapsulation
+
+Encapsulation is the practice of bundling data and methods together within a class, hiding the internal details and providing a clean interface to interact with objects. It helps in achieving data abstraction and improves code maintainability. Here's an example of encapsulation:
+
+```python
+class BankAccount:
+    def __init__(self, account_number, balance):
+        self.account_number = account_number
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+
+    def withdraw(self, amount):
+        if amount <= self.balance:
+            self.balance -= amount
+        else:
+            print("Insufficient balance!")
+
+    def
+
+ get_balance(self):
+        return self.balance
+
+# Creating an object of the BankAccount class
+my_account = BankAccount("123456789", 1000)
+
+# Accessing object methods
+my_account.deposit(500)
+my_account.withdraw(200)
+print(my_account.get_balance())  # Output: 1300
+```
+
+In this example, we define a `BankAccount` class that encapsulates the account number and balance. The methods `deposit`, `withdraw`, and `get_balance` provide the necessary functionality to interact with the account object while encapsulating the internal data.
+
+## Polymorphism
+
+Polymorphism allows objects of different classes to be treated as objects of a common base class. It enables flexibility and extensibility in code by allowing different classes to implement their own versions of methods. Let's see an example of polymorphism:
+
+```python
+class Shape:
+    def area(self):
+        pass
+
+class Rectangle(Shape):
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def area(self):
+        return self.length * self.width
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14 * self.radius * self.radius
+
+# Creating objects of different classes
+my_rectangle = Rectangle(4, 6)
+my_circle = Circle(3)
+
+# Calling the common method
+print(my_rectangle.area())  # Output: 24
+print(my_circle.area())  # Output: 28.26
+```
+
+In this code snippet, we have a base class `Shape` with a method `area`. We define two derived classes `Rectangle` and `Circle` that implement their own versions of the `area` method. We create objects of these classes and call the `area` method, which invokes the respective implementation.
+
+## Conclusion
+
+Object-Oriented Programming in Python provides a structured and modular approach to software development. By understanding classes, objects, inheritance, encapsulation, and polymorphism, you can create robust and reusable code. Practice implementing OOP concepts in your projects to enhance code organization and maintainability.

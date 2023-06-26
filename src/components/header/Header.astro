@@ -1,0 +1,73 @@
+---
+import DiscordLogo from "@components/svgs/DiscordLogo.astro";
+import GithubLogo from "@components/svgs/GithubLogo.astro";
+import TwitterLogo from "@components/svgs/TwitterLogo.astro";
+import FloatingMenu from "./FloatingMenu.astro";
+import HeaderLink from "./HeaderLink.astro";
+import mainMenu from "./main-menu.json";
+const pathname = Astro.url.pathname;
+interface Props {
+  class?: string;
+}
+
+const { class: cls } = Astro.props;
+---
+
+<header class:list={["nav-bar", cls]}>
+  <nav
+    class="max-w-8xl px-6 mx-auto flex items-center gap-6 h-[var(--header-height)]"
+  >
+    <a href="/" class="font-bold text-3xl">Aziz.io</a>
+
+    <span class="grow"></span>
+    <ul class="hidden md:flex px-4 items-center gap-6">
+      {
+        mainMenu.map(({ href, title }) => (
+          <li>
+            <HeaderLink
+              href={href}
+              active={
+                href == "/" ? pathname === "/" : pathname.startsWith(href)
+              }
+            >
+              {title}
+            </HeaderLink>
+          </li>
+        ))
+      }
+    </ul>
+    <ul class="flex gap-4 items-center">
+      <li>
+        <a href="https://github.com/azizndao" title="Github" target="_blank">
+          <GithubLogo />
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://twitter.com/_azizndao_"
+          title="Twitter"
+          target="_blank"
+        >
+          <TwitterLogo />
+        </a>
+      </li>
+      <li>
+        <a href="#" title="Discord" target="_blank">
+          <DiscordLogo />
+        </a>
+      </li>
+      <FloatingMenu class="md:hidden" />
+    </ul>
+  </nav>
+</header>
+
+<style>
+  header {
+    height: var(--header-height);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    @apply bg-neutral-50/60 dark:bg-neutral-900/30;
+    backdrop-filter: blur(23px) saturate(4.5);
+  }
+</style>

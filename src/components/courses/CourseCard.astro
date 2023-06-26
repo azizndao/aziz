@@ -1,0 +1,67 @@
+---
+export type Props = {
+  title: string;
+  imageUrl: string;
+  href: string;
+  duration?: string;
+  description: string;
+};
+
+const {
+  title,
+  imageUrl,
+  href,
+  description,
+  duration = "2h 25mn",
+} = Astro.props;
+---
+
+<li>
+  <a href={href} class="tuto-card block">
+    <header class="font-medium text-sm">
+      <div class="label-large">Duration</div>
+      <small class="text-primary-500">{duration}</small>
+    </header>
+    <div
+      class="rounded-xl w-hull aspect-square bg-neutral-200 dark:bg-black/10 grid place-content-center"
+    >
+      <img src={imageUrl} alt={title} loading="lazy" class="max-w-[120px]" />
+    </div>
+    <h3 class="text-3xl py-4 font-bold">{title}</h3>
+    <p class="text-center px-4 mx-auto line-clamp-3">
+      {description}
+    </p>
+  </a>
+</li>
+
+<style>
+  .tuto-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    padding: 1rem 1rem 2rem;
+    text-align: center;
+    @apply border border-neutral-200 dark:border-neutral-600;
+    @apply bg-neutral-100/50 dark:bg-neutral-800 dark:text-neutral-200;
+  }
+
+  .tuto-card {
+    text-decoration: none !important;
+  }
+
+  .tuto-card:hover {
+    color: currentColor;
+    @apply bg-neutral-100 dark:bg-neutral-700 dark:text-neutral-200 ring-2 border-primary-600;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding: 0 4px;
+  }
+
+  .tuto-card img {
+    border-radius: 1rem;
+  }
+</style>

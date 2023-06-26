@@ -1,0 +1,51 @@
+---
+import MarkdownArticle from "@components/MarkdownArticle.astro";
+import MainLayout from "./MainLayout.astro";
+import BaseLayout from "./BaseLayout.astro";
+import Header from "../components/header/Header.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+---
+
+<MainLayout title={Astro.props.title} description={Astro.props.description}>
+  <div>
+    <aside class="left">
+      <slot name="left-sidebar"/>
+    </aside>
+    <section class="md-container">
+      <MarkdownArticle>
+        <slot/>
+      </MarkdownArticle>
+    </section>
+    <aside class="right">
+      <slot name="rigth-sidebar"/>
+    </aside>
+  </div>
+</MainLayout>
+
+<style>
+  .md-container {
+    max-width: 47rem;
+    @apply px-5 pt-4 pb-8 mx-auto;
+  }
+
+  aside {
+    height: 100vh;
+    max-width: 21rem;
+    width: 100%;
+    position: fixed;
+    top: calc(var(--header-height) * 1.5);
+  }
+
+  aside.left {
+    left: calc((100dvw - 90rem) / 2);
+  }
+
+  aside.right {
+    right: calc((100dvw - 90rem) / 2);
+    left: auto;
+  }
+</style>

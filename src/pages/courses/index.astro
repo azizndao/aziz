@@ -1,0 +1,34 @@
+---
+import CourseCard from "@components/courses/CourseCard.astro";
+import courses from "@data/courses.json";
+import MainLayout from "@layouts/MainLayout.astro";
+---
+
+<MainLayout title="My courses" description="My courses">
+  <div class="container">
+    <header class="header">
+      <h1 class="text-4xl">My courses</h1>
+    </header>
+    <ul
+      class="w-full px-6 pb-8 lg:px-0 grid grid-cols-1 place-content-center md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+    >
+      {courses.map((courses) => <CourseCard {...courses} />)}
+    </ul>
+  </div>
+</MainLayout>
+
+<style>
+  header {
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .grid {
+    display: grid;
+    grid: auto-flow / 1fr 1fr 1fr;
+    gap: 2rem;
+    grid-auto-flow: row dense;
+  }
+</style>

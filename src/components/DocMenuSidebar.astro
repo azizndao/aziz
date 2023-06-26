@@ -1,0 +1,60 @@
+---
+interface Props {
+  title?: string;
+  entries: {
+    title: string;
+    slug: string;
+  }[];
+}
+const { title, entries } = Astro.props;
+---
+
+<div class="menu">
+  <h3>{title ?? "Menu"}</h3>
+  <nav>
+    <ul>
+      {
+        entries.map((entry) => (
+          <li>
+            <a
+              href={entry.slug}
+              class:list={{ active: entry.slug === Astro.url.pathname }}
+            >
+              {entry.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</div>
+
+<style>
+  .menu {
+    padding: 0 1rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    line-height: 2;
+    padding: 0 1rem;
+  }
+
+  li a {
+    padding: 0 1rem;
+    display: block;
+    text-decoration: none;
+    line-height: 2.25;
+    width: 100%;
+    @apply border-r-[2px] border-r-primary-300 line-clamp-1;
+  }
+
+  li a:hover {
+    @apply text-primary-600 bg-primary-50 dark:bg-primary-500/10 border-primary-300;
+  }
+
+  li a.active {
+    @apply text-primary-400 font-medium bg-primary-100 dark:bg-primary-600/10 border-primary-500;
+  }
+</style>

@@ -1,0 +1,84 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- <link rel="stylesheet" href="/css/theme.css" /> -->
+    {description && <meta name="description" content={description} />}
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-neutral-50 dark:bg-neutral-900 dark:text-neutral-200">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --header-height: 5rem;
+
+    --max-width: 90rem;
+
+    --font-normal: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+      "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+
+    --font-monospace: ui-monospace, Menlo, Monaco, "Cascadia Mono",
+      "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
+      "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New",
+      monospace;
+  }
+
+  body {
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-normal);
+  }
+
+  .home header.nav-bar {
+    background: transparent !important;
+  }
+
+  code {
+    font-family: var(--font-monospace);
+  }
+
+  .container {
+    margin: auto;
+  }
+
+  .max-w-8xl {
+    max-width: var(--max-width);
+  }
+
+  a {
+    color: currentColor;
+    text-decoration-thickness: 0.15rem;
+    @apply decoration-primary-500;
+  }
+
+  ::selection {
+    @apply bg-primary-500/20 dark:bg-primary-500/10 text-primary-700 dark:text-primary-300;
+  }
+
+  * {
+    scroll-behavior: smooth;
+  }
+</style>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f0c19538-058e-4512-a20d-d9a913421f4d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/css/theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/me.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/me16x35.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo/css3.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo/html5.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo/javascript.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo/nextjs.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo/python.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo/react.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/DocMenuSidebar.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/MarkdownArticle.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Pill.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/TableOfContent.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/courses/CourseCard.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/header/ContactLink.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/header/FloatingMenu.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/header/Header.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/header/HeaderLink.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/header/main-menu.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/portfolio/DownloadCVButton.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/portfolio/PortfolioHeader.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/portfolio/ProfileImage.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/portfolio/ProjectList.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/portfolio/SkillItem.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/portfolio/SkillList.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/svgs/ChatIcon.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/svgs/CloseIcon.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/svgs/DiscordLogo.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/svgs/EditIcon.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/svgs/GithubLogo.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/svgs/MenuIcon.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/svgs/MoreIcon.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/svgs/QwikLogo.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/svgs/SquareStack.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/svgs/TwitterLogo.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/tutotials/CurrentVideoItem.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/tutotials/TutorialCard.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/tutotials/TutorialPlaylist.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/tutotials/VideoCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/blog/javascript-evolution.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/blog/markdown-for-better-life.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/blog/web-dev-today-and-tomarow.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/courses/python/conditions.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/courses/python/exceptions.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/courses/python/files.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/courses/python/functions.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/courses/python/index.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/courses/python/loops.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/courses/python/modules-and-packages.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/courses/python/oop.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/courses/python/overview.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/courses/python/variables-and-data-types.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/data/python.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/courses.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/skills.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layouts/BaseLayout.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layouts/MainLayout.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layouts/MarkdownLayout.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/youtube.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/blog/[...slug].astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/blog/index.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/courses/[...slug].astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/courses/index.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/tutorials/[playlistId].astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/tutorials/index.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/youtube.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tailwind.config.cjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/astro.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/astro.config.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Card.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/Layout.astro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.astro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Rg0BIhAiej3IUAFfem1rTgNzjn" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "javascript.nodejs.core.library.configured.version": "18.13.0",
+    "javascript.nodejs.core.library.typings.version": "18.13.0",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
+    "show.migrate.to.gradle.popup": "false",
+    "ts.external.directory.path": "/home/aziz/.local/share/JetBrains/Toolbox/apps/IDEA-U/ch-0/231.9161.38/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/css" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f0c19538-058e-4512-a20d-d9a913421f4d" name="Changes" comment="" />
+      <created>1687656282898</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1687656282898</updated>
+      <workItem from="1687656287861" duration="410000" />
+      <workItem from="1687689949545" duration="440000" />
+      <workItem from="1687798474930" duration="3212000" />
+      <workItem from="1687820586499" duration="2174000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
