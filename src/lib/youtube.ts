@@ -1,4 +1,4 @@
-import type { Playlist, PlaylistItem, YoutubeResponse } from "../types/youtube";
+import type { Playlist, Video, YoutubeResponse } from "../types/youtube";
 
 export async function getAllPlaylists(
   part: string | undefined = "snippet,contentDetails"
@@ -39,5 +39,5 @@ export async function getPlaylist(id: string) {
     return null;
   }
 
-  return (await response.json()) as YoutubeResponse<PlaylistItem>;
+  return (await response.json()) as YoutubeResponse<Video>;
 }
