@@ -1,4 +1,7 @@
 ---
+import PageFooter from "@components/PageFooter.astro";
+import ScrollArea from "@components/ScrollArea.astro";
+import Header from "@components/header/Header.astro";
 export interface Props {
   title: string;
   description?: string;
@@ -14,10 +17,11 @@ const { title, description } = Astro.props;
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <!-- <link rel="stylesheet" href="/css/theme.css" /> -->
+    <link rel="stylesheet" href="/css/theme.css" />
     {description && <meta name="description" content={description} />}
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <slot name="head" />
+    <title>Aziz | {title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -25,14 +29,20 @@ const { title, description } = Astro.props;
       rel="stylesheet"
     />
   </head>
-  <body class="bg-neutral-50 dark:bg-neutral-900 dark:text-neutral-200">
-    <slot />
+  <body>
+    <ScrollArea class="w-screen h-screen body-large">
+      <slot name="header">
+        <Header />
+      </slot>
+      <slot />
+      <PageFooter />
+    </ScrollArea>
   </body>
 </html>
 
 <style is:global>
   :root {
-    --header-height: 5rem;
+    --header-height: 80px;
 
     --max-width: 90rem;
 
@@ -46,10 +56,22 @@ const { title, description } = Astro.props;
       monospace;
   }
 
+  @media screen and (max-width: 768px) {
+    :root {
+      --header-height: 64px;
+    }
+  }
+
   body {
     padding: 0;
     margin: 0;
     font-family: var(--font-normal);
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+  }
+
+  .content {
+    min-height: calc(100dvh - var(--header-height));
   }
 
   .home header.nav-bar {
@@ -71,14 +93,15 @@ const { title, description } = Astro.props;
   a {
     color: currentColor;
     text-decoration-thickness: 0.15rem;
-    @apply decoration-primary-500;
+    text-decoration: var(--color-primary);
   }
 
   ::selection {
-    @apply bg-primary-500/20 dark:bg-primary-500/10 text-primary-700 dark:text-primary-300;
+    background-color: var(--color-on-surface-variant);
+    color: var(--color-on-surface-variant);
   }
 
-  * {
+  .markdown * {
     scroll-behavior: smooth;
   }
 </style>

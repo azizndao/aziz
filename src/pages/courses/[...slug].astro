@@ -30,9 +30,14 @@ const menu = entries
   .sort((a, b) => {
     return a.index - b.index;
   });
+
+const type = entry.data.type.charAt(0).toUpperCase() + entry.data.type.slice(1);
 ---
 
-<MarkdownLayout title={entry.data.title} description={entry.data.description}>
+<MarkdownLayout
+  title={`${type}: ${entry.data.title}`}
+  description={entry.data.description}
+>
   <h1>{entry.data.title}</h1>
 
   <Content />

@@ -9,7 +9,7 @@ import ProfileImage from "./ProfileImage.astro";
 >
   <aside class="left-side max-w-xs">
     <h3 class="text-5xl leading-snug font-light">
-      Hi, my name is <b class="name bg-primary-600/10">Abdou Aziz Ndao</b>
+      Hi, my name is <b class="name">Abdou Aziz Ndao</b>
     </h3>
     <p class="text-lg">
       I am a Creative Developer who is currently based in <b>Birkelene</b>,
@@ -22,9 +22,7 @@ import ProfileImage from "./ProfileImage.astro";
     </section>
     <DownloadCVButton class="hidden md:inline-block" />
   </aside>
-  <aside class="right-side md:py-8">
-    <ProfileImage />
-  </aside>
+  <ProfileImage class="right-side md:py-8" />
   <DownloadCVButton class="block md:hidden self-center my-4" />
 </section>
 
@@ -39,7 +37,7 @@ import ProfileImage from "./ProfileImage.astro";
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    align-items: start;
+    align-items: flex-start;
     justify-content: center;
   }
 

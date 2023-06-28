@@ -12,7 +12,7 @@ const { data } = Astro.props;
   <a href={`/tutorials/${data.id}`} class="tuto-card block">
     <header class="font-medium text-sm">
       <div class="label-large">Courses</div>
-      <small class="text-primary-500">{data.contentDetails.itemCount}</small>
+      <small class="text-primary">{data.contentDetails.itemCount}</small>
     </header>
     <img
       src={data.snippet.thumbnails.medium.url}
@@ -35,8 +35,7 @@ const { data } = Astro.props;
     padding: 1rem;
     padding-bottom: 2rem;
     text-align: center;
-    @apply border border-neutral-200 dark:border-neutral-600;
-    @apply bg-neutral-100  dark:bg-neutral-800 dark:text-neutral-200;
+    @apply bg-surface-variant text-on-surface-variant;
   }
 
   .tuto-card {
@@ -45,7 +44,7 @@ const { data } = Astro.props;
 
   .tuto-card:hover {
     color: currentColor;
-    @apply bg-neutral-100 dark:bg-neutral-700 dark:text-neutral-200 ring-2 border-primary-600;
+    @apply bg-primary-container text-on-primary-container ring-2 ring-primary border-primary;
   }
 
   header {

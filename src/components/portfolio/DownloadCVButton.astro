@@ -7,6 +7,9 @@ interface Props extends HTMLAttributes<"button"> {}
 const { class: cls, ...attrs } = Astro.props;
 ---
 
-<button class={twMerge(cls, "px-8 py-4 bg-tertiary-600 rounded-lg")} {...attrs}>
+<button
+  class={twMerge(cls, "px-8 py-4 bg-tertiary text-on-tertiary rounded-lg")}
+  {...attrs}
+>
   Download my CV
 </button>

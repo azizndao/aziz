@@ -1,6 +1,7 @@
 import { HtmlHTMLAttributes, useState } from "react";
 import type { Video } from "../../types/youtube";
 
+import CustomScrollArea from "@components/CustomScrollArea";
 import { twJoin, twMerge } from "tailwind-merge";
 import CurrentVideoItem from "./CurrentVideoItem";
 import VideoItemCard from "./VideoCard";
@@ -28,6 +29,7 @@ export default function TutorialPlaylist({
     </div>
   );
 }
+
 function PlaylistSidebar({
   videos,
   setCurrentVideo,
@@ -38,31 +40,33 @@ function PlaylistSidebar({
   const [open, setOpen] = useState(false);
   return (
     <>
-      <aside
+      <div
         className={twMerge(
-          "bg-neutral-50 dark:bg-neutral-900 transition-all px-4 lg:px-0 flex flex-col gap-1.5",
-          "w-full lg:max-w-[calc((var(--max-width)*0.3)-1rem)] max-h-screen lg:max-h-[calc(100dvh-var(--header-height))]",
-          "fixed z-10  inset-0 right-0 -translate-x-[100dvw] lg:translate-x-0 lg:right-[calc((100dvw-var(--max-width))/2)] lg:top-[var(--header-height)]",
+          "bg-surface transition-all px-4 lg:px-0 flex flex-col gap-1.5",
+          "w-full max-w-[300px] shadow-2xl lg:max-w-[calc((var(--max-width)*0.3)-1rem)] max-h-screen lg:max-h-[calc(100dvh-var(--header-height))]",
+          "fixed z-10  inset-0 lg:inset-auto right-0 -translate-x-[100dvw] lg:translate-x-0 lg:right-[calc((100dvw-var(--max-width))/2)] lg:top-[var(--header-height)]",
           open && "translate-x-0"
         )}
       >
-        <ul className="overflow-y-auto flex flex-col gap-2  pb-8 lg:pb-0 lg:mb-8">
-          <h3 className="font-bold text-2xl sticky top-0 bg-primary-50/30 dark:bg-neutral-900/30  backdrop-blur-sm  px-1 py-3 lg:p-0">
-            Playlist
-          </h3>
-          {videos.map((video) => (
-            <li key={video.id}>
-              <VideoItemCard
-                video={video}
-                onClick={() => {
-                  setOpen(false);
-                  setCurrentVideo(video);
-                }}
-              />
-            </li>
-          ))}
-        </ul>
-      </aside>
+        <CustomScrollArea className="w-full h-screen">
+          <ul className="overflow-y-auto flex flex-col gap-2  pb-8 lg:pb-0 lg:mb-8">
+            <h3 className="font-bold text-2xl sticky top-0 bg-primary-50/30 dark:bg-neutral-900/30  backdrop-blur-sm  px-1 py-3 lg:p-0">
+              Playlist
+            </h3>
+            {videos.map((video) => (
+              <li key={video.id}>
+                <VideoItemCard
+                  video={video}
+                  onClick={() => {
+                    setOpen(false);
+                    setCurrentVideo(video);
+                  }}
+                />
+              </li>
+            ))}
+          </ul>
+        </CustomScrollArea>
+      </div>
       <CloseButton open={open} onClick={() => setOpen(!open)} />
     </>
   );
@@ -78,10 +82,7 @@ function CloseButton({
   return (
     <button
       className={twJoin(
-        "lg:hidden fixed z-50 right-4 bottom-4 bg-primary-500 dark:bg-neutral-700 rounded-full shadow-xl p-3",
-        open
-          ? "text-danger-500 dark:text-danger-300"
-          : "text-primary-200 dark:text-primary-300"
+        "lg:hidden fixed z-50 right-4 bottom-4 bg-primary text-on-primary rounded-3xl shadow-2xl w-16 h-16 flex items-center justify-center"
       )}
       onClick={onClick}
     >
@@ -89,7 +90,7 @@ function CloseButton({
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
-        strokeWidth={1.5}
+        strokeWidth={2}
         stroke="currentColor"
         className="w-5 h-5"
       >

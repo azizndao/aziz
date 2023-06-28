@@ -1,5 +1,5 @@
 <article class="markdown md:px-4 py-4">
-    <slot/>
+    <slot />
 </article>
 
 <style is:global>
@@ -14,13 +14,12 @@
     .markdown :is(h1, h2, h3, h4, h5, h6) {
         line-height: 1.2;
         margin-bottom: 1rem;
-        font-weight: 700;
-
+        font-weight: 600;
         @apply md:mt-8;
     }
 
     .markdown :is(h1, h2, h3, h4, h5, h6) a {
-        @apply text-primary-600 no-underline;
+        @apply text-[var(--color-primary)] no-underline;
     }
 
     .markdown :is(h1, h2, h3, h4, h5, h6) a:after {
@@ -53,6 +52,7 @@
         margin-bottom: 1.5rem;
         font-size: 16px;
         @apply text-base lg:text-lg leading-relaxed;
+        line-height: 1.75;
     }
 
     .markdown :is(ul, ol) {
@@ -72,18 +72,22 @@
     }
 
     .markdown :is(ul, ol) li::marker {
-        @apply list-inside  font-extrabold text-primary-600 dark:text-primary-400;
+        font-weight: 800;
+        @apply list-inside;
+        color: var(--color-primary);
     }
 
     .markdown a {
-        @apply underline decoration-primary-600 text-primary-500 decoration-2;
+        text-decoration-color: var(--color-primary);
+        text-decoration: 2px solid var(--color-primary);
     }
 
     .markdown code {
         font-family: var(--font-monospace);
         padding: 4px 6px;
         border-radius: 6px;
-        @apply bg-neutral-900/10 border-b border-neutral-950/20 dark:bg-neutral-700;
+        background-color: var(--color-surface-variant);
+        color: var(--color-on-surface-variant);
     }
 
     .markdown code::selection {
@@ -99,12 +103,12 @@
     }
 
     .markdown pre code {
-        background-color: transparent;
+        background-color: transparent !important;
         margin: 0;
         padding: 0;
         border: none;
         @apply text-sm md:text-base;
-        @apply bg-neutral-900/10;
+        @apply bg-surface-variant;
     }
 
     .markdown pre code .line {
@@ -130,17 +134,17 @@
         padding: 5px 15px;
         font-family: monospace;
         font-weight: bold;
-        @apply bg-primary-600;
+        @apply bg-[var(--color-primary)];
     }
 
     .markdown .text-gradient {
         --accent-gradient: linear-gradient(
-                45deg,
-                #f09433 0%,
-                #e6683c 25%,
-                #dc2743 50%,
-                #cc2366 75%,
-                #bc1888 100%
+            45deg,
+            #f09433 0%,
+            #e6683c 25%,
+            #dc2743 50%,
+            #cc2366 75%,
+            #bc1888 100%
         );
         background-image: var(--accent-gradient);
         -webkit-background-clip: text;
@@ -163,21 +167,21 @@
     }
 
     .markdown table th {
-        @apply border-b dark:border-neutral-600 font-medium p-4 pl-8 pt-0 pb-3 text-neutral-400 dark:text-neutral-200 text-left;
+        @apply border-b dark:border-outline font-medium p-4 pl-8 pt-0 pb-3 text-on-surface-variant text-left;
     }
 
     .markdown table tbody {
-        @apply bg-white dark:bg-neutral-800;
+        @apply bg-surface;
     }
 
     .markdown table td {
-        @apply border-b border-neutral-300 dark:border-neutral-700 p-4 pl-8 text-neutral-500 dark:text-neutral-400;
+        @apply border-b border-outline p-4 pl-8 text-on-surface-variant;
     }
 
     .markdown blockquote {
         padding: 20px 13px 20px 10px;
         margin: 30px 0;
-        @apply border-l-[10px] bg-primary-500/10 border-primary-600;
+        @apply border-l-[10px] bg-primary-container border-primary;
     }
 
     .markdown blockquote p:first-child {

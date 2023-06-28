@@ -1,5 +1,4 @@
 ---
-import Header from "@components/header/Header.astro";
 import BaseLayout from "./BaseLayout.astro";
 
 interface Props {
@@ -11,7 +10,6 @@ const { title, description } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
-  <Header />
   <main class="content">
     <slot />
   </main>

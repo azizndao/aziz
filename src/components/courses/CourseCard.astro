@@ -20,10 +20,10 @@ const {
   <a href={href} class="tuto-card block">
     <header class="font-medium text-sm">
       <div class="label-large">Duration</div>
-      <small class="text-primary-500">{duration}</small>
+      <small class="text-primary">{duration}</small>
     </header>
     <div
-      class="rounded-xl w-hull aspect-square bg-neutral-200 dark:bg-black/10 grid place-content-center"
+      class="rounded-xl w-hull aspect-square bg-on-surface-variant grid place-content-center"
     >
       <img src={imageUrl} alt={title} loading="lazy" class="max-w-[120px]" />
     </div>
@@ -41,8 +41,7 @@ const {
     border-radius: 1rem;
     padding: 1rem 1rem 2rem;
     text-align: center;
-    @apply border border-neutral-200 dark:border-neutral-600;
-    @apply bg-neutral-100/50 dark:bg-neutral-800 dark:text-neutral-200;
+    @apply bg-surface-variant text-on-surface-variant;
   }
 
   .tuto-card {
@@ -51,7 +50,7 @@ const {
 
   .tuto-card:hover {
     color: currentColor;
-    @apply bg-neutral-100 dark:bg-neutral-700 dark:text-neutral-200 ring-2 border-primary-600;
+    @apply bg-primary-container text-on-primary-container ring-2 ring-primary border-primary;
   }
 
   header {

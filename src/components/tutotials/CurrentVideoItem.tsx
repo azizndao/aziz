@@ -33,7 +33,7 @@ const VideoDescription = ({ description }: { description: string }) => {
   return (
     <article
       className={twJoin(
-        "bg-neutral-200 dark:bg-neutral-800 p-4 rounded-xl mb-6 mx-4 lg:mx-0",
+        "bg-surface-variant p-4 rounded-xl mb-6 mx-4 lg:mx-0",
         !open && "cursor-pointer"
       )}
       onClick={() => {
