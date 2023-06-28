@@ -10,7 +10,7 @@ const { data } = Astro.props;
 
 <li>
   <a href={`/tutorials/${data.id}`} class="tuto-card block">
-    <header class="font-medium text-sm">
+    <header class="label-large">
       <div class="label-large">Courses</div>
       <small class="text-primary">{data.contentDetails.itemCount}</small>
     </header>
@@ -18,10 +18,9 @@ const { data } = Astro.props;
       src={data.snippet.thumbnails.medium.url}
       alt={data.snippet.title}
       loading={"lazy"}
-      class="rounded-xl"
     />
-    <h3 class="text-3xl py-4">{data.snippet.title}</h3>
-    <p class="text-center px-4 mx-auto line-clamp-3">
+    <h3 class="headline-large">{data.snippet.title}</h3>
+    <p class="body-large line-clamp-3">
       {data.snippet.description}
     </p>
   </a>
@@ -35,7 +34,8 @@ const { data } = Astro.props;
     padding: 1rem;
     padding-bottom: 2rem;
     text-align: center;
-    @apply bg-surface-variant text-on-surface-variant;
+    background-color: rgba(var(--surface-variant), 0.25);
+    border: 1px solid rgba(var(--surface-variant), 1);
   }
 
   .tuto-card {
@@ -54,7 +54,22 @@ const { data } = Astro.props;
     padding: 0 4px;
   }
 
+  img {
+    border-radius: 1rem;
+  }
+
   .tuto-card img {
     border-radius: 1rem;
+  }
+
+  h3 {
+    padding: 1rem 0;
+  }
+
+  p {
+    padding: 0 1rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 </style>

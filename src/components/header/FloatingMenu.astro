@@ -12,21 +12,16 @@ interface Props {
 ---
 
 <div class={Astro.props.class}>
-  <dialog
-    id="main-menu"
-    class="max-w-sm w-full rounded-3xl shadow-2xl backdrop:backdrop-blur-sm backdrop:bg-[var(--color-backgroud)] backdrop:bg-opacity-10"
-  >
-    <ul class="md:flex flex-col px-4 items-center gap-6">
+  <dialog id="main-menu">
+    <ul role="menu" class="md:flex flex-col px-4 items-center gap-6">
       {
         mainMenu.map(({ href, title }) => (
           <li>
             <a
               href={href}
-              class={twMerge(
-                "block py-6 text-center text-2xl font-bold text-[var(--color-on-surface-variant)]",
-                (href == "/" ? pathname === "/" : pathname.startsWith(href)) &&
-                  "underline decoration-[var(--color-primary)] text-[var(--color-primary)]"
-              )}
+              aria-current-page={
+                href == "/" ? pathname === "/" : pathname.startsWith(href)
+              }
             >
               {title}
             </a>
@@ -34,10 +29,8 @@ interface Props {
         ))
       }
       <li class="self-center flex justify-center mb-4 mt-2">
-        <button
-          class="close-button bg-[var(--color-error-container)] rounded-full p-2 border-4 border-[var(--color-error-container)]"
-        >
-          <CloseIcon class="stroke-[4px] stroke-[var(--color-error)]" />
+        <button class="close-button">
+          <CloseIcon />
         </button>
       </li>
     </ul>
@@ -60,8 +53,51 @@ interface Props {
 </script>
 
 <style>
-  #main-menu {
-    background-color: var(--color-surface);
-    color: var(--color-on-surface);
+  dialog {
+    max-width: 21rem;
+    width: 100%;
+    background-color: rgb(var(--surface));
+    border-radius: 1.5rem;
+    box-shadow: 0 0 12px 6px rgba(var(--shadow), 0.25);
+  }
+
+  dialog::backdrop {
+    background-color: rgba(var(--background));
+  }
+
+  .close-button {
+    background-color: rgb(var(--error-container));
+    padding: 0.75rem;
+    border-radius: 900px;
+  }
+
+  .close-button > svg {
+    stroke: rgb(var(--error));
+    stroke-width: 4px;
+  }
+
+  ul[role="menu"] {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  ul a {
+    color: rgb(var(--on-surface-variant));
+    text-decoration: none;
+    display: block;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: bold;
+  }
+
+  ul a[aria-current-page] {
+    color: rgb(var(--primary));
+    border-radius: 4rem;
+    background-color: rgb(var(--primary-container));
   }
 </style>

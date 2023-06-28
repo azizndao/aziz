@@ -14,18 +14,24 @@ if (!data) {
 const playlists = data?.items ?? [];
 ---
 
-<MainLayout
-  title="My tutorials on youtube"
-  description="My tutorials on youtube"
->
+<MainLayout title="Tutorials" description="My tutorials on youtube">
   <div class="container">
     <header class="py-8 px-4 flex items-center justify-center min-h-[200px]">
       <h1 class="text-4xl font-bold">Tutorials on Youtube</h1>
     </header>
-    <ul
-      class="w-full px-6 pb-8 lg:px-0 grid grid-cols-1 place-content-center md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
-    >
+    <ul class="grid">
       {playlists.map((playlist) => <TutorialCard data={playlist} />)}
     </ul>
   </div>
 </MainLayout>
+
+<style>
+  .grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-width: 80rem;
+    margin: auto;
+    padding: 2rem;
+  }
+</style>

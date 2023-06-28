@@ -2,6 +2,8 @@
 import PageFooter from "@components/PageFooter.astro";
 import ScrollArea from "@components/ScrollArea.astro";
 import Header from "@components/header/Header.astro";
+import "@css/theme.css";
+
 export interface Props {
   title: string;
   description?: string;
@@ -17,7 +19,6 @@ const { title, description } = Astro.props;
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="stylesheet" href="/css/theme.css" />
     {description && <meta name="description" content={description} />}
     <meta name="generator" content={Astro.generator} />
     <slot name="head" />
@@ -56,7 +57,7 @@ const { title, description } = Astro.props;
       monospace;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1023px) {
     :root {
       --header-height: 64px;
     }
@@ -66,8 +67,8 @@ const { title, description } = Astro.props;
     padding: 0;
     margin: 0;
     font-family: var(--font-normal);
-    background-color: var(--color-background);
-    color: var(--color-on-background);
+    background-color: rgb(var(--background));
+    color: rgb(var(--on-background));
   }
 
   .content {
@@ -90,18 +91,16 @@ const { title, description } = Astro.props;
     max-width: var(--max-width);
   }
 
-  a {
-    color: currentColor;
-    text-decoration-thickness: 0.15rem;
-    text-decoration: var(--color-primary);
-  }
-
   ::selection {
-    background-color: var(--color-on-surface-variant);
-    color: var(--color-on-surface-variant);
+    background-color: rgb(var(--primary-container));
+    color: rgb(var(--on-primary-container));
   }
 
   .markdown * {
     scroll-behavior: smooth;
+  }
+
+  *:focus {
+    outline-color: transparent;
   }
 </style>

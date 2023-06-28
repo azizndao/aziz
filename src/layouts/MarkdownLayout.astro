@@ -5,161 +5,186 @@ import MenuIcon from "@components/svgs/MenuIcon.astro";
 import ChevronRightIcon from "@components/svgs/ChevronRightIcon.astro";
 
 interface Props {
-  title: string;
-  description: string;
+    title: string;
+    description: string;
+    hasMenu?: boolean;
 }
+const { hasMenu = true, title, description } = Astro.props;
 ---
 
-<MainLayout title={Astro.props.title} description={Astro.props.description}>
-  <div class="page-container">
-    <section
-      class="lg:hidden h-[var(--header-height)] z-20 flex gap-8 justify-between px-4 py-2 border-b border-outline sticky top-0 bg-surface"
-    >
-      <button id="btn-left"><MenuIcon class="w-4 h-4" />Menu</button>
-      <button id="btn-right"
-        >On this page <ChevronRightIcon class="w-4 h-4" /></button
-      >
-    </section>
+<MainLayout title={title} description={description}>
+    <div class="page-container">
+        <section class="top-nav">
+            <button id="btn-left">
+                <MenuIcon />
+                Menu
+            </button>
+            <button id="btn-right">
+                On this page <ChevronRightIcon />
+            </button>
+        </section>
 
-    <aside class="left lg:border-r border-outline dark:border-neutral-700">
-      <slot name="left-sidebar" />
-    </aside>
-    <section class="md-container">
-      <MarkdownArticle>
-        <slot />
-      </MarkdownArticle>
-    </section>
-    <aside class="right lg:border-l border-outline dark:border-neutral-700">
-      <slot name="rigth-sidebar" />
-    </aside>
-  </div>
+        <aside class="left">
+            <slot name="left-sidebar" />
+        </aside>
+        <MarkdownArticle class="md-container">
+            <slot />
+        </MarkdownArticle>
+        <aside class="right">
+            <slot name="rigth-sidebar" />
+        </aside>
+    </div>
 </MainLayout>
 
 <script>
-  const pageContainer = document.querySelector(".page-container");
+    const container = document.querySelector(".page-container");
 
-  document
-    .querySelector(".page-container .md-container")
-    ?.addEventListener("click", (event) => {
-      if (pageContainer?.hasAttribute("aria-open")) {
-        pageContainer.attributes.removeNamedItem("aria-open");
-      }
-    });
+    document
+        .querySelector(".page-container .md-container")
+        ?.addEventListener("click", () => {
+            if (container?.hasAttribute("aria-open")) {
+                container.attributes.removeNamedItem("aria-open");
+            }
+        });
 
-  document
-    .querySelector(".page-container #btn-left")
-    ?.addEventListener("click", () =>
-      pageContainer?.setAttribute("aria-open", "left")
-    );
+    document
+        .querySelector(".page-container #btn-left")
+        ?.addEventListener("click", () =>
+            container?.setAttribute("aria-open", "left")
+        );
 
-  document
-    .querySelector(".page-container #btn-right")
-    ?.addEventListener("click", () =>
-      pageContainer?.setAttribute("aria-open", "right")
-    );
+    document
+        .querySelector(".page-container #btn-right")
+        ?.addEventListener("click", () =>
+            container?.setAttribute("aria-open", "right")
+        );
 </script>
 
 <style>
-  .page-container {
-    max-width: var(--max-width);
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .md-container {
-    @apply px-5 pt-4 pb-8 mx-auto;
-  }
-
-  .header-menu {
-    @apply flex justify-between items-center;
-    display: none;
-  }
-
-  #btn-left,
-  #btn-right {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    @apply text-sm;
-  }
-
-  @media screen and (min-width: 1024px) {
     .page-container {
-      display: grid;
-      grid-template-columns: minmax(1fr, 21rem) minmax(1fr, 47rem) minmax(
-          1fr,
-          21rem
-        );
+        max-width: var(--max-width);
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        --color-border: rgba(var(--outline), 0.25);
     }
 
     .md-container {
-      max-width: 47rem;
-      grid-column: 2;
+        padding: 0 1.25rem 2rem;
+        width: 100%;
     }
 
-    aside:is(.left, .right) {
-      height: 100vh;
-      max-width: 21rem;
-      width: 100%;
-      position: sticky;
-      display: block;
-      top: calc(var(--header-height) * 1.5);
-    }
-
-    aside.left {
-      grid-column: 1;
-    }
-
-    aside.right {
-      grid-column: 3;
-    }
-  }
-
-  @media screen and (max-width: 1023px) {
-    .md-container {
-      width: 100dvw;
-    }
     .header-menu {
-      display: block;
+        @apply flex justify-between items-center;
+        display: none;
     }
 
-    aside:is(.left, .right) {
-      --width: 300px;
-      position: absolute;
-      inset: 0;
-      max-width: var(--width);
-      z-index: 20;
-      @apply bg-surface shadow-2xl;
-      transition: transform 0.3s ease-in-out;
+    #btn-left,
+    #btn-right {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        @apply text-sm;
     }
 
-    aside.left {
-      margin-right: calc(100dvw - var(--width));
-      transform: translate(-100dvw, 0);
+    .top-nav {
+        z-index: 20;
+        height: var(--header-height);
+        display: flex;
+        gap: 2rem;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        border-bottom: 1px solid var(--color-border);
+        background-color: rgba(var(--background));
+        padding: 0 1.5rem;
     }
 
-    :is([aria-open="lef"], [aria-open="right"]) .md-container::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 11;
-      background: rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(2px);
-      transition: all 0.5s ease;
+    @media screen and (min-width: 1024px) {
+        .top-nav {
+            display: none;
+        }
+
+        .page-container {
+            display: grid;
+            grid-template-columns:
+                minmax(1fr, 21rem)
+                minmax(1fr, 47rem)
+                minmax(1fr, 21rem);
+        }
+
+        .md-container {
+            max-width: 47rem;
+            flex-grow: grow;
+            width: 100%;
+            grid-column: 2;
+        }
+
+        aside:is(.left, .right) {
+            height: 100vh;
+            max-width: 21rem;
+            width: 100%;
+            position: sticky;
+            display: block;
+            top: calc(var(--header-height) * 1.5);
+            border-color: rgb(--color-border);
+        }
+
+        aside.left {
+            grid-column: 1;
+            border-right: 1px solid var(--color-border);
+        }
+
+        aside.right {
+            grid-column: 3;
+            border-left: 1px solid var(--color-border);
+        }
     }
 
-    [aria-open="left"] aside.left {
-      transform: translate(0, 0);
-    }
+    @media screen and (max-width: 1023px) {
+        .md-container {
+            width: 100dvw;
+        }
+        .header-menu {
+            display: block;
+        }
 
-    [aria-open="right"] aside.right {
-      transform: translate(0, 0);
-    }
+        aside:is(.left, .right) {
+            --width: 300px;
+            position: absolute;
+            inset: 0;
+            max-width: var(--width);
+            z-index: 20;
+            @apply bg-surface shadow-2xl;
+            transition: transform 0.3s ease-in-out;
+        }
 
-    aside.right {
-      margin-left: calc(100dvw - var(--width));
-      transform: translate(100dvw, 0);
+        aside.left {
+            margin-right: calc(100dvw - var(--width));
+            transform: translate(-100dvw, 0);
+        }
+
+        :is([aria-open="lef"], [aria-open="right"]) .md-container::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 11;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(2px);
+            transition: all 0.5s ease;
+        }
+
+        [aria-open="left"] aside.left {
+            transform: translate(0, 0);
+        }
+
+        [aria-open="right"] aside.right {
+            transform: translate(0, 0);
+        }
+
+        aside.right {
+            margin-left: calc(100dvw - var(--width));
+            transform: translate(100dvw, 0);
+        }
     }
-  }
 </style>

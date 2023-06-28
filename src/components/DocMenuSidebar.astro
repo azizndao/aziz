@@ -47,14 +47,13 @@ const { title, entries } = Astro.props;
     text-decoration: none;
     line-height: 2.25;
     width: 100%;
-    @apply rounded-md  border-r-primary line-clamp-1;
+    @apply line-clamp-1;
+    border-radius: 6px;
   }
 
-  li a:hover {
-    @apply text-on-primary-container bg-primary-container border-primary;
-  }
-
+  li a:hover,
   li a.active {
-    @apply text-on-primary-container font-medium bg-primary-container;
+    color: rgb(var(--on-primary-container));
+    background-color: rgb(var(--primary-container));
   }
 </style>

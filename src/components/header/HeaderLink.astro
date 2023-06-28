@@ -11,10 +11,14 @@ const { href, active } = Astro.props;
 </a>
 
 <style>
+  a {
+    text-decoration: none;
+  }
+
   a[aria-active="true"] {
     text-decoration-thickness: 4px;
-    color: var(--color-primary);
-    text-decoration: underline;
+    color: rgb(var(--primary));
+    text-decoration: underline 4px rgb(var(--primary));
     font-weight: 600;
   }
 </style>

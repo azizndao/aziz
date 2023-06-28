@@ -14,13 +14,11 @@ const { class: cls } = Astro.props;
 ---
 
 <header class:list={["nav-bar", cls]}>
-  <nav
-    class="max-w-8xl px-6 mx-auto flex items-center gap-6 h-[var(--header-height)]"
-  >
+  <nav>
     <a href="/" class="font-bold text-3xl">Aziz.io</a>
 
     <span class="grow"></span>
-    <ul class="hidden md:flex px-4 items-center gap-6">
+    <ul class="nav-items">
       {
         mainMenu.map(({ href, title }) => (
           <li>
@@ -36,7 +34,7 @@ const { class: cls } = Astro.props;
         ))
       }
     </ul>
-    <ul class="flex gap-4 items-center">
+    <ul class="contacts">
       <li>
         <a href="https://github.com/azizndao" title="Github" target="_blank">
           <GithubLogo />
@@ -67,7 +65,36 @@ const { class: cls } = Astro.props;
     position: sticky;
     top: 0;
     z-index: 10;
-    backdrop-filter: blur(23px) saturate(1.5);
-    background-color: var(--color-background);
+    backdrop-filter: blur(23px);
+    background-color: rgba(var(--background), 0.9);
+  }
+
+  nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    height: var(--header-height);
+    padding: 0 1.5rem;
+    max-width: var(--max-width);
+    margin: auto;
+  }
+
+  ul.nav-items {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    ul.nav-items {
+      display: none;
+    }
+  }
+
+  ul.contacts {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
 </style>

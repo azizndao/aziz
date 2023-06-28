@@ -1,4 +1,10 @@
-<article class="markdown md:px-4 py-4">
+---
+interface Props {
+    class?: string;
+}
+---
+
+<article class:list={["markdown", Astro.props.class]}>
     <slot />
 </article>
 
@@ -7,64 +13,132 @@
         scroll-padding-top: calc(var(--header-height) * 1.5);
     }
 
+    .markdown {
+        padding: 1rem;
+    }
+
     .markdown h1 {
-        @apply text-4xl md:text-5xl;
+        font-size: 2.25rem /* 36px */;
+        line-height: 2.5rem /* 40px */;
+    }
+
+    @media (min-width: 768px) {
+        .markdown h1 {
+            font-size: 3rem /* 48px */;
+            line-height: 1;
+        }
     }
 
     .markdown :is(h1, h2, h3, h4, h5, h6) {
         line-height: 1.2;
         margin-bottom: 1rem;
         font-weight: 600;
-        @apply md:mt-8;
+    }
+
+    @media (min-width: 768px) {
+        .markdown :is(h1, h2, h3, h4, h5, h6) {
+            margin-top: 2rem /* 32px */;
+        }
     }
 
     .markdown :is(h1, h2, h3, h4, h5, h6) a {
-        @apply text-[var(--color-primary)] no-underline;
+        color: var(--primary);
+        text-decoration-line: none;
     }
 
     .markdown :is(h1, h2, h3, h4, h5, h6) a:after {
         content: "#";
-        @apply px-3 opacity-0;
+        font-weight: lighter;
+        padding-left: 0.75rem /* 12px */;
+        padding-right: 0.75rem /* 12px */;
+        opacity: 0;
     }
 
     .markdown :is(h1, h2, h3, h4, h5, h6):hover a:after {
         opacity: 1;
+        color: rgba(var(--primary));
     }
 
     .markdown h2 {
-        @apply text-3xl md:text-4xl;
+        font-size: 1.875rem /* 30px */;
+        line-height: 2.25rem /* 36px */;
+    }
+
+    @media (min-width: 768px) {
+        .markdown h2 {
+            font-size: 2.25rem /* 36px */;
+            line-height: 2.5rem /* 40px */;
+        }
     }
 
     .markdown h3 {
-        @apply text-2xl md:text-3xl;
+        font-size: 1.5rem /* 24px */;
+        line-height: 2rem /* 32px */;
+    }
+
+    @media (min-width: 768px) {
+        .markdown h3 {
+            font-size: 1.875rem /* 30px */;
+            line-height: 2.25rem /* 36px */;
+        }
     }
 
     .markdown h4 {
-        @apply text-xl md:text-2xl;
+        font-size: 1.25rem /* 20px */;
+        line-height: 1.75rem /* 28px */;
+    }
+
+    @media (min-width: 768px) {
+        .markdown h4 {
+            font-size: 1.5rem /* 24px */;
+            line-height: 2rem /* 32px */;
+        }
     }
 
     .markdown h5 {
-        @apply text-lg md:text-xl;
+        font-size: 1.125rem /* 18px */;
+        line-height: 1.75rem /* 28px */;
+    }
+
+    @media (min-width: 768px) {
+        .markdown h5 {
+            font-size: 1.25rem /* 20px */;
+            line-height: 1.75rem /* 28px */;
+        }
     }
 
     .markdown p {
         margin-top: 1.5rem;
         margin-bottom: 1.5rem;
-        font-size: 16px;
-        @apply text-base lg:text-lg leading-relaxed;
         line-height: 1.75;
+        font-size: 1rem /* 16px */;
+    }
+
+    @media (min-width: 1024px) {
+        .markdown p {
+            font-size: 1.125rem /* 18px */;
+            line-height: 1.75rem /* 28px */;
+        }
     }
 
     .markdown :is(ul, ol) {
-        @apply list-inside px-4 py-2;
+        list-style-position: inside;
+        padding-left: 1rem /* 16px */;
+        padding-right: 1rem /* 16px */;
+        padding-top: 0.5rem /* 8px */;
+        padding-bottom: 0.5rem /* 8px */;
     }
 
     .markdown ul li {
-        @apply list-disc my-4;
+        list-style-type: disc;
+        margin-top: 1rem /* 16px */;
+        margin-bottom: 1rem /* 16px */;
     }
 
     .markdown ol li {
-        @apply list-decimal my-4;
+        list-style-type: decimal;
+        margin-top: 1rem /* 16px */;
+        margin-bottom: 1rem /* 16px */;
     }
 
     .markdown :is(ul, ol) li {
@@ -73,21 +147,22 @@
 
     .markdown :is(ul, ol) li::marker {
         font-weight: 800;
-        @apply list-inside;
-        color: var(--color-primary);
+        color: rgb(var(--primary));
+        list-style-position: inside;
     }
 
     .markdown a {
-        text-decoration-color: var(--color-primary);
-        text-decoration: 2px solid var(--color-primary);
+        color: rgb(var(--primary));
+        text-decoration-color: rgb(var(--primary));
+        text-decoration: 2px solid rgb(var(--primary));
     }
 
     .markdown code {
         font-family: var(--font-monospace);
         padding: 4px 6px;
         border-radius: 6px;
-        background-color: var(--color-surface-variant);
-        color: var(--color-on-surface-variant);
+        background-color: var(--surface-variant);
+        color: var(--on-surface-variant);
     }
 
     .markdown code::selection {
@@ -107,8 +182,16 @@
         margin: 0;
         padding: 0;
         border: none;
-        @apply text-sm md:text-base;
-        @apply bg-surface-variant;
+        font-size: 0.875rem /* 14px */;
+        line-height: 1.25rem /* 20px */;
+        background-color: rgb(var(--surface-variant));
+    }
+
+    @media (min-width: 768px) {
+        .markdown pre code {
+            font-size: 1rem /* 16px */;
+            line-height: 1.5rem /* 24px */;
+        }
     }
 
     .markdown pre code .line {
@@ -134,7 +217,7 @@
         padding: 5px 15px;
         font-family: monospace;
         font-weight: bold;
-        @apply bg-[var(--color-primary)];
+        background-color: rgb(var(--primary));
     }
 
     .markdown .text-gradient {
@@ -163,25 +246,44 @@
     }
 
     .markdown table {
-        @apply border-collapse table-auto w-full text-sm;
+        border-collapse: collapse;
+        table-layout: auto;
+        width: 100%;
+        font-size: 0.875rem /* 14px */;
+        line-height: 1.25rem /* 20px */;
     }
 
     .markdown table th {
-        @apply border-b dark:border-outline font-medium p-4 pl-8 pt-0 pb-3 text-on-surface-variant text-left;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: rgb(var(----outline));
+        font-weight: 500;
+        padding: 1rem /* 16px */;
+        padding-left: 2rem /* 32px */;
+        padding-top: 0px;
+        padding-bottom: 0.75rem /* 12px */;
+        color: rgb(var(--on-surface-variant));
+        text-align: left;
     }
 
     .markdown table tbody {
-        @apply bg-surface;
+        background-color: rgb(var(--surface));
     }
 
     .markdown table td {
-        @apply border-b border-outline p-4 pl-8 text-on-surface-variant;
+        border-color: rgb(var(--outline));
+        border-bottom-width: 1px;
+        padding: 1rem /* 16px */;
+        padding-left: 2rem /* 32px */;
+        color: rgb(var(--on-surface-variant));
     }
 
     .markdown blockquote {
         padding: 20px 13px 20px 10px;
         margin: 30px 0;
-        @apply border-l-[10px] bg-primary-container border-primary;
+        border-left-width: 10px;
+        background-color: rgb(var(--primary-container));
+        border-color: rgb(var(--primary));
     }
 
     .markdown blockquote p:first-child {
@@ -197,9 +299,5 @@
         overflow: hidden;
         max-width: 100%;
         object-fit: cover;
-    }
-
-    .markdown img:hover {
-        @apply shadow-lg dark:shadow-xl;
     }
 </style>

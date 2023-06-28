@@ -3,22 +3,38 @@ const year = new Date().getFullYear();
 ---
 
 <footer>
-  <div class="inner-footer max-w-8xl flex flex-col gap-8 items-center">
+  <div class="inner-footer">
     <p class="text-lg">Build with Astro & Tailwind</p>
     <!-- Copyright -->
     <p class="text-sm">
       Copyright © {year}
-      <a href="https://github.com/azizndao" class="text-primary">Aziz</a>
+      <a href="https://github.com/azizndao">Aziz</a>
     </p>
   </div>
 </footer>
 
 <style>
   footer {
-    @apply bg-[#000] text-primary-container py-4;
+    margin-top: 4rem;
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 4rem;
+    background-color: rgba(var(--background));
+    border-top: 1px solid rgba(var(--outline), 0.25);
   }
 
   .inner-footer {
     @apply mx-auto px-6 py-8;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
   }
 </style>

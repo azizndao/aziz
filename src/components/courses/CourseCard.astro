@@ -1,29 +1,18 @@
 ---
 export type Props = {
   title: string;
-  imageUrl: string;
+  imageUrl?: string;
   href: string;
-  duration?: string;
   description: string;
 };
 
-const {
-  title,
-  imageUrl,
-  href,
-  description,
-  duration = "2h 25mn",
-} = Astro.props;
+const { title, imageUrl, href, description } = Astro.props;
 ---
 
 <li>
-  <a href={href} class="tuto-card block">
-    <header class="font-medium text-sm">
-      <div class="label-large">Duration</div>
-      <small class="text-primary">{duration}</small>
-    </header>
+  <a href={href} class="tuto-card">
     <div
-      class="rounded-xl w-hull aspect-square bg-on-surface-variant grid place-content-center"
+      class="image-container rounded-xl w-hull aspect-square bg-on-surface-variant grid place-content-center"
     >
       <img src={imageUrl} alt={title} loading="lazy" class="max-w-[120px]" />
     </div>
@@ -31,6 +20,7 @@ const {
     <p class="text-center px-4 mx-auto line-clamp-3">
       {description}
     </p>
+    <footer></footer>
   </a>
 </li>
 
@@ -38,26 +28,30 @@ const {
   .tuto-card {
     display: flex;
     flex-direction: column;
-    border-radius: 1rem;
+    border-radius: 0.75rem;
     padding: 1rem 1rem 2rem;
     text-align: center;
-    @apply bg-surface-variant text-on-surface-variant;
+    color: rgb(var(--on-surface-variant));
+    border: 1px solid rgb(var(--surface-variant));
   }
 
   .tuto-card {
     text-decoration: none !important;
+    transition: all 0.15s ease;
+    background-color: rgba(var(--surface-variant), 0.15);
   }
 
   .tuto-card:hover {
     color: currentColor;
-    @apply bg-primary-container text-on-primary-container ring-2 ring-primary border-primary;
+    background-color: rgba(var(--surface-variant), 0.45);
+    border-color: rgba(var(--primary), 0.5);
+    box-shadow: 0 0 0 1px rgba(var(--primary), 0.5);
   }
 
-  header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-    padding: 0 4px;
+  .image-container {
+    width: 100%;
+    aspect-ratio: 9/6;
+    background-color: rgb(var(--on-surface-variant));
   }
 
   .tuto-card img {

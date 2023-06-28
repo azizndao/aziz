@@ -4,24 +4,28 @@ import MarkdownLayout from "@layouts/MarkdownLayout.astro";
 import { CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-    const blogEntries = await getCollection("blog");
-    return blogEntries.map(function (entry) {
-        return {
-            params: { slug: entry.slug },
-            props: { entry },
-        };
-    });
+  const blogEntries = await getCollection("blog");
+  return blogEntries.map(function (entry) {
+    return {
+      params: { slug: entry.slug },
+      props: { entry },
+    };
+  });
 }
 
 interface Props {
-    entry: CollectionEntry<"blog">;
+  entry: CollectionEntry<"blog">;
 }
 
 const { entry } = Astro.props as Props;
 const { Content, headings } = await entry.render();
 ---
 
-<MarkdownLayout title={entry.data.title} description={entry.data.description}>
-    <Content />
-    <TableOfContent headings={headings} slot="rigth-sidebar" />
+<MarkdownLayout
+  hasMenu={false}
+  title={entry.data.title}
+  description={entry.data.description}
+>
+  <Content />
+  <TableOfContent headings={headings} slot="rigth-sidebar" />
 </MarkdownLayout>

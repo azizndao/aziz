@@ -1,35 +1,66 @@
 ---
+import CourseCard from "@components/courses/CourseCard.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 import { getCollection } from "astro:content";
 
-let blogPosts = await getCollection("blog");
+const entries = await getCollection("blog");
+
+const posts = entries.map((post) => ({
+  ...post.data,
+  slug: `/blog/${post.slug}`,
+}));
+const title = "Blog";
+const description = "Latest news, updates, and stories for developers";
 ---
 
-<MainLayout title="Welcome to Astro." description="Astro description">
-  <div class="max-w-3xl mx-auto">
-    <h1 class="text-5xl font-bold leading-relaxed px-14 lg:px-14">Blog</h1>
-    <ul class="space-y-6 px-4 lg:px-0">
+<MainLayout title={title} description={description}>
+  <div class="main">
+    <header>
+      <h1 class="display-large">{title}</h1>
+      <p>{description}</p>
+    </header>
+    <ul class="post-list">
       {
-        blogPosts.map((post) => (
-          <li>
-            <a href={`/blog/${post.slug}`} class="flex  gap-4 items-center">
-              <div class="font-bold text-neutral-500 pl-4 pr-2 flex flex-col items-center">
-                <span class=" text-5xl">{post.data.pubDate.getDay()}</span>
-                <span class="whitespace-nowrap text-xs">
-                  {post.data.pubDate.getMonth()}/
-                  {post.data.pubDate.getFullYear()}
-                </span>
-              </div>
-              <div>
-                <h3 class="font-bold text-2xl text-primary leading-relaxed">
-                  {post.data.title}
-                </h3>
-                <p class="text-base line-clamp-2">{post.data.description}</p>
-              </div>
-            </a>
-          </li>
+        posts.map((post) => (
+          <CourseCard
+            title={post.title}
+            description={post.description}
+            imageUrl={post.thumbnail}
+            href={post.slug}
+          />
         ))
       }
     </ul>
   </div>
 </MainLayout>
+
+<style>
+  .main {
+    max-width: 80rem;
+    margin: auto;
+  }
+
+  header {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  header p {
+    text-align: center;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .post-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+  }
+</style>
