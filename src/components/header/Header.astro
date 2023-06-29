@@ -13,9 +13,9 @@ interface Props {
 const { class: cls } = Astro.props;
 ---
 
-<header class:list={["nav-bar", cls]}>
+<section class:list={["nav-bar", cls]}>
     <nav>
-        <a href="/" class="font-bold text-3xl">Aziz.io</a>
+        <a href="/" class="font-bold text-3xl">Aziz</a>
 
         <span class="grow"></span>
         <ul class="nav-items">
@@ -43,7 +43,7 @@ const { class: cls } = Astro.props;
                     title="Github"
                     target="_blank"
                 >
-                    <GithubLogo/>
+                    <GithubLogo />
                 </a>
             </li>
             <li>
@@ -52,25 +52,22 @@ const { class: cls } = Astro.props;
                     title="Twitter"
                     target="_blank"
                 >
-                    <TwitterLogo/>
+                    <TwitterLogo />
                 </a>
             </li>
             <li>
                 <a href="#" title="Discord" target="_blank">
-                    <DiscordLogo/>
+                    <DiscordLogo />
                 </a>
             </li>
-            <FloatingMenu class="md:hidden"/>
+            <FloatingMenu class="md:hidden" />
         </ul>
     </nav>
-</header>
+</section>
 
 <style>
-    header {
+    section {
         height: var(--header-height);
-        position: sticky;
-        top: 0;
-        z-index: 10;
         backdrop-filter: blur(23px);
         background-color: rgba(var(--background), 0.9);
     }
@@ -80,7 +77,7 @@ const { class: cls } = Astro.props;
         gap: 1.5rem;
         align-items: center;
         height: var(--header-height);
-        padding: 0 1.5rem;
+        padding: 0 1rem;
         max-width: var(--max-width);
         margin: auto;
     }

@@ -3,6 +3,8 @@ import MarkdownArticle from "~components/MarkdownArticle.astro";
 import MainLayout from "./MainLayout.astro";
 import MenuIcon from "~components/svgs/MenuIcon.astro";
 import ChevronRightIcon from "~components/svgs/ChevronRightIcon.astro";
+import BaseLayout from "./BaseLayout.astro";
+import Header from "~components/header/Header.astro";
 
 interface Props {
     title: string;
@@ -12,38 +14,11 @@ interface Props {
 const { hasMenu = true, title, description } = Astro.props;
 ---
 
-<MainLayout title={title} description={description}>
-    <div class="page-container">
-        <section class="top-nav">
-            <button id="btn-left">
-                <MenuIcon />
-                Menu
-            </button>
-            <button id="btn-right">
-                On this page
-                <ChevronRightIcon />
-            </button>
-        </section>
-
-        <aside class="left">
-            <slot name="left-sidebar" />
-        </aside>
-        <section class="md-container">
-            <MarkdownArticle>
-                <slot />
-            </MarkdownArticle>
-        </section>
-        <aside class="right">
-            <slot name="rigth-sidebar" />
-        </aside>
-    </div>
-</MainLayout>
-
 <script>
-    const container = document.querySelector(".page-container");
+    const container = document.querySelector(".main-wrapper");
 
     document
-        .querySelector(".page-container .md-container")
+        .querySelector(".main-wrapper .md-container")
         ?.addEventListener("click", () => {
             if (container?.hasAttribute("aria-open")) {
                 container.attributes.removeNamedItem("aria-open");
@@ -51,145 +26,175 @@ const { hasMenu = true, title, description } = Astro.props;
         });
 
     document
-        .querySelector(".page-container #btn-left")
+        .querySelector("#btn-left")
         ?.addEventListener("click", () =>
             container?.setAttribute("aria-open", "left")
         );
 
     document
-        .querySelector(".page-container #btn-right")
+        .querySelector("#btn-right")
         ?.addEventListener("click", () =>
             container?.setAttribute("aria-open", "right")
         );
 </script>
 
+<BaseLayout title={title} description={description}>
+    <main class="main-wrapper">
+        <header class="appbar">
+            <Header />
+            <section class="menubar">
+                <button id="btn-left">
+                    <MenuIcon />
+                    Menu
+                </button>
+                <button id="btn-right">
+                    On this page
+                    <ChevronRightIcon />
+                </button>
+            </section>
+        </header>
+        <aside class="left"><slot name="left-sidebar" /></aside>
+        <MarkdownArticle class="md-container">
+            <slot />
+        </MarkdownArticle>
+        <aside class="right"><slot name="rigth-sidebar" /></aside>
+    </main>
+</BaseLayout>
+
 <style>
-    .page-container {
-        max-width: var(--max-width);
-        width: 100%;
-        overflow-x: hidden;
-        margin-left: auto;
-        margin-right: auto;
-        --color-border: rgba(var(--outline), 0.25);
-    }
-
-    .md-container {
-        padding: 0 1.25rem 2rem;
-        /* width: 100%; */
-    }
-
-    .header-menu {
-        @apply flex justify-between items-center;
-        display: none;
-    }
-
-    #btn-left,
-    #btn-right {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        @apply text-sm;
-    }
-
-    .top-nav {
-        z-index: 20;
-        height: var(--header-height);
+    .main-wrapper {
         display: flex;
-        gap: 2rem;
-        justify-content: space-between;
+        margin: 0 auto;
+        flex-direction: column;
+        width: 100dvw;
+        overflow-x: visible;
+    }
+
+    .appbar {
         position: sticky;
         top: 0;
-        border-bottom: 1px solid var(--color-border);
-        background-color: rgba(var(--background));
-        padding: 0 1.5rem;
+        background-color: rgba(var(--surface));
+        z-index: 10;
     }
 
-    @media screen and (min-width: 1024px) {
-        .top-nav {
-            display: none;
-        }
+    .menubar {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: calc(var(--header-height) * 0.75);
+        border-bottom: 1px solid rgba(var(--surface-variant));
+    }
 
-        .page-container {
+    .menubar button {
+        display: inline-flex;
+        gap: 0.75rem;
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .menubar button:is(:hover, :focus-within) {
+        background: rgba(var(--primary-container), 0.25);
+    }
+
+    aside {
+        position: fixed;
+        z-index: 3;
+        background-color: rgba(var(--surface));
+        height: 100vh;
+        width: 300px;
+        box-shadow: 0 12px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    aside.left {
+        left: -100%;
+        transition: left 0.25s ease;
+    }
+
+    [aria-open] aside {
+        padding-top: 3rem;
+        z-index: 12;
+    }
+
+    [aria-open="left"] aside.left {
+        left: 0;
+    }
+
+    aside.right {
+        right: -100%;
+        transition: right 0.25s ease;
+    }
+
+    [aria-open="right"] aside.right {
+        right: 0;
+    }
+
+    [aria-open] .md-container::before {
+        position: fixed;
+        z-index: 10;
+        inset: 0;
+        height: 100vh;
+        content: "";
+        background-color: rgba(0, 0, 0, 0.075);
+        transition: color 0.35s ease;
+    }
+
+    @media screen and (min-width: 769px) {
+        .main-wrapper {
+            grid-gap: 3rem;
             display: grid;
-            grid-template-columns:
-                minmax(1fr, 21rem)
-                minmax(1fr, 47rem)
-                minmax(1fr, 21rem);
+            gap: 3rem;
+            grid-template-areas: "sidebar main";
+            grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+            padding-left: 1.5rem;
+            padding-right: 3rem;
         }
 
-        .md-container {
-            max-width: 47rem;
-            flex-grow: grow;
-            width: 100%;
-            grid-column: 2;
+        .appbar {
+            grid-column: 1 / 4;
+            grid-row: 1;
         }
 
-        aside:is(.left, .right) {
-            height: 100vh;
-            max-width: 21rem;
-            width: 100%;
+        .menubar {
+            display: none;
+        }
+
+        aside {
+            --top: calc(3rem + var(--header-height) * 1.75);
             position: sticky;
-            display: block;
-            top: calc(var(--header-height) * 1.5);
-            border-color: rgb(--color-border);
-        }
-
-        aside.left {
-            grid-column: 1;
-            border-right: 1px solid var(--color-border);
-        }
-
-        aside.right {
-            grid-column: 3;
-            border-left: 1px solid var(--color-border);
-        }
-    }
-
-    @media screen and (max-width: 1023px) {
-        .page-container {
-            width: 100dvw;
-            overflow-x: hidden;
-            display: block;
-        }
-
-        .header-menu {
-            display: block;
-        }
-
-        aside:is(.left, .right) {
-            --width: 300px;
-            position: absolute;
             inset: 0;
-            max-width: var(--width);
-            z-index: 20;
-            @apply bg-surface shadow-2xl;
-            transition: transform 0.3s ease-in-out;
+            top: var(--top);
+            height: calc(100dvh - var(--top));
+            width: 100%;
+            box-shadow: none;
         }
 
         aside.left {
-            transform: translate(-100dvw, 0);
+            display: block;
         }
 
         aside.right {
             display: none;
-            transform: translate(100dvw, 0);
+        }
+    }
+
+    @media screen and (min-width: 1200px) {
+        .main-wrapper {
+            max-width: var(--max-width);
+            grid-gap: 3rem;
+            display: grid;
+            gap: 3rem;
+            grid-template-areas: "sidebar main toc";
+            grid-template-columns:
+                minmax(0, 1fr)
+                minmax(0, 2.5fr)
+                minmax(0, 15rem);
+            padding-left: 1rem;
+            padding-right: 1rem;
         }
 
-        :is([aria-open="left"], [aria-open="right"]) .md-container::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: 11;
-            background: rgba(0, 0, 0, 0.25);
-            transition: all 0.5s ease;
-        }
-
-        [aria-open="left"] aside.left {
-            transform: translate(0, 0);
-        }
-
-        [aria-open="right"] aside.right {
-            transform: translate(calc(100dvw - var(--width)), 0);
+        aside.right {
+            display: block;
         }
     }
 </style>

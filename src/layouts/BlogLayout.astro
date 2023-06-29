@@ -1,0 +1,87 @@
+---
+import MarkdownArticle from "~components/MarkdownArticle.astro";
+import Header from "~components/header/Header.astro";
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+    title: string;
+    description: string;
+    hasMenu?: boolean;
+}
+const { hasMenu = true, title, description } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+    <main class="main-wrapper">
+        <Header class="appbar" />
+        <MarkdownArticle class="md-container">
+            <slot />
+        </MarkdownArticle>
+        <aside class="right"><slot name="rigth-sidebar" /></aside>
+    </main>
+</BaseLayout>
+
+<style>
+    .main-wrapper {
+        display: flex;
+        margin: 0 auto;
+        flex-direction: column;
+        width: 100dvw;
+        overflow-x: visible;
+    }
+
+    .appbar {
+        position: sticky;
+        top: 0;
+        background-color: rgba(var(--surface));
+        z-index: 10;
+    }
+
+    @media screen and (min-width: 769px) {
+        .main-wrapper {
+            grid-gap: 3rem;
+            display: grid;
+            gap: 3rem;
+            grid-template-areas: "sidebar main";
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+            padding-left: 1.5rem;
+            padding-right: 3rem;
+        }
+
+        .appbar {
+            grid-column: 1 / 4;
+            grid-row: 1;
+        }
+
+        .md-container {
+            grid-column: 2 / 3;
+        }
+
+        aside.right {
+            --top: calc(3rem + var(--header-height) * 1.75);
+            position: sticky;
+            inset: 0;
+            top: var(--top);
+            height: calc(100dvh - var(--top));
+            width: 100%;
+            box-shadow: none;
+            grid-column: 3 / 4;
+        }
+    }
+
+    @media screen and (min-width: 1200px) {
+        .main-wrapper {
+            max-width: var(--max-width);
+            grid-gap: 3rem;
+            display: grid;
+            gap: 3rem;
+            grid-template-areas: "sidebar main toc";
+            grid-template-columns:
+                minmax(0, 1fr)
+                minmax(0, 2.5fr)
+                minmax(0, 1fr);
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+</style>

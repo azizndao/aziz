@@ -1,6 +1,5 @@
 ---
-import PageFooter from "~components/PageFooter.astro";
-import Header from "~components/header/Header.astro";
+import PageFooter from "~components/footer/Footer.astro";
 import "~css/theme.css";
 
 export interface Props {
@@ -17,12 +16,13 @@ const { title, description } = Astro.props;
         <meta charset="UTF-8" />
         <meta name="description" content="Astro description" />
         <meta name="viewport" content="width=device-width" />
-        <link rel="manifest" href="manifest.json" />
+        <link rel="manifest" href="/manifest.json" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         {description && <meta name="description" content={description} />}
         <meta name="generator" content={Astro.generator} />
+        <!-- Head slot -->
         <slot name="head" />
-        <title>Aziz | {title}</title>
+        <title>Aziz &#x2022 {title}</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -31,11 +31,10 @@ const { title, description } = Astro.props;
         />
     </head>
     <body>
-        <slot name="header">
-            <Header />
-        </slot>
+        <!-- main content slot -->
         <slot />
-        <PageFooter />
+        <!-- footer slot -->
+        <footer><slot name="footer"><PageFooter /></slot></footer>
     </body>
 </html>
 
@@ -71,9 +70,10 @@ const { title, description } = Astro.props;
 
     .content {
         min-height: calc(100dvh - var(--header-height));
+        margin: auto;
     }
 
-    .home header.nav-bar {
+    .home .nav-bar {
         background: transparent !important;
     }
 

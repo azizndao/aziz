@@ -1,4 +1,5 @@
-import type { Video } from "../../../types/youtube";
+import type { Video } from "~types/youtube";
+import styles from "./VideoCard.module.css";
 
 interface Props {
   video: Video;
@@ -7,12 +8,11 @@ interface Props {
 
 export default function VideoItemCard({ video, onClick }: Props) {
   return (
-    <button onClick={onClick} className="flex gap-4">
-      <img
-        className="w-4/12 aspect-video rounded-lg"
-        src={video.snippet.thumbnails.medium.url}
-      />
-      <h6 className="text-start py-1 line-clamp-2">{video.snippet.title}</h6>
-    </button>
+    <li>
+      <button onClick={onClick} className={styles.video}>
+        <img src={video.snippet.thumbnails.medium.url} />
+        <h6 className={styles.headline}>{video.snippet.title}</h6>
+      </button>
+    </li>
   );
 }

@@ -2,12 +2,12 @@
 const year = new Date().getFullYear();
 ---
 
-<footer>
+<footer id="footer">
     <div class="inner-footer">
         <p class="text-lg">Build with Astro & Tailwind</p>
         <!-- Copyright -->
-        <p class="text-sm">
-            Copyright © {year}
+        <p class="text-sm copyright">
+            © {year}
             <a href="https://github.com/azizndao">Aziz</a>
         </p>
     </div>
@@ -15,7 +15,6 @@ const year = new Date().getFullYear();
 
 <style>
     footer {
-        margin-top: 4rem;
         max-width: var(--max-width);
         margin-left: auto;
         margin-right: auto;
@@ -23,7 +22,6 @@ const year = new Date().getFullYear();
         justify-content: center;
         align-items: center;
         gap: 1rem;
-        padding: 0 4rem;
         background-color: rgba(var(--background));
         border-top: 1px solid rgba(var(--outline), 0.25);
     }
@@ -36,5 +34,10 @@ const year = new Date().getFullYear();
         gap: 1.5rem;
         justify-content: center;
         align-items: center;
+    }
+
+    .copyright {
+        font-weight: bold;
+        color: rgba(var(--on-background), 0.7);
     }
 </style>

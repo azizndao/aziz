@@ -1,0 +1,21 @@
+.video {
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+}
+
+.video img {
+  width: auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.5rem;
+  flex: 4;
+}
+
+.headline {
+  flex: 8;
+  text-align: start;
+  padding: 0.25rem 0;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  width: 100%;
+}
