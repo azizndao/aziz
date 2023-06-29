@@ -1,0 +1,65 @@
+---
+import Card, { type CardProps } from "~components/Card.astro";
+import MainLayout from "~layouts/MainLayout.astro";
+
+interface Props {
+    cards: CardProps[];
+    title: string;
+    description: string;
+}
+const { cards, title, description } = Astro.props;
+---
+
+<MainLayout title={title} description={description}>
+    <div class="main">
+        <header>
+            <h1 class="display-large">{title}</h1>
+            <p>{description}</p>
+        </header>
+        <ul class="post-list">
+            {
+                cards.map((card) => (
+                    <Card
+                        title={card.title}
+                        description={card.description}
+                        thumbnail={card.thumbnail}
+                        href={card.href}
+                        tags={card.tags}
+                        date={card.date}
+                    />
+                ))
+            }
+        </ul>
+    </div>
+</MainLayout>
+
+<style>
+    .main {
+        max-width: 80rem;
+        margin: auto;
+    }
+
+    header {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    header p {
+        text-align: center;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .post-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 2rem;
+    }
+</style>

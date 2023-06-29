@@ -1,59 +1,61 @@
 ---
 interface Props {
-  title?: string;
-  entries: {
-    title: string;
-    slug: string;
-  }[];
+    title?: string;
+    entries: {
+        title: string;
+        slug: string;
+    }[];
 }
 const { title, entries } = Astro.props;
 ---
 
 <div class="menu">
-  <h3>{title ?? "Menu"}</h3>
-  <nav>
-    <ul class="flex flex-col gap-3">
-      {
-        entries.map((entry) => (
-          <li>
-            <a
-              href={entry.slug}
-              class:list={{ active: entry.slug === Astro.url.pathname }}
-            >
-              {entry.title}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
+    <h3>{title ?? "Menu"}</h3>
+    <nav>
+        <ul class="flex flex-col gap-3">
+            {
+                entries.map((entry) => (
+                    <li>
+                        <a
+                            href={entry.slug}
+                            class:list={{
+                                active: entry.slug === Astro.url.pathname,
+                            }}
+                        >
+                            {entry.title}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </nav>
 </div>
 
 <style>
-  .menu {
-    padding: 0 1rem;
-  }
+    .menu {
+        padding: 0 1rem;
+    }
 
-  h3 {
-    font-weight: bold;
-    line-height: 2;
-    padding: 0 1rem;
-    @apply mb-8 text-3xl;
-  }
+    h3 {
+        font-weight: bold;
+        line-height: 2;
+        padding: 0 1rem;
+        @apply mb-8 text-3xl;
+    }
 
-  li a {
-    padding: 0 1rem;
-    display: block;
-    text-decoration: none;
-    line-height: 2.25;
-    width: 100%;
-    @apply line-clamp-1;
-    border-radius: 6px;
-  }
+    li a {
+        padding: 0 1rem;
+        display: block;
+        text-decoration: none;
+        line-height: 2.25;
+        width: 100%;
+        @apply line-clamp-1;
+        border-radius: 6px;
+    }
 
-  li a:hover,
-  li a.active {
-    color: rgb(var(--on-primary-container));
-    background-color: rgb(var(--primary-container));
-  }
+    li a:hover,
+    li a.active {
+        color: rgb(var(--on-primary-container));
+        background-color: rgb(var(--primary-container));
+    }
 </style>

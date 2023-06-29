@@ -1,103 +1,107 @@
 ---
-import MenuIcon from "@components/svgs/MenuIcon.astro";
+import MenuIcon from "~components/svgs/MenuIcon.astro";
 import HeaderLink from "./HeaderLink.astro";
 import mainMenu from "./main-menu.json";
-import CloseIcon from "@components/svgs/CloseIcon.astro";
+import CloseIcon from "~components/svgs/CloseIcon.astro";
 import { twMerge } from "tailwind-merge";
 const pathname = Astro.url.pathname;
 
 interface Props {
-  class?: string;
+    class?: string;
 }
 ---
 
 <div class={Astro.props.class}>
-  <dialog id="main-menu">
-    <ul role="menu" class="md:flex flex-col px-4 items-center gap-6">
-      {
-        mainMenu.map(({ href, title }) => (
-          <li>
-            <a
-              href={href}
-              aria-current-page={
-                href == "/" ? pathname === "/" : pathname.startsWith(href)
-              }
-            >
-              {title}
-            </a>
-          </li>
-        ))
-      }
-      <li class="self-center flex justify-center mb-4 mt-2">
-        <button class="close-button">
-          <CloseIcon />
-        </button>
-      </li>
-    </ul>
-  </dialog>
-  <button class="open-button border-2 rounded-md p-1">
-    <MenuIcon />
-  </button>
+    <dialog id="main-menu">
+        <ul role="menu" class="md:flex flex-col px-4 items-center gap-6">
+            {
+                mainMenu.map(({ href, title }) => (
+                    <li>
+                        <a
+                            href={href}
+                            aria-current-page={
+                                href == "/"
+                                    ? pathname === "/"
+                                    : pathname.startsWith(href)
+                            }
+                        >
+                            {title}
+                        </a>
+                    </li>
+                ))
+            }
+            <li class="self-center flex justify-center mb-4 mt-2">
+                <button class="close-button">
+                    <CloseIcon/>
+                </button>
+            </li>
+        </ul>
+    </dialog>
+    <button class="open-button border-2 rounded-md p-1">
+        <MenuIcon/>
+    </button>
 </div>
 
 <script>
-  const menu = document.querySelector("dialog#main-menu") as HTMLDialogElement;
+    const menu = document.querySelector(
+        "dialog#main-menu"
+    ) as HTMLDialogElement;
 
-  document
-    .querySelector(".open-button")
-    ?.addEventListener("click", () => menu?.showModal());
+    document
+        .querySelector(".open-button")
+        ?.addEventListener("click", () => menu?.showModal());
 
-  document
-    .querySelector(".close-button")
-    ?.addEventListener("click", () => menu?.close());
+    document
+        .querySelector(".close-button")
+        ?.addEventListener("click", () => menu?.close());
 </script>
 
 <style>
-  dialog {
-    max-width: 21rem;
-    width: 100%;
-    background-color: rgb(var(--surface));
-    border-radius: 1.5rem;
-    box-shadow: 0 0 12px 6px rgba(var(--shadow), 0.25);
-  }
+    dialog {
+        max-width: 21rem;
+        width: 100%;
+        background-color: rgb(var(--surface));
+        border-radius: 1.5rem;
+        box-shadow: 0 0 12px 6px rgba(var(--shadow), 0.25);
+    }
 
-  dialog::backdrop {
-    background-color: rgba(var(--background));
-  }
+    dialog::backdrop {
+        background-color: rgba(var(--background));
+    }
 
-  .close-button {
-    background-color: rgb(var(--error-container));
-    padding: 0.75rem;
-    border-radius: 900px;
-  }
+    .close-button {
+        background-color: rgb(var(--error-container));
+        padding: 0.75rem;
+        border-radius: 900px;
+    }
 
-  .close-button > svg {
-    stroke: rgb(var(--error));
-    stroke-width: 4px;
-  }
+    .close-button > svg {
+        stroke: rgb(var(--error));
+        stroke-width: 4px;
+    }
 
-  ul[role="menu"] {
-    display: flex;
-    gap: 1rem;
-    flex-direction: column;
-    align-items: stretch;
-  }
+    ul[role="menu"] {
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        align-items: stretch;
+    }
 
-  ul a {
-    color: rgb(var(--on-surface-variant));
-    text-decoration: none;
-    display: block;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    text-align: center;
-    font-size: 1.5rem;
-    line-height: 2rem;
-    font-weight: bold;
-  }
+    ul a {
+        color: rgb(var(--on-surface-variant));
+        text-decoration: none;
+        display: block;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        text-align: center;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        font-weight: bold;
+    }
 
-  ul a[aria-current-page] {
-    color: rgb(var(--primary));
-    border-radius: 4rem;
-    background-color: rgb(var(--primary-container));
-  }
+    ul a[aria-current-page] {
+        color: rgb(var(--primary));
+        border-radius: 4rem;
+        background-color: rgb(var(--primary-container));
+    }
 </style>

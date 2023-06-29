@@ -2,15 +2,15 @@
 import BaseLayout from "./BaseLayout.astro";
 
 interface Props {
-  title: string;
-  description: string;
+    title: string;
+    description: string;
 }
 
 const { title, description } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
-  <main class="content">
-    <slot />
-  </main>
+    <main class="content">
+        <slot/>
+    </main>
 </BaseLayout>

@@ -1,12 +1,11 @@
 ---
-import PageFooter from "@components/PageFooter.astro";
-import ScrollArea from "@components/ScrollArea.astro";
-import Header from "@components/header/Header.astro";
-import "@css/theme.css";
+import PageFooter from "~components/PageFooter.astro";
+import Header from "~components/header/Header.astro";
+import "~css/theme.css";
 
 export interface Props {
-  title: string;
-  description?: string;
+    title: string;
+    description?: string;
 }
 
 const { title, description } = Astro.props;
@@ -14,93 +13,96 @@ const { title, description } = Astro.props;
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    {description && <meta name="description" content={description} />}
-    <meta name="generator" content={Astro.generator} />
-    <slot name="head" />
-    <title>Aziz | {title}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <ScrollArea class="w-screen h-screen body-large">
-      <slot name="header">
-        <Header />
-      </slot>
-      <slot />
-      <PageFooter />
-    </ScrollArea>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Astro description" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="manifest" href="manifest.json" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        {description && <meta name="description" content={description} />}
+        <meta name="generator" content={Astro.generator} />
+        <slot name="head" />
+        <title>Aziz | {title}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <slot name="header">
+            <Header />
+        </slot>
+        <slot />
+        <PageFooter />
+    </body>
 </html>
 
 <style is:global>
-  :root {
-    --header-height: 80px;
-
-    --max-width: 90rem;
-
-    --font-normal: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
-      "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-      "Droid Sans", "Helvetica Neue", Arial, sans-serif;
-
-    --font-monospace: ui-monospace, Menlo, Monaco, "Cascadia Mono",
-      "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
-      "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New",
-      monospace;
-  }
-
-  @media screen and (max-width: 1023px) {
     :root {
-      --header-height: 64px;
+        --header-height: 80px;
+
+        --max-width: 90rem;
+
+        --font-normal: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+            "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+            "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+
+        --font-monospace: ui-monospace, Menlo, Monaco, "Cascadia Mono",
+            "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
+            "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New",
+            monospace;
     }
-  }
 
-  body {
-    padding: 0;
-    margin: 0;
-    font-family: var(--font-normal);
-    background-color: rgb(var(--background));
-    color: rgb(var(--on-background));
-  }
+    @media screen and (max-width: 1023px) {
+        :root {
+            --header-height: 64px;
+        }
+    }
 
-  .content {
-    min-height: calc(100dvh - var(--header-height));
-  }
+    body {
+        padding: 0;
+        margin: 0;
+        font-family: var(--font-normal);
+        background-color: rgb(var(--background));
+        color: rgb(var(--on-background));
+    }
 
-  .home header.nav-bar {
-    background: transparent !important;
-  }
+    .root {
+        height: 100dvw;
+    }
 
-  code {
-    font-family: var(--font-monospace);
-  }
+    .content {
+        min-height: calc(100dvh - var(--header-height));
+    }
 
-  .container {
-    margin: auto;
-  }
+    .home header.nav-bar {
+        background: transparent !important;
+    }
 
-  .max-w-8xl {
-    max-width: var(--max-width);
-  }
+    code {
+        font-family: var(--font-monospace);
+    }
 
-  ::selection {
-    background-color: rgb(var(--primary-container));
-    color: rgb(var(--on-primary-container));
-  }
+    .container {
+        margin: auto;
+    }
 
-  .markdown * {
-    scroll-behavior: smooth;
-  }
+    .max-w-8xl {
+        max-width: var(--max-width);
+    }
 
-  *:focus {
-    outline-color: transparent;
-  }
+    ::selection {
+        background-color: rgb(var(--primary-container));
+        color: rgb(var(--on-primary-container));
+    }
+
+    .markdown * {
+        scroll-behavior: smooth;
+    }
+
+    *:focus {
+        outline-color: transparent;
+    }
 </style>

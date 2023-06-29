@@ -1,37 +1,27 @@
 ---
 export const prerender = false;
 
-import TutorialCard from "@components/tutotials/TutorialCard.astro";
-import MainLayout from "@layouts/MainLayout.astro";
-import { getAllPlaylists } from "@lib/youtube";
+import CardListLayout from "~layouts/CardListLayout.astro";
+import { getAllPlaylists } from "~lib/youtube";
 
 const data = await getAllPlaylists();
 
 if (!data) {
-  Astro.redirect("/404");
+    Astro.redirect("/404");
 }
 
-const playlists = data?.items ?? [];
+const playlists = data?.items?.map((playlist) => ({
+    title: playlist.snippet.title,
+    description: playlist.snippet.description,
+    thumbnail: playlist.snippet.thumbnails.high.url,
+    href: `/tutorials/${playlist.id}`,
+    date: new Date(playlist.snippet.publishedAt),
+    // tags: playlist.snippet?.tags ?? [],
+}));
 ---
 
-<MainLayout title="Tutorials" description="My tutorials on youtube">
-  <div class="container">
-    <header class="py-8 px-4 flex items-center justify-center min-h-[200px]">
-      <h1 class="text-4xl font-bold">Tutorials on Youtube</h1>
-    </header>
-    <ul class="grid">
-      {playlists.map((playlist) => <TutorialCard data={playlist} />)}
-    </ul>
-  </div>
-</MainLayout>
-
-<style>
-  .grid {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    max-width: 80rem;
-    margin: auto;
-    padding: 2rem;
-  }
-</style>
+<CardListLayout
+    title="Tutorials"
+    description="My tutorials on youtube"
+    cards={playlists ?? []}
+/>

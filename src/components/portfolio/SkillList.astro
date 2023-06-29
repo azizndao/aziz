@@ -1,23 +1,23 @@
 ---
-import skills from "@data/skills.json";
+import skills from "~data/skills.json";
 import SkillItem from "./SkillItem.astro";
 ---
 
 <div
-  class="max-w-7xl md:mx-auto px-4 md:px-6 flex flex-col gap-12 py-8 items-center"
+    class="max-w-7xl md:mx-auto px-4 md:px-6 flex flex-col gap-12 py-8 items-center"
 >
-  <h1 class="text-5xl font-bold">My skills</h1>
-  <section
-    class="w-full rounded-3xl lg:rounded-[3rem] border-2 border-outline px-6 lg:px-10 py-10 flex flex-col items-center md:flex-row gap-8 lg:gap-4 justify-evenly"
-  >
-    {
-      skills.map((skill) => (
-        <SkillItem
-          title={skill.title}
-          icon={skill.icon}
-          description={skill.description}
-        />
-      ))
-    }
-  </section>
+    <h1 class="text-5xl font-bold">My skills</h1>
+    <section
+        class="w-full rounded-3xl lg:rounded-[3rem] border-2 border-outline px-6 lg:px-10 py-10 flex flex-col items-center md:flex-row gap-8 lg:gap-4 justify-evenly"
+    >
+        {
+            skills.map((skill) => (
+                <SkillItem
+                    title={skill.title}
+                    icon={skill.icon}
+                    description={skill.description}
+                />
+            ))
+        }
+    </section>
 </div>

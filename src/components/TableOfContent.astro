@@ -2,99 +2,99 @@
 import type { MarkdownHeading } from "astro";
 
 interface Props {
-  headings: MarkdownHeading[];
+    headings: MarkdownHeading[];
 }
 
 const headings = Astro.props.headings.filter((heading) => heading.depth > 1);
 ---
 
 <section class="toc">
-  <h3>Table of Contents</h3>
-  <ul class="flex flex-col gap-2">
-    {
-      headings.map((heading) => (
-        <li class={`heading heading-${heading.depth}`}>
-          <a href={`#${heading.slug}`}>{heading.text}</a>
-        </li>
-      ))
-    }
-  </ul>
+    <h3>Table of Contents</h3>
+    <ul class="flex flex-col gap-2">
+        {
+            headings.map((heading) => (
+                <li class={`heading heading-${heading.depth}`}>
+                    <a href={`#${heading.slug}`}>{heading.text}</a>
+                </li>
+            ))
+        }
+    </ul>
 </section>
 
 <script>
-  const headings = document.querySelectorAll(".markdown :is(h2,h3,h4,h5,h6)");
+    const headings = document.querySelectorAll(".markdown :is(h2,h3,h4,h5,h6)");
 
-  const headingLinks: NodeListOf<HTMLAnchorElement> =
-    document.querySelectorAll(".toc .heading a");
+    const headingLinks: NodeListOf<HTMLAnchorElement> =
+        document.querySelectorAll(".toc .heading a");
 
-  const callback = (entries: IntersectionObserverEntry[]): void => {
-    entries = entries
-      .filter((a) => a.isIntersecting)
-      .sort((a, b) => a.intersectionRatio - b.intersectionRatio);
-    const entry = entries[0];
-    if (entry) {
-      headingLinks.forEach((link) => {
-        if (link.href.includes(entry.target.id)) {
-          link.classList.add("active");
-        } else {
-          link.classList.remove("active");
+    const callback = (entries: IntersectionObserverEntry[]): void => {
+        entries = entries
+            .filter((a) => a.isIntersecting)
+            .sort((a, b) => a.intersectionRatio - b.intersectionRatio);
+        const entry = entries[0];
+        if (entry) {
+            headingLinks.forEach((link) => {
+                if (link.href.includes(entry.target.id)) {
+                    link.classList.add("active");
+                } else {
+                    link.classList.remove("active");
+                }
+            });
         }
-      });
-    }
-  };
+    };
 
-  const observer = new IntersectionObserver(callback, {
-    root: document,
-    rootMargin: "0px 80px 0px 80px",
-  });
+    const observer = new IntersectionObserver(callback, {
+        root: document,
+        rootMargin: "0px 80px 0px 80px",
+    });
 
-  headings.forEach((heading) => {
-    observer.observe(heading);
-  });
+    headings.forEach((heading) => {
+        observer.observe(heading);
+    });
 </script>
 
 <style>
-  .toc {
-    padding: 0 1rem;
-  }
+    .toc {
+        padding: 0 1rem;
+    }
 
-  .toc h3 {
-    font-size: 1.25rem;
-    font-weight: bold;
-    line-height: 2;
-    padding-bottom: 1rem;
-  }
+    .toc h3 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 2;
+        padding-bottom: 1rem;
+    }
 
-  li a {
-    display: block;
-    text-decoration: none;
-    line-height: 2.25;
-    @apply border-l-primary line-clamp-1 rounded-md;
-  }
+    li a {
+        display: block;
+        text-decoration: none;
+        line-height: 2.25;
+        @apply border-l-primary line-clamp-1 rounded-md;
+    }
 
-  li a:hover {
-    @apply text-on-primary-container bg-primary-container;
-  }
+    li a:hover {
+        @apply text-on-primary-container bg-primary-container;
+    }
 
-  li a.active {
-    @apply text-on-primary-container bg-primary-container;
-  }
+    li a.active {
+        @apply text-on-primary-container bg-primary-container;
+    }
 
-  .toc .heading-2 a {
-    font-size: 1rem;
-    padding-left: 0.75rem;
-  }
+    .toc .heading-2 a {
+        font-size: 1rem;
+        padding-left: 0.75rem;
+    }
 
-  .toc .heading-3 a {
-    font-size: 0.9rem;
-    padding-left: 2rem;
-    text-overflow: ellipsis;
-    line-clamp: 1;
-    max-lines: 1;
-  }
+    .toc .heading-3 a {
+        font-size: 0.9rem;
+        padding-left: 2rem;
+        text-overflow: ellipsis;
+        line-clamp: 1;
+        max-lines: 1;
+    }
 
-  .toc .heading-4 a {
-    font-size: 1rem;
-    padding-left: 3rem;
-  }
+    .toc .heading-4 a {
+        font-size: 1rem;
+        padding-left: 3rem;
+    }
 </style>

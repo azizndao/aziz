@@ -1,29 +1,16 @@
 ---
-import CourseCard from "@components/courses/CourseCard.astro";
-import courses from "@data/courses.json";
-import MainLayout from "@layouts/MainLayout.astro";
+import type { CardProps } from "~components/Card.astro";
+import courses from "~data/courses.json";
+import CardListLayout from "~layouts/CardListLayout.astro";
 
-// const pages = await Astro.glob("../../content/courses/**/index.mdx");
-
-// console.log(pages.map((page) => ({ ...page.frontmatter })));
+const cards: CardProps[] = courses.map((course) => ({
+    title: course.title,
+    description: course.description,
+    href: course.href,
+    tags: course.tags,
+    thumbnail: course.thumbnail,
+    date: new Date(),
+}));
 ---
 
-<MainLayout title="My courses" description="My courses">
-  <div class="max-w-7xl mx-auto">
-    <header class="py-8 px-4 flex items-center justify-center min-h-[200px]">
-      <h1 class="text-4xl font-bold">My courses</h1>
-    </header>
-    <ul class="mx-auto">
-      {courses.map((courses) => <CourseCard {...courses} />)}
-    </ul>
-  </div>
-</MainLayout>
-
-<style>
-  ul {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    padding: 2rem;
-  }
-</style>
+<CardListLayout title="My courses" description="My courses" cards={cards} />

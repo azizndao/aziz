@@ -1,10 +1,10 @@
 import { HtmlHTMLAttributes, useState } from "react";
-import type { Video } from "../../types/youtube";
+import type { Video } from "~types/youtube";
 
-import CustomScrollArea from "@components/CustomScrollArea";
 import { twJoin, twMerge } from "tailwind-merge";
+import CustomScrollArea from "~components/scroll-area/CustomScrollArea";
 import CurrentVideoItem from "./CurrentVideoItem";
-import VideoItemCard from "./VideoCard";
+import VideoItemCard from "./video/VideoCard";
 
 export interface TutorialPlaylistProps
   extends HtmlHTMLAttributes<HTMLDivElement> {

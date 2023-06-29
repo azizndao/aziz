@@ -1,4 +1,4 @@
-import type { Video } from "../../types/youtube";
+import type { Video } from "../../../types/youtube";
 
 interface Props {
   video: Video;

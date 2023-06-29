@@ -1,8 +1,8 @@
 ---
-import MarkdownArticle from "@components/MarkdownArticle.astro";
+import MarkdownArticle from "~components/MarkdownArticle.astro";
 import MainLayout from "./MainLayout.astro";
-import MenuIcon from "@components/svgs/MenuIcon.astro";
-import ChevronRightIcon from "@components/svgs/ChevronRightIcon.astro";
+import MenuIcon from "~components/svgs/MenuIcon.astro";
+import ChevronRightIcon from "~components/svgs/ChevronRightIcon.astro";
 
 interface Props {
     title: string;
@@ -15,18 +15,29 @@ const { hasMenu = true, title, description } = Astro.props;
 <MainLayout title={title} description={description}>
     <div class="page-container">
         <section class="top-nav">
-            <button id="btn-left">
-                <MenuIcon />
-                Menu
-            </button>
+            {
+                hasMenu ? (
+                    <button id="btn-left">
+                        <MenuIcon />
+                        Menu
+                    </button>
+                ) : (
+                    <span />
+                )
+            }
             <button id="btn-right">
-                On this page <ChevronRightIcon />
+                On this page
+                <ChevronRightIcon />
             </button>
         </section>
 
-        <aside class="left">
-            <slot name="left-sidebar" />
-        </aside>
+        {
+            hasMenu && (
+                <aside class="left">
+                    <slot name="left-sidebar" />
+                </aside>
+            )
+        }
         <MarkdownArticle class="md-container">
             <slot />
         </MarkdownArticle>
@@ -145,6 +156,7 @@ const { hasMenu = true, title, description } = Astro.props;
         .md-container {
             width: 100dvw;
         }
+
         .header-menu {
             display: block;
         }

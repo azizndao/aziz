@@ -1,7 +1,7 @@
 {
   "name": "aziz.io",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.1-alpha",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -15,11 +15,11 @@
     "@astrojs/prefetch": "^0.2.3",
     "@astrojs/react": "^2.2.1",
     "@astrojs/tailwind": "^4.0.0",
-    "@astrojs/vercel": "^3.5.0",
+    "@astrojs/vercel": "^3.5.1",
     "@radix-ui/react-scroll-area": "^1.0.4",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
-    "astro": "^2.7.0",
+    "astro": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rehype-autolink-headings": "^6.1.1",

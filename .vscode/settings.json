@@ -1,0 +1,6 @@
+{
+  "editor.tabSize": 4,
+  "[jsx-tags]": {
+    "editor.tabSize": 4
+  }
+}

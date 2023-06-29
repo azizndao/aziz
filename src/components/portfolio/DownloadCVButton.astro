@@ -2,14 +2,19 @@
 import type { HTMLAttributes } from "astro/types";
 import { twMerge } from "tailwind-merge";
 
-interface Props extends HTMLAttributes<"button"> {}
+interface Props extends HTMLAttributes<"button"> {
+}
 
-const { class: cls, ...attrs } = Astro.props;
+const { ...attrs } = Astro.props;
 ---
 
-<button
-  class={twMerge(cls, "px-8 py-4 bg-tertiary text-on-tertiary rounded-lg")}
-  {...attrs}
->
-  Download my CV
-</button>
+<button {...attrs}> Download my CV</button>
+
+<style>
+    button {
+        padding: 1rem 2rem;
+        background-color: rgba(var(--tertiary));
+        color: rgba(var(--on-tertiary));
+        border-radius: 1rem;
+    }
+</style>

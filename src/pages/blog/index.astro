@@ -1,66 +1,19 @@
 ---
-import CourseCard from "@components/courses/CourseCard.astro";
-import MainLayout from "@layouts/MainLayout.astro";
+import CardListLayout from "~layouts/CardListLayout.astro";
 import { getCollection } from "astro:content";
 
 const entries = await getCollection("blog");
 
 const posts = entries.map((post) => ({
-  ...post.data,
-  slug: `/blog/${post.slug}`,
+    href: `/blog/${post.slug}`,
+    date: post.data.date,
+    title: post.data.title,
+    description: post.data.description,
+    tags: post.data.tags,
+    cover: post.data.cover,
 }));
 const title = "Blog";
 const description = "Latest news, updates, and stories for developers";
 ---
 
-<MainLayout title={title} description={description}>
-  <div class="main">
-    <header>
-      <h1 class="display-large">{title}</h1>
-      <p>{description}</p>
-    </header>
-    <ul class="post-list">
-      {
-        posts.map((post) => (
-          <CourseCard
-            title={post.title}
-            description={post.description}
-            imageUrl={post.thumbnail}
-            href={post.slug}
-          />
-        ))
-      }
-    </ul>
-  </div>
-</MainLayout>
-
-<style>
-  .main {
-    max-width: 80rem;
-    margin: auto;
-  }
-
-  header {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    padding: 2rem;
-  }
-
-  header p {
-    text-align: center;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  .post-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-  }
-</style>
+<CardListLayout cards={posts} title={title} description={description} />

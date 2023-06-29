@@ -5,7 +5,7 @@ export const baseSchema = z
     title: z.string(),
     description: z.string(),
     type: z.literal("base").optional().default("base"),
-    pubDate: z
+    date: z
       .string()
       .or(z.date())
       .transform((val) => new Date(val)),
@@ -13,7 +13,7 @@ export const baseSchema = z
       .string()
       .optional()
       .transform((str) => (str ? new Date(str) : undefined)),
-    index: z.number(),
+    index: z.number().optional(),
     i18nReady: z.boolean().default(false),
     draft: z.boolean().default(false),
   })
@@ -24,7 +24,7 @@ const blog = defineCollection({
     type: z.literal("blog").optional().default("blog"),
     tags: z.array(z.string()),
     description: z.string(),
-    thumbnail: z.string().optional(),
+    cover: z.string().optional(),
     author: z.string().optional().default("Abdou Aziz Ndao"),
     category: z.string(),
   }),
