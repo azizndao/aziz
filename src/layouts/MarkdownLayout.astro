@@ -15,32 +15,24 @@ const { hasMenu = true, title, description } = Astro.props;
 <MainLayout title={title} description={description}>
     <div class="page-container">
         <section class="top-nav">
-            {
-                hasMenu ? (
-                    <button id="btn-left">
-                        <MenuIcon />
-                        Menu
-                    </button>
-                ) : (
-                    <span />
-                )
-            }
+            <button id="btn-left">
+                <MenuIcon />
+                Menu
+            </button>
             <button id="btn-right">
                 On this page
                 <ChevronRightIcon />
             </button>
         </section>
 
-        {
-            hasMenu && (
-                <aside class="left">
-                    <slot name="left-sidebar" />
-                </aside>
-            )
-        }
-        <MarkdownArticle class="md-container">
-            <slot />
-        </MarkdownArticle>
+        <aside class="left">
+            <slot name="left-sidebar" />
+        </aside>
+        <section class="md-container">
+            <MarkdownArticle>
+                <slot />
+            </MarkdownArticle>
+        </section>
         <aside class="right">
             <slot name="rigth-sidebar" />
         </aside>
@@ -75,6 +67,7 @@ const { hasMenu = true, title, description } = Astro.props;
     .page-container {
         max-width: var(--max-width);
         width: 100%;
+        overflow-x: hidden;
         margin-left: auto;
         margin-right: auto;
         --color-border: rgba(var(--outline), 0.25);
@@ -82,7 +75,7 @@ const { hasMenu = true, title, description } = Astro.props;
 
     .md-container {
         padding: 0 1.25rem 2rem;
-        width: 100%;
+        /* width: 100%; */
     }
 
     .header-menu {
@@ -153,8 +146,10 @@ const { hasMenu = true, title, description } = Astro.props;
     }
 
     @media screen and (max-width: 1023px) {
-        .md-container {
+        .page-container {
             width: 100dvw;
+            overflow-x: hidden;
+            display: block;
         }
 
         .header-menu {
@@ -172,17 +167,20 @@ const { hasMenu = true, title, description } = Astro.props;
         }
 
         aside.left {
-            margin-right: calc(100dvw - var(--width));
             transform: translate(-100dvw, 0);
         }
 
-        :is([aria-open="lef"], [aria-open="right"]) .md-container::after {
+        aside.right {
+            display: none;
+            transform: translate(100dvw, 0);
+        }
+
+        :is([aria-open="left"], [aria-open="right"]) .md-container::after {
             content: "";
             position: absolute;
             inset: 0;
             z-index: 11;
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(2px);
+            background: rgba(0, 0, 0, 0.25);
             transition: all 0.5s ease;
         }
 
@@ -191,12 +189,7 @@ const { hasMenu = true, title, description } = Astro.props;
         }
 
         [aria-open="right"] aside.right {
-            transform: translate(0, 0);
-        }
-
-        aside.right {
-            margin-left: calc(100dvw - var(--width));
-            transform: translate(100dvw, 0);
+            transform: translate(calc(100dvw - var(--width)), 0);
         }
     }
 </style>
