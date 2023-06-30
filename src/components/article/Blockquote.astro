@@ -1,0 +1,56 @@
+---
+import type { HTMLAttributes } from "astro/types";
+interface Props extends HTMLAttributes<"blockquote"> {
+    type: "note" | "tip" | "warning" | "important";
+}
+---
+
+<blockquote
+    class="blockquote"
+    aria-label="Blockquote"
+    aria-type={Astro.props.type}
+>
+    <h6>{Astro.props.type}</h6>
+    <slot />
+</blockquote>
+
+<style>
+    .blockquote {
+        /* padding: 20px 13px 20px 10px; */
+        padding: 1rem;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 0.5rem;
+    }
+
+    .blockquote[aria-type="note", aria-type="important"] {
+        border: 1px solid rgb(0, 68, 255);
+        background: rgba(0, 68, 255, 0.1);
+    }
+
+    .blockquote[aria-type="note"] {
+        border: 1px solid rgba(var(--tertiary));
+        background: rgba(var(--tertiary), 0.1);
+    }
+
+    .blockquote[aria-type="warning"] {
+        border: 1px solid rgb(255, 165, 0);
+        background: rgba(255, 165, 0, 0.1);
+    }
+
+    .blockquote h6 {
+        margin: 0;
+    }
+
+    .blockquote *:first-child {
+        margin-top: 0 !important;
+    }
+
+    .blockquote a:first-of-type {
+        margin-bottom: 0;
+    }
+
+    .blockquote *:last-child {
+        margin-bottom: 0;
+    }
+</style>

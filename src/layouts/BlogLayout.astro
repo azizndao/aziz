@@ -28,6 +28,7 @@ const { hasMenu = true, title, description } = Astro.props;
         flex-direction: column;
         width: 100dvw;
         overflow-x: visible;
+        padding: 0 1.5rem;
     }
 
     .appbar {
@@ -37,11 +38,15 @@ const { hasMenu = true, title, description } = Astro.props;
         z-index: 10;
     }
 
+    aside.right {
+        display: none;
+    }
+
     @media screen and (min-width: 769px) {
         .main-wrapper {
             grid-gap: 3rem;
             display: grid;
-            gap: 3rem;
+            gap: 1.5rem;
             grid-template-areas: "sidebar main";
             grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
             padding-left: 1.5rem;
@@ -54,10 +59,11 @@ const { hasMenu = true, title, description } = Astro.props;
         }
 
         .md-container {
-            grid-column: 2 / 3;
+            grid-column: 1;
         }
 
         aside.right {
+            display: block;
             --top: calc(3rem + var(--header-height) * 1.75);
             position: sticky;
             inset: 0;
@@ -65,7 +71,6 @@ const { hasMenu = true, title, description } = Astro.props;
             height: calc(100dvh - var(--top));
             width: 100%;
             box-shadow: none;
-            grid-column: 3 / 4;
         }
     }
 
@@ -82,6 +87,10 @@ const { hasMenu = true, title, description } = Astro.props;
                 minmax(0, 1fr);
             padding-left: 1rem;
             padding-right: 1rem;
+        }
+
+        .md-container {
+            grid-column: 2;
         }
     }
 </style>
