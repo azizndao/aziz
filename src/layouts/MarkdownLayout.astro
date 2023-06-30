@@ -1,6 +1,5 @@
 ---
-import MarkdownArticle from "~components/MarkdownArticle.astro";
-import MainLayout from "./MainLayout.astro";
+import MarkdownArticle from "~components/article/MarkdownArticle.astro";
 import MenuIcon from "~components/svgs/MenuIcon.astro";
 import ChevronRightIcon from "~components/svgs/ChevronRightIcon.astro";
 import BaseLayout from "./BaseLayout.astro";
@@ -9,9 +8,9 @@ import Header from "~components/header/Header.astro";
 interface Props {
     title: string;
     description: string;
-    hasMenu?: boolean;
 }
-const { hasMenu = true, title, description } = Astro.props;
+
+const { title, description } = Astro.props;
 ---
 
 <script>

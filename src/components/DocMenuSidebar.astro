@@ -12,7 +12,7 @@ const { title, entries } = Astro.props;
 <div class="menu">
     <h3>{title ?? "Menu"}</h3>
     <nav>
-        <ul class="flex flex-col gap-3">
+        <ul>
             {
                 entries.map((entry) => (
                     <li>
@@ -41,6 +41,12 @@ const { title, entries } = Astro.props;
         line-height: 2;
         padding: 0 1rem;
         @apply mb-8 text-3xl;
+    }
+
+    .menu nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
     }
 
     li a {

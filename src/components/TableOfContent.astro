@@ -31,7 +31,9 @@ const headings = Astro.props.headings.filter((heading) => heading.depth > 1);
         entries = entries
             .filter((a) => a.isIntersecting)
             .sort((a, b) => a.intersectionRatio - b.intersectionRatio);
+
         const entry = entries[0];
+
         if (entry) {
             headingLinks.forEach((link) => {
                 if (link.href.includes(entry.target.id)) {

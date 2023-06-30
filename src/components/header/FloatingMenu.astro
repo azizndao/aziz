@@ -1,9 +1,7 @@
 ---
-import MenuIcon from "~components/svgs/MenuIcon.astro";
-import HeaderLink from "./HeaderLink.astro";
-import mainMenu from "./main-menu.json";
 import CloseIcon from "~components/svgs/CloseIcon.astro";
-import { twMerge } from "tailwind-merge";
+import MenuIcon from "~components/svgs/MenuIcon.astro";
+import mainMenu from "./main-menu.json";
 const pathname = Astro.url.pathname;
 
 interface Props {
@@ -32,13 +30,13 @@ interface Props {
             }
             <li class="self-center flex justify-center mb-4 mt-2">
                 <button class="close-button">
-                    <CloseIcon/>
+                    <CloseIcon />
                 </button>
             </li>
         </ul>
     </dialog>
     <button class="open-button border-2 rounded-md p-1">
-        <MenuIcon/>
+        <MenuIcon />
     </button>
 </div>
 

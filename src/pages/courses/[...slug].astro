@@ -1,8 +1,8 @@
 ---
+import { CollectionEntry, getCollection } from "astro:content";
 import DocMenuSidebar from "~components/DocMenuSidebar.astro";
 import TableOfContent from "~components/TableOfContent.astro";
 import MarkdownLayout from "~layouts/MarkdownLayout.astro";
-import { CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths() {
     const blogEntries = await getCollection("courses");
@@ -20,16 +20,12 @@ const { Content, headings } = await entry.render();
 const entries = await getCollection("courses");
 
 const menu = entries
-    .map((entry) => {
-        return {
-            title: entry.data.title,
-            slug: `/courses/${entry.slug}`,
-            index: entry.data.index,
-        };
-    })
-    .sort((a, b) => {
-        return a.index - b.index;
-    });
+    .map((entry) => ({
+        title: entry.data.title,
+        slug: `/courses/${entry.slug}`,
+        index: entry.data.index,
+    }))
+    .sort((a, b) => a.index - b.index);
 
 const type = entry.data.type.charAt(0).toUpperCase() + entry.data.type.slice(1);
 ---
@@ -40,9 +36,9 @@ const type = entry.data.type.charAt(0).toUpperCase() + entry.data.type.slice(1);
 >
     <h1>{entry.data.title}</h1>
 
-    <Content/>
+    <Content />
 
-    <DocMenuSidebar slot="left-sidebar" entries={menu} title="Learn Python"/>
+    <DocMenuSidebar slot="left-sidebar" entries={menu} title="Learn Python" />
 
-    <TableOfContent slot="rigth-sidebar" headings={headings}/>
+    <TableOfContent slot="rigth-sidebar" headings={headings} />
 </MarkdownLayout>

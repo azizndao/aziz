@@ -5,15 +5,45 @@ interface Props {
     title: string;
     description: string;
     icon: string;
+    class?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, class: cls } = Astro.props;
 ---
 
-<dev
-    class="max-w-sm flex flex-col items-center gap-4 text-center justify-end lg:max-w-[350px] w-full"
->
-    <SquareStack class="w-20 h-20 stroke-primary"/>
-    <h3 class="font-bold text-2xl">{title}</h3>
+<li class:list={["skill", cls]}>
+    <SquareStack class="icon" />
+    <h3>{title}</h3>
     <p>{description}</p>
-</dev>
+</li>
+
+<style>
+    .skill {
+        max-width: 24rem;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        text-align: center;
+        justify-content: flex-end;
+    }
+
+    @media (min-width: 1024px) {
+        .skill {
+            min-width: 350px;
+        }
+    }
+
+    .icon {
+        height: 5rem;
+        width: 5rem;
+        stroke: rgb(var(--primary));
+    }
+
+    h3 {
+        font-weight: 700;
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+</style>

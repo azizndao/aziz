@@ -5,7 +5,7 @@ import ProfileImage from "./ProfileImage.astro";
 ---
 
 <section
-    class="intro container max-w-7xl mx-auto flex justify-evenly items-center flex-col lg:flex-row lg:gap-6 lg:h-[calc((100dvh-var(--header-height)*2)*0.85)]"
+    class="header container max-w-7xl mx-auto flex justify-evenly items-center flex-col lg:flex-row lg:gap-6 lg:h-[calc((100dvh-var(--header-height)*2)*0.85)]"
 >
     <aside class="left-side max-w-xs">
         <h3 class="text-5xl leading-snug font-light">
@@ -13,7 +13,7 @@ import ProfileImage from "./ProfileImage.astro";
         </h3>
         <p class="text-lg">
             I am a Creative Developer who is currently based in <b>Birkelene</b
-        >,
+            >,
             <b>Senegal</b>.
         </p>
         <section class="flex gap-4">
@@ -21,10 +21,10 @@ import ProfileImage from "./ProfileImage.astro";
             <Pill>Youtuber</Pill>
             <Pill>Student</Pill>
         </section>
-        <DownloadCVButton class="hidden md:inline-block"/>
+        <DownloadCVButton class="hidden md:inline-block" />
     </aside>
-    <ProfileImage class="right-side md:py-8"/>
-    <DownloadCVButton class="block md:hidden self-center my-4"/>
+    <ProfileImage class="right-side md:py-8" />
+    <DownloadCVButton class="block md:hidden self-center my-4" />
 </section>
 
 <style>
@@ -56,7 +56,7 @@ import ProfileImage from "./ProfileImage.astro";
     }
 
     @media screen and (max-width: 768px) {
-        .intro {
+        .header {
             flex-direction: column;
         }
 

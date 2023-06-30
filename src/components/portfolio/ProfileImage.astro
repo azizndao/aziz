@@ -7,10 +7,10 @@ interface Props extends HTMLAttributes<"div"> {
 const { class: cls, ...attrs } = Astro.props;
 ---
 
-<div class={twMerge("w-full h-full img-container", cls)} {...attrs}>
+<div class={twMerge("img-container", cls)} {...attrs}>
     <div>
-        <img src="/images/me.png" class={"original"}/>
-        <img class={"blur"} src="/images/me16x35.png"/>
+        <img src="/images/me.png" class={"original"} />
+        <img class={"blur"} src="/images/me16x35.png" />
     </div>
 </div>
 
@@ -26,13 +26,32 @@ const { class: cls, ...attrs } = Astro.props;
 
 <style>
     .img-container {
-        /* position: relative; */
+        width: 100%;
+        height: 100%;
     }
 
     .img-container > div {
         position: relative;
         overflow: hidden;
-        @apply ml-auto md:h-full w-full md:w-auto rounded-3xl lg:rounded-[3rem] object-cover aspect-[4/5] lg:aspect-[3/5];
+        margin-left: auto;
+        width: 100%;
+        border-radius: 1.5rem;
+        object-fit: cover;
+        aspect-ratio: 4/5;
+    }
+
+    @media (min-width: 768px) {
+        .img-container > div {
+            width: auto;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .img-container > div {
+            aspect-ratio: 3/5;
+            border-radius: 3rem;
+            height: 100%;
+        }
     }
 
     img {

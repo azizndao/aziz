@@ -3,21 +3,74 @@ import skills from "~data/skills.json";
 import SkillItem from "./SkillItem.astro";
 ---
 
-<div
-    class="max-w-7xl md:mx-auto px-4 md:px-6 flex flex-col gap-12 py-8 items-center"
->
-    <h1 class="text-5xl font-bold">My skills</h1>
-    <section
-        class="w-full rounded-3xl lg:rounded-[3rem] border-2 border-outline px-6 lg:px-10 py-10 flex flex-col items-center md:flex-row gap-8 lg:gap-4 justify-evenly"
-    >
-        {
-            skills.map((skill) => (
-                <SkillItem
-                    title={skill.title}
-                    icon={skill.icon}
-                    description={skill.description}
-                />
-            ))
-        }
+<section class="skills">
+    <h1 class="headline">My skills</h1>
+    <section>
+        <ul class="skills-wrapper">
+            {
+                skills.map((skill) => (
+                    <SkillItem
+                        class="skill"
+                        title={skill.title}
+                        icon={skill.icon}
+                        description={skill.description}
+                    />
+                ))
+            }
+        </ul>
     </section>
-</div>
+</section>
+
+<style>
+    .skills {
+        max-width: 84rem;
+        padding: 0 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        padding: 2rem 0;
+        align-items: center;
+        margin: 0 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+        .skills {
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+    }
+
+    .skills .headline {
+        font-size: 3rem;
+        line-height: 1;
+        font-weight: bold;
+    }
+
+    .skills-wrapper {
+        width: 100%;
+        border-radius: 1.5rem;
+        border: 2px solid rgba(var(--primary-container), 0.25);
+        padding: 2.5rem 1.5rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 2rem;
+    }
+
+    @media (max-width: 1024px) {
+        .skills-wrapper {
+            border-radius: 3rem;
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+            gap: 1rem;
+        }
+    }
+
+    .skill {
+        max-width: 22rem;
+    }
+</style>

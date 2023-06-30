@@ -1,9 +1,7 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import { twMerge } from "tailwind-merge";
 
-interface Props extends HTMLAttributes<"button"> {
-}
+interface Props extends HTMLAttributes<"button"> {}
 
 const { ...attrs } = Astro.props;
 ---

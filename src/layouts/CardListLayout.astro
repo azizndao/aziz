@@ -16,17 +16,19 @@ const { cards, title, description } = Astro.props;
             <h1 class="display-large">{title}</h1>
             <p>{description}</p>
         </header>
-        <ul class="post-list">
+        <ul class="grid">
             {
                 cards.map((card) => (
-                    <Card
-                        title={card.title}
-                        description={card.description}
-                        thumbnail={card.thumbnail}
-                        href={card.href}
-                        tags={card.tags}
-                        date={card.date}
-                    />
+                    <li>
+                        <Card
+                            title={card.title}
+                            description={card.description}
+                            thumbnail={card.thumbnail}
+                            href={card.href}
+                            tags={card.tags}
+                            date={card.date}
+                        />
+                    </li>
                 ))
             }
         </ul>
@@ -56,9 +58,10 @@ const { cards, title, description } = Astro.props;
         text-decoration: none;
     }
 
-    .post-list {
+    .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-auto-flow: dense;
         gap: 2rem;
         padding: 2rem;
     }

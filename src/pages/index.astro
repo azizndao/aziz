@@ -11,8 +11,8 @@ import BaseLayout from "~layouts/BaseLayout.astro";
     description="My name is Abdou Aziz Ndao and this is my personnel website where a make my portfoilio, and courses for web and mobile development and my blog"
 >
     <div slot="header"><span></span></div>
-    <div class="home content bg-[black] text-[lightgray] flex gap-8 flex-col">
-        <Header />
+    <div class="home content">
+        <header><Header /></header>
         <PortfolioHeader />
         <SkillList />
         <ProjectList />
@@ -22,5 +22,17 @@ import BaseLayout from "~layouts/BaseLayout.astro";
 <style>
     .home {
         display: flex;
+        background-color: black;
+        color: lightgray;
+        gap: 2rem;
+        flex-direction: column;
+    }
+
+    header {
+        position: sticky;
+        z-index: 10;
+        top: 0;
+        background-color: transparent;
+        backdrop-filter: blur(23px) saturate(4.5);
     }
 </style>

@@ -2,12 +2,10 @@
 import { twMerge } from "tailwind-merge";
 
 interface Props {
-    width?: number;
-    height?: number;
     class?: string;
 }
 
-const { width = 24, height = 24, class: cls } = Astro.props;
+const { class: cls } = Astro.props;
 ---
 
 <svg
