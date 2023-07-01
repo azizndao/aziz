@@ -13,19 +13,18 @@ export async function getStaticPaths() {
         };
     });
 }
+
 const { entry } = Astro.props as { entry: CollectionEntry<"courses"> };
 
 const { Content, headings } = await entry.render();
 
 const entries = await getCollection("courses");
 
-const menu = entries
-    .map((entry) => ({
-        title: entry.data.title,
-        slug: `/courses/${entry.slug}`,
-        index: entry.data.index,
-    }))
-    .sort((a, b) => a.index - b.index);
+const menu = entries.map((entry) => ({
+    title: entry.data.title,
+    slug: `/courses/${entry.slug}`,
+    index: entry.data.index,
+}));
 
 const type = entry.data.type.charAt(0).toUpperCase() + entry.data.type.slice(1);
 ---

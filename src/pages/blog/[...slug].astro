@@ -1,6 +1,7 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content";
 import TableOfContent from "~components/TableOfContent.astro";
+import ArticleHeader from "~components/article/ArticleHeader.astro";
 import BlogLayout from "~layouts/BlogLayout.astro";
 
 export async function getStaticPaths() {
@@ -26,6 +27,8 @@ const { Content, headings } = await entry.render();
     title={entry.data.title}
     description={entry.data.description}
 >
+    <ArticleHeader entry={entry} />
+
     <Content />
     <TableOfContent headings={headings} slot="rigth-sidebar" />
 </BlogLayout>

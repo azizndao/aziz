@@ -2,7 +2,7 @@
   {
     "href": "/courses/python",
     "title": "Python",
-    "thumbnail": "/logo/python.svg",
+    "thumbnail": "/thumbnails/python.jpg",
     "description": "Python is a general-purpose programming language.",
     "duration": "2 months",
     "tags": [
@@ -21,7 +21,7 @@
   {
     "href": "/courses/next.js",
     "title": "Next.js",
-    "thumbnail": "/logo/nextjs.svg",
+    "thumbnail": "/thumbnails/nextjs.png",
     "description": "Next.js is a React framework.",
     "duration": "2 months",
     "tags": [
@@ -36,7 +36,7 @@
   {
     "href": "/courses/react.js",
     "title": "React.js",
-    "thumbnail": "/logo/react.svg",
+    "thumbnail": "/thumbnails/react.webp",
     "description": "React.js is a JavaScript library for building user interfaces.",
     "duration": "2 months",
     "tags": ["Programming", "React", "Web Development", "Frontend"]
@@ -60,7 +60,7 @@
   {
     "href": "/courses/javascript",
     "title": "Javascript",
-    "thumbnail": "/logo/javascript.svg",
+    "thumbnail": "/thumbnails/javascript.jpg",
     "description": "Javascript is a high-level, interpreted programming language.",
     "duration": "2 months",
     "tags": [
@@ -88,7 +88,7 @@
   {
     "href": "/courses/markdown",
     "title": "Markdown",
-    "thumbnail": "/logo/react.svg",
+    "thumbnail": "/thumbnails/markdown.jpg",
     "description": "Markdown is a lightweight markup language.",
     "duration": "2 months",
     "tags": [

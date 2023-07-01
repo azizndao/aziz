@@ -1,4 +1,5 @@
 ---
+import Image from "astro/components/Image.astro";
 export type CardProps = {
     title: string;
     description: string;
@@ -12,7 +13,14 @@ const props = Astro.props as CardProps;
 ---
 
 <a href={props.href} class="card block">
-    <img class="cover" src={props.thumbnail} alt={props.title} loading="lazy" />
+    <Image
+        class="cover"
+        src={props.thumbnail ?? ""}
+        alt={props.title}
+        loading="lazy"
+        width={512}
+        height={(512 * 9) / 19}
+    />
     <h3 class="headline-medium">{props.title}</h3>
     <p class="body-large line-clamp-3">{props.description}</p>
     <footer>

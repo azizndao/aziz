@@ -7,7 +7,7 @@ import { getAllPlaylists } from "~lib/youtube";
 const data = await getAllPlaylists();
 
 if (!data) {
-    Astro.redirect("/404");
+    return Astro.redirect("/404");
 }
 
 const playlists = data?.items?.map((playlist) => ({

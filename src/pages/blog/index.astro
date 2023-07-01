@@ -1,17 +1,20 @@
 ---
-import CardListLayout from "~layouts/CardListLayout.astro";
 import { getCollection } from "astro:content";
+import type { CardProps } from "~components/Card.astro";
+import CardListLayout from "~layouts/CardListLayout.astro";
 
 const entries = await getCollection("blog");
 
-const posts = entries.map((post) => ({
-    href: `/blog/${post.slug}`,
-    date: post.data.date,
-    title: post.data.title,
-    description: post.data.description,
-    tags: post.data.tags,
-    cover: post.data.cover,
-}));
+const posts: CardProps[] = entries
+    .filter((post) => !post.data.draft)
+    .map((post) => ({
+        href: `/blog/${post.slug}`,
+        date: post.data.date,
+        title: post.data.title,
+        description: post.data.description,
+        tags: post.data.tags,
+        thumbnail: post.data.cover,
+    }));
 const title = "Blog";
 const description = "Latest news, updates, and stories for developers";
 ---

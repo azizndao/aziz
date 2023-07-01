@@ -5,5 +5,42 @@
   "start_url": ".",
   "display": "standalone",
   "background_color": "#fff",
-  "description": "My name is Abdou Aziz Ndao and this is my personnel website where a make my portfoilio, and courses for web and mobile development and my blog"
+  "description": "My name is Abdou Aziz Ndao and this is my personnel website where a make my portfoilio, and courses for web and mobile development and my blog",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "scope": ".",
+  "shortcuts": [
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "url": "/blog",
+      "icons": [
+        {
+          "src": "favicon.png",
+          "sizes": "144x144",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Courses",
+      "short_name": "Courses",
+      "url": "/courses",
+      "icons": [
+        {
+          "src": "favicon.png",
+          "sizes": "144x144",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
 }

@@ -10,7 +10,7 @@ const playlistId = Astro.params.playlistId as string;
 const data = await getPlaylist(playlistId);
 
 if (!data) {
-    Astro.redirect("/404");
+    return Astro.redirect("/404");
 }
 
 const videos = data?.items ?? [];
