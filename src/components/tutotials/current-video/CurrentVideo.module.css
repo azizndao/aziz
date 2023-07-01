@@ -11,7 +11,7 @@
 }
 
 .description {
-  background-color: rgba(var(--surface-variant), 0.5);
+  @apply bg-neutral-500/50;
   padding: 1rem;
   border-radius: 1.5rem;
   margin: 0 1rem;

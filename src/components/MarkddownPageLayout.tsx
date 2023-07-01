@@ -1,5 +1,3 @@
-export default function MarkdownPageLayout({}) {
-}
+export default function MarkdownPageLayout({}) {}
 
-function MobileNavTopBar() {
-}
+function MobileNavTopBar() {}

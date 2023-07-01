@@ -6,7 +6,7 @@
 }
 
 .video[aria-selected="true"] {
-  background-color: rgba(var(--primary-container), 0.5);
+  @apply bg-primary-300/50;
 }
 
 .image {

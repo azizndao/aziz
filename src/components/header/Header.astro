@@ -1,103 +1,91 @@
 ---
+import { twMerge } from "tailwind-merge";
 import DiscordLogo from "~components/svgs/DiscordLogo.astro";
 import GithubLogo from "~components/svgs/GithubLogo.astro";
 import TwitterLogo from "~components/svgs/TwitterLogo.astro";
 import FloatingMenu from "./FloatingMenu.astro";
 import HeaderLink from "./HeaderLink.astro";
 import mainMenu from "./main-menu.json";
+
 const pathname = Astro.url.pathname;
+
 interface Props {
-    class?: string;
+  class?: string;
 }
 
 const { class: cls } = Astro.props;
 ---
 
-<section class:list={["nav-bar", cls]}>
-    <nav>
-        <a href="/" class="font-bold text-3xl">Aziz</a>
+<section
+  class={twMerge(
+    "nav-bar bg-neutral-50/90 backdrop-blur-md dark:bg-neutral-900 h-[var(--header-height)] backdrop-filter-sm",
+    cls
+  )}
+>
+  <nav
+    class="flex gap-6 items-center h-full px-4 max-w-[var(--max-width)] mx-auto"
+  >
+    <a href="/" class="font-bold text-3xl">Aziz</a>
 
-        <span class="grow"></span>
-        <ul class="nav-items">
-            {
-                mainMenu.map(({ href, title }) => (
-                    <li>
-                        <HeaderLink
-                            href={href}
-                            active={
-                                href == "/"
-                                    ? pathname === "/"
-                                    : pathname.startsWith(href)
-                            }
-                        >
-                            {title}
-                        </HeaderLink>
-                    </li>
-                ))
-            }
-        </ul>
-        <ul class="contacts">
-            <li>
-                <a
-                    href="https://github.com/azizndao"
-                    title="Github"
-                    target="_blank"
-                >
-                    <GithubLogo />
-                </a>
-            </li>
-            <li>
-                <a
-                    href="https://twitter.com/_abdouaziz_"
-                    title="Twitter"
-                    target="_blank"
-                >
-                    <TwitterLogo />
-                </a>
-            </li>
-            <li>
-                <a href="#" title="Discord" target="_blank">
-                    <DiscordLogo />
-                </a>
-            </li>
-            <FloatingMenu class="md:hidden" />
-        </ul>
-    </nav>
+    <span class="grow"></span>
+    <ul class="nav-items">
+      {
+        mainMenu.map(({ href, title }) => (
+          <li>
+            <HeaderLink
+              href={href}
+              active={
+                href == "/" ? pathname === "/" : pathname.startsWith(href)
+              }
+            >
+              {title}
+            </HeaderLink>
+          </li>
+        ))
+      }
+    </ul>
+    <ul class="contacts">
+      <li>
+        <a href="https://github.com/azizndao" title="Github" target="_blank">
+          <GithubLogo />
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://twitter.com/_abdouaziz_"
+          title="Twitter"
+          target="_blank"
+        >
+          <TwitterLogo />
+        </a>
+      </li>
+      <li>
+        <a href="#" title="Discord" target="_blank">
+          <DiscordLogo />
+        </a>
+      </li>
+      <FloatingMenu class="md:hidden" />
+    </ul>
+  </nav>
 </section>
 
 <style>
-    section {
-        height: var(--header-height);
-        backdrop-filter: blur(23px);
-        background-color: rgba(var(--background), 0.9);
-    }
+  ul.nav-items {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
 
-    nav {
-        display: flex;
-        gap: 1.5rem;
-        align-items: center;
-        height: var(--header-height);
-        padding: 0 1rem;
-        max-width: var(--max-width);
-        margin: auto;
-    }
-
+  @media screen and (max-width: 768px) {
     ul.nav-items {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        padding: 0 1rem;
+      display: none;
     }
+  }
 
-    @media screen and (max-width: 768px) {
-        ul.nav-items {
-            display: none;
-        }
-    }
-
-    ul.contacts {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
+  ul.contacts {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 </style>

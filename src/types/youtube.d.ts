@@ -3,13 +3,13 @@ export interface YoutubePageInfo {
   resultsPerPage: number;
 }
 
-export interface cover {
+export interface Thumbnail {
   url: string;
   width: number;
   height: number;
 }
 
-export type AllThumbnails = Record<"default" | "medium" | "high", cover>;
+export type AllThumbnails = Record<"default" | "medium" | "high", Thumbnail>;
 
 export interface Playlist {
   kind: string;

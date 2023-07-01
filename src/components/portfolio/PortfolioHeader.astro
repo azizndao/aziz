@@ -5,67 +5,66 @@ import ProfileImage from "./ProfileImage.astro";
 ---
 
 <section
-    class="header container max-w-7xl mx-auto flex justify-evenly items-center flex-col lg:flex-row lg:gap-6 lg:h-[calc((100dvh-var(--header-height)*2)*0.85)]"
+  class="header container max-w-7xl mx-auto flex justify-evenly items-center flex-col lg:flex-row lg:gap-6 lg:h-[calc((100dvh-var(--header-height)*2)*0.85)]"
 >
-    <aside class="left-side max-w-xs">
-        <h3 class="text-5xl leading-snug font-light">
-            Hi, my name is <b class="name">Abdou Aziz Ndao</b>
-        </h3>
-        <p class="text-lg">
-            I am a Creative Developer who is currently based in <b>Birkelene</b
-            >,
-            <b>Senegal</b>.
-        </p>
-        <section class="flex gap-4">
-            <Pill>Developer</Pill>
-            <Pill>Youtuber</Pill>
-            <Pill>Student</Pill>
-        </section>
-        <DownloadCVButton class="hidden md:inline-block" />
-    </aside>
-    <ProfileImage class="right-side md:py-8" />
-    <DownloadCVButton class="block md:hidden self-center my-4" />
+  <aside class="left-side max-w-xs">
+    <h3 class="text-5xl leading-snug font-light">
+      Hi, my name is <b class="name">Abdou Aziz Ndao</b>
+    </h3>
+    <p class="text-lg">
+      I am a Creative Developer who is currently based in <b>Birkelene</b>,
+      <b>Senegal</b>.
+    </p>
+    <section class="flex gap-4">
+      <Pill>Developer</Pill>
+      <Pill>Youtuber</Pill>
+      <Pill>Student</Pill>
+    </section>
+    <DownloadCVButton class="hidden md:inline-block" />
+  </aside>
+  <ProfileImage class="right-side md:py-8" />
+  <DownloadCVButton class="block md:hidden self-center my-4" />
 </section>
 
 <style>
-    .right-side,
-    .left-side {
-        max-width: calc((var(--max-width) / 2) - 1.4rem);
-        padding: 1.5rem;
-    }
+  .right-side,
+  .left-side {
+    max-width: calc((var(--max-width) / 2) - 1.4rem);
+    padding: 1.5rem;
+  }
 
-    .left-side {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        align-items: flex-start;
-        justify-content: center;
+  .left-side {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .download-bottom.primary {
+    display: block;
+  }
+
+  .name {
+    font-weight: 800;
+    color: var(--secondary);
+  }
+
+  .download-bottom.secondary {
+    display: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    .header {
+      flex-direction: column;
     }
 
     .download-bottom.primary {
-        display: block;
-    }
-
-    .name {
-        font-weight: 800;
-        color: var(--secondary);
+      display: none;
     }
 
     .download-bottom.secondary {
-        display: none;
+      display: block;
     }
-
-    @media screen and (max-width: 768px) {
-        .header {
-            flex-direction: column;
-        }
-
-        .download-bottom.primary {
-            display: none;
-        }
-
-        .download-bottom.secondary {
-            display: block;
-        }
-    }
+  }
 </style>

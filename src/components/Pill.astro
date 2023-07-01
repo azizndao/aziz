@@ -1,19 +1,5 @@
-<div class=".pill">
-    <slot />
+<div
+  class=".pill bg-primary-500 inline-flex gap-2 px-4 py-2 text-primary-50 text-sm font-medium rounded-full whitespace-nowrap"
+>
+  <slot />
 </div>
-
-<style>
-    .pill {
-        display: inline-flex;
-        padding: 0.5rem 1rem;
-        gap: 0.5rem;
-        color: var(--bg-color);
-        border: 1px solid rgb(var(--primary));
-        background-color: rgb(var(--primary));
-        border-radius: 999rem;
-        font-size: 12px;
-        font-weight: 500;
-        line-height: 1.35;
-        white-space: nowrap;
-    }
-</style>

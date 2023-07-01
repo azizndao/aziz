@@ -1,107 +1,90 @@
 ---
 import Image from "astro/components/Image.astro";
 export type CardProps = {
-    title: string;
-    description: string;
-    href: string;
-    thumbnail?: string;
-    tags?: string[];
-    date?: Date;
+  title: string;
+  description: string;
+  href: string;
+  thumbnail?: string;
+  tags?: string[];
+  date?: Date;
 };
 
 const props = Astro.props as CardProps;
 ---
 
-<a href={props.href} class="card block">
-    <Image
-        class="cover"
-        src={props.thumbnail ?? ""}
-        alt={props.title}
-        loading="lazy"
-        width={512}
-        height={(512 * 9) / 19}
-    />
-    <h3 class="headline-medium">{props.title}</h3>
-    <p class="body-large line-clamp-3">{props.description}</p>
-    <footer>
-        {
-            props.tags && (
-                <ul class="tag-list">
-                    {props?.tags?.slice(0, 3)?.map((tag) => (
-                        <li>
-                            <span class="tag label-medium">{tag}</span>
-                        </li>
-                    ))}
-                </ul>
-            )
-        }
-    </footer>
+<a
+  href={props.href}
+  class="card overflow-hidden flex flex-col gap-4 rounded-xl py-8 px-6 transition-colors duration-150 h-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-400/40 hover:bg-neutral-50 dark:hover:bg-neutral-800"
+>
+  <Image
+    class="cover"
+    src={props.thumbnail ?? ""}
+    alt={props.title}
+    loading="lazy"
+    width={512}
+    height={(512 * 9) / 19}
+  />
+  <h3 class="text-2xl">{props.title}</h3>
+  <p class="text-base line-clamp-3">{props.description}</p>
+  <footer>
+    {
+      props.tags && (
+        <ul class="tag-list">
+          {props?.tags?.slice(0, 3)?.map((tag) => (
+            <li>
+              <span class="inline-block text-sm px-4 py-1.5 rounded-full bg-neutral-200 dark:bg-neutral-800/90  dark:border-neutral-400">
+                {tag}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </footer>
 </a>
 
 <style>
-    .card {
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        border-radius: 1rem;
-        padding: 2rem 1.25rem;
-        background-color: rgba(var(--surface-variant), 0.25);
-        border: 1px solid rgba(var(--outline), 0.35);
-        text-decoration: none !important;
-        transition: all 0.15s ease;
-        height: 100%;
-    }
+  header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding: 0 4px;
+  }
 
-    .card:hover {
-        color: currentColor;
-        background-color: rgba(var(--surface-variant), 0.45);
-        color: rgb(var(--on-surface-variant));
-        border-color: rgb(var(--surface-variant));
-    }
+  .cover {
+    border-radius: 1rem;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    @apply bg-neutral-300/70;
+  }
 
-    header {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 1rem;
-        padding: 0 4px;
-    }
+  .card .cover {
+    border-radius: 1rem;
+  }
 
-    .cover {
-        border-radius: 1rem;
-        width: 100%;
-        height: auto;
-        aspect-ratio: 16/9;
-        background-color: rgba(var(--surface-variant), 0.725);
-        object-fit: cover;
-    }
+  p.body-large {
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
+    text-overflow: ellipsis;
+  }
 
-    .card .cover {
-        border-radius: 1rem;
-    }
+  footer {
+    margin-top: auto;
+  }
 
-    p.body-large {
-        line-clamp: 3;
-        -webkit-line-clamp: 3;
-        text-overflow: ellipsis;
-        text-overflow: ellipsis;
-    }
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
 
-    footer {
-        margin-top: auto;
-    }
-
-    .tag-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-    }
-
-    .tag {
-        border-radius: 30000px;
-        display: block;
-        background-color: rgba(var(--surface-variant), 0.35);
-        border: 1px solid rgba(var(--outline), 0.35);
-        padding: 0.5rem 1rem;
-    }
+  .tag {
+    border-radius: 30000px;
+    display: block;
+    padding: 0.5rem 1rem;
+    @apply bg-neutral-200 dark:bg-neutral-900 border;
+  }
 </style>

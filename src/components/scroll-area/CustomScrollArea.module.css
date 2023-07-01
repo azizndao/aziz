@@ -1,6 +1,7 @@
 :root {
   --scrollbar-size: 0.5rem;
 }
+
 .ScrollAreaRoot {
   width: 100%;
   height: 100%;
@@ -25,7 +26,7 @@
 }
 
 .ScrollAreaScrollbar:hover {
-  background: rgba(var(--surface-variant), 0.25);
+  @apply bg-neutral-800/25;
   --scrollbar-size: 0.75rem;
 }
 
@@ -40,7 +41,7 @@
 
 .ScrollAreaThumb {
   flex: 1;
-  background: rgba(var(--surface-variant));
+  @apply bg-neutral-600;
   border-radius: var(--scrollbar-size);
   position: relative;
 }
@@ -59,5 +60,5 @@
 }
 
 .ScrollAreaCorner {
-  background: rgba(var(--surface-variant), 0.25);
+  @apply bg-neutral-800;
 }

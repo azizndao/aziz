@@ -4,12 +4,12 @@ import courses from "~data/courses.json";
 import CardListLayout from "~layouts/CardListLayout.astro";
 
 const cards: CardProps[] = courses.map((course) => ({
-    title: course.title,
-    description: course.description,
-    href: course.href,
-    tags: course.tags,
-    thumbnail: course.thumbnail,
-    date: new Date(),
+  title: course.title,
+  description: course.description,
+  href: course.href,
+  tags: course.tags,
+  thumbnail: course.thumbnail,
+  date: new Date(),
 }));
 ---
 

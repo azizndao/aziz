@@ -17,7 +17,9 @@ const { hasMenu = true, title, description } = Astro.props;
         <MarkdownArticle class="md-container">
             <slot />
         </MarkdownArticle>
-        <aside class="right"><slot name="rigth-sidebar" /></aside>
+        <aside class="right">
+            <slot name="rigth-sidebar" />
+        </aside>
     </main>
 </BaseLayout>
 
@@ -37,7 +39,6 @@ const { hasMenu = true, title, description } = Astro.props;
     .appbar {
         position: sticky;
         top: 0;
-        background-color: rgba(var(--surface));
         z-index: 10;
     }
 

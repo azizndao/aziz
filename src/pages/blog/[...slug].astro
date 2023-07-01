@@ -1,21 +1,21 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content";
-import TableOfContent from "~components/TableOfContent.astro";
 import ArticleHeader from "~components/article/ArticleHeader.astro";
+import TableOfContent from "~components/toc/TableOfContent.astro";
 import BlogLayout from "~layouts/BlogLayout.astro";
 
 export async function getStaticPaths() {
-    const blogEntries = await getCollection("blog");
-    return blogEntries.map(function (entry) {
-        return {
-            params: { slug: entry.slug },
-            props: { entry },
-        };
-    });
+  const blogEntries = await getCollection("blog");
+  return blogEntries.map(function (entry) {
+    return {
+      params: { slug: entry.slug },
+      props: { entry },
+    };
+  });
 }
 
 interface Props {
-    entry: CollectionEntry<"blog">;
+  entry: CollectionEntry<"blog">;
 }
 
 const { entry } = Astro.props as Props;
@@ -23,12 +23,12 @@ const { Content, headings } = await entry.render();
 ---
 
 <BlogLayout
-    hasMenu={false}
-    title={entry.data.title}
-    description={entry.data.description}
+  hasMenu={false}
+  title={entry.data.title}
+  description={entry.data.description}
 >
-    <ArticleHeader entry={entry} />
+  <ArticleHeader entry={entry} />
 
-    <Content />
-    <TableOfContent headings={headings} slot="rigth-sidebar" />
+  <Content />
+  <TableOfContent headings={headings} slot="rigth-sidebar" />
 </BlogLayout>

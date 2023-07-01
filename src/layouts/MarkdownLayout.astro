@@ -6,202 +6,206 @@ import BaseLayout from "./BaseLayout.astro";
 import Header from "~components/header/Header.astro";
 
 interface Props {
-    title: string;
-    description: string;
+  title: string;
+  description: string;
 }
 
 const { title, description } = Astro.props;
 ---
 
 <script>
-    const container = document.querySelector(".main-wrapper");
+  const container = document.querySelector(".main-wrapper");
 
-    document
-        .querySelector(".main-wrapper .md-container")
-        ?.addEventListener("click", () => {
-            if (container?.hasAttribute("aria-open")) {
-                container.attributes.removeNamedItem("aria-open");
-            }
-        });
+  document
+    .querySelector(".main-wrapper .md-container")
+    ?.addEventListener("click", () => {
+      if (container?.hasAttribute("aria-open")) {
+        container.attributes.removeNamedItem("aria-open");
+      }
+    });
 
-    document
-        .querySelector("#btn-left")
-        ?.addEventListener("click", () =>
-            container?.setAttribute("aria-open", "left")
-        );
+  document
+    .querySelector("#btn-left")
+    ?.addEventListener("click", () =>
+      container?.setAttribute("aria-open", "left")
+    );
 
-    document
-        .querySelector("#btn-right")
-        ?.addEventListener("click", () =>
-            container?.setAttribute("aria-open", "right")
-        );
+  document
+    .querySelector("#btn-right")
+    ?.addEventListener("click", () =>
+      container?.setAttribute("aria-open", "right")
+    );
 </script>
 
 <BaseLayout title={title} description={description}>
-    <main class="main-wrapper">
-        <header class="appbar">
-            <Header />
-            <section class="menubar">
-                <button id="btn-left">
-                    <MenuIcon />
-                    Menu
-                </button>
-                <button id="btn-right">
-                    On this page
-                    <ChevronRightIcon />
-                </button>
-            </section>
-        </header>
-        <aside class="left"><slot name="left-sidebar" /></aside>
-        <MarkdownArticle class="md-container">
-            <slot />
-        </MarkdownArticle>
-        <aside class="right"><slot name="rigth-sidebar" /></aside>
-    </main>
+  <main class="main-wrapper">
+    <header class="appbar">
+      <Header />
+      <section class="menubar">
+        <button id="btn-left">
+          <MenuIcon />
+          Menu
+        </button>
+        <button id="btn-right">
+          On this page
+          <ChevronRightIcon />
+        </button>
+      </section>
+    </header>
+    <aside class="left">
+      <slot name="left-sidebar" />
+    </aside>
+    <MarkdownArticle class="md-container">
+      <slot />
+    </MarkdownArticle>
+    <aside class="right">
+      <slot name="rigth-sidebar" />
+    </aside>
+  </main>
 </BaseLayout>
 
 <style>
+  .main-wrapper {
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    flex-direction: column;
+    overflow-x: visible;
+  }
+
+  .md-container {
+    padding: 0 1.5rem;
+  }
+
+  .appbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    @apply bg-neutral-50 dark:bg-neutral-900;
+  }
+
+  .menubar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: calc(var(--header-height) * 0.75);
+    @apply border-b border-neutral-400 dark:border-neutral-700;
+  }
+
+  .menubar button {
+    display: inline-flex;
+    gap: 0.75rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .menubar button:is(:hover, :focus-within) {
+    @apply text-primary-300;
+  }
+
+  aside {
+    position: fixed;
+    z-index: 3;
+    @apply bg-neutral-50 dark:bg-neutral-900;
+    height: 100vh;
+    width: 300px;
+    box-shadow: 0 12px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  aside.left {
+    left: -100%;
+    transition: left 0.25s ease;
+  }
+
+  [aria-open] aside {
+    padding-top: 3rem;
+    z-index: 12;
+  }
+
+  [aria-open="left"] aside.left {
+    left: 0;
+  }
+
+  aside.right {
+    right: -100%;
+    transition: right 0.25s ease;
+  }
+
+  [aria-open="right"] aside.right {
+    right: 0;
+  }
+
+  [aria-open] .md-container::before {
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    height: 100vh;
+    content: "";
+    background-color: rgba(0, 0, 0, 0.075);
+    transition: color 0.35s ease;
+  }
+
+  @media screen and (min-width: 769px) {
     .main-wrapper {
-        display: flex;
-        margin: 0 auto;
-        margin-bottom: 3rem;
-        flex-direction: column;
-        overflow-x: visible;
+      grid-gap: 3rem;
+      display: grid;
+      gap: 3rem;
+      grid-template-areas: "sidebar main";
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+      padding-left: 1.5rem;
+      padding-right: 3rem;
     }
 
     .md-container {
-        padding: 0 1.5rem;
+      padding: 0;
     }
 
     .appbar {
-        position: sticky;
-        top: 0;
-        background-color: rgba(var(--surface));
-        z-index: 10;
+      grid-column: 1 / 4;
+      grid-row: 1;
     }
 
     .menubar {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: calc(var(--header-height) * 0.75);
-        border-bottom: 1px solid rgba(var(--surface-variant));
-    }
-
-    .menubar button {
-        display: inline-flex;
-        gap: 0.75rem;
-        border-radius: 0.5rem;
-        padding: 0.5rem 1rem;
-    }
-
-    .menubar button:is(:hover, :focus-within) {
-        background: rgba(var(--primary-container), 0.25);
+      display: none;
     }
 
     aside {
-        position: fixed;
-        z-index: 3;
-        background-color: rgba(var(--surface));
-        height: 100vh;
-        width: 300px;
-        box-shadow: 0 12px 12px rgba(0, 0, 0, 0.25);
+      --top: calc(3rem + var(--header-height) * 1.75);
+      position: sticky;
+      inset: 0;
+      top: var(--top);
+      height: calc(100dvh - var(--top));
+      width: 100%;
+      box-shadow: none;
     }
 
     aside.left {
-        left: -100%;
-        transition: left 0.25s ease;
-    }
-
-    [aria-open] aside {
-        padding-top: 3rem;
-        z-index: 12;
-    }
-
-    [aria-open="left"] aside.left {
-        left: 0;
+      display: block;
     }
 
     aside.right {
-        right: -100%;
-        transition: right 0.25s ease;
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .main-wrapper {
+      max-width: var(--max-width);
+      grid-gap: 3rem;
+      display: grid;
+      gap: 3rem;
+      grid-template-areas: "sidebar main toc";
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 2.5fr)
+        minmax(0, 15rem);
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
 
-    [aria-open="right"] aside.right {
-        right: 0;
+    aside.right {
+      display: block;
     }
-
-    [aria-open] .md-container::before {
-        position: fixed;
-        z-index: 10;
-        inset: 0;
-        height: 100vh;
-        content: "";
-        background-color: rgba(0, 0, 0, 0.075);
-        transition: color 0.35s ease;
-    }
-
-    @media screen and (min-width: 769px) {
-        .main-wrapper {
-            grid-gap: 3rem;
-            display: grid;
-            gap: 3rem;
-            grid-template-areas: "sidebar main";
-            grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-            padding-left: 1.5rem;
-            padding-right: 3rem;
-        }
-
-        .md-container {
-            padding: 0;
-        }
-
-        .appbar {
-            grid-column: 1 / 4;
-            grid-row: 1;
-        }
-
-        .menubar {
-            display: none;
-        }
-
-        aside {
-            --top: calc(3rem + var(--header-height) * 1.75);
-            position: sticky;
-            inset: 0;
-            top: var(--top);
-            height: calc(100dvh - var(--top));
-            width: 100%;
-            box-shadow: none;
-        }
-
-        aside.left {
-            display: block;
-        }
-
-        aside.right {
-            display: none;
-        }
-    }
-
-    @media screen and (min-width: 1200px) {
-        .main-wrapper {
-            max-width: var(--max-width);
-            grid-gap: 3rem;
-            display: grid;
-            gap: 3rem;
-            grid-template-areas: "sidebar main toc";
-            grid-template-columns:
-                minmax(0, 1fr)
-                minmax(0, 2.5fr)
-                minmax(0, 15rem);
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-
-        aside.right {
-            display: block;
-        }
-    }
+  }
 </style>

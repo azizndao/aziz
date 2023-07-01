@@ -4,21 +4,21 @@ import SkillItem from "./SkillItem.astro";
 ---
 
 <section class="skills">
-    <h1 class="headline">My skills</h1>
-    <section>
-        <ul class="skills-wrapper">
-            {
-                skills.map((skill) => (
-                    <SkillItem
-                        class="skill"
-                        title={skill.title}
-                        icon={skill.icon}
-                        description={skill.description}
-                    />
-                ))
-            }
-        </ul>
-    </section>
+  <h1 class="headline">My skills</h1>
+  <section>
+    <ul class="skills-wrapper">
+      {
+        skills.map((skill) => (
+          <SkillItem
+            class="skill"
+            title={skill.title}
+            icon={skill.icon}
+            description={skill.description}
+          />
+        ))
+      }
+    </ul>
+  </section>
 </section>
 
 <style>
@@ -51,7 +51,7 @@ import SkillItem from "./SkillItem.astro";
     .skills-wrapper {
         width: 100%;
         border-radius: 1.5rem;
-        border: 2px solid rgba(var(--primary-container), 0.25);
+        @apply border-2 border-primary-500/25;
         padding: 2.5rem 1.5rem;
         display: flex;
         flex-direction: row;

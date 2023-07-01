@@ -2,42 +2,18 @@
 const year = new Date().getFullYear();
 ---
 
-<footer id="footer">
-    <div class="inner-footer">
-        <p class="text-lg">Build with Astro & ❤️</p>
-        <!-- Copyright -->
-        <p class="text-sm copyright">
-            © {year}
-            <a href="https://github.com/azizndao">Aziz</a>
-        </p>
-    </div>
+<footer
+  id="footer"
+  class="max-w-[var(--max-width)] mx-auto border-t border-neutral-300 dark:border-t-neutral-600 flex items-center justify-center gap-4"
+>
+  <div
+    class="inner-footer mx-auto px-6 py-8 flex flex-col gap-6 justify-center items-center w-full"
+  >
+    <p class="text-lg">Build with Astro & ❤️</p>
+    <!-- Copyright -->
+    <p class="text-sm font-bold text-neutral-950 dark:text-neutral-200">
+      © {year}
+      <a href="https://github.com/azizndao">Aziz</a>
+    </p>
+  </div>
 </footer>
-
-<style>
-    footer {
-        max-width: var(--max-width);
-        margin-left: auto;
-        margin-right: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-        background-color: rgba(var(--background));
-        border-top: 1px solid rgba(var(--outline), 0.25);
-    }
-
-    .inner-footer {
-        @apply mx-auto px-6 py-8;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .copyright {
-        font-weight: bold;
-        color: rgba(var(--on-background), 0.7);
-    }
-</style>

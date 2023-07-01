@@ -3,30 +3,36 @@ import Header from "~components/header/Header.astro";
 import BaseLayout from "./BaseLayout.astro";
 
 interface Props {
-    title: string;
-    description: string;
+  title: string;
+  description: string;
 }
 
 const { title, description } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
-    <Fragment slot="head"><slot name="head" /></Fragment>
-    <header><slot name="header"><Header /></slot></header>
-    <main class="content">
-        <slot />
-    </main>
+  <Fragment slot="head">
+    <slot name="head" />
+  </Fragment>
+  <header>
+    <slot name="header">
+      <Header />
+    </slot>
+  </header>
+  <main class="content">
+    <slot />
+  </main>
 </BaseLayout>
 
 <style>
-    header,
-    footer {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-    }
+  header,
+  footer {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
 
-    main {
-        min-height: calc(100dvh - var(--header-height));
-    }
+  main {
+    min-height: calc(100dvh - var(--header-height));
+  }
 </style>

@@ -6,15 +6,15 @@ import CardListLayout from "~layouts/CardListLayout.astro";
 const entries = await getCollection("blog");
 
 const posts: CardProps[] = entries
-    .filter((post) => !post.data.draft)
-    .map((post) => ({
-        href: `/blog/${post.slug}`,
-        date: post.data.date,
-        title: post.data.title,
-        description: post.data.description,
-        tags: post.data.tags,
-        thumbnail: post.data.cover,
-    }));
+  .filter((post) => !post.data.draft)
+  .map((post) => ({
+    href: `/blog/${post.slug}`,
+    date: post.data.date,
+    title: post.data.title,
+    description: post.data.description,
+    tags: post.data.tags,
+    thumbnail: post.data.cover,
+  }));
 const title = "Blog";
 const description = "Latest news, updates, and stories for developers";
 ---

@@ -1,17 +1,17 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content";
 import DocMenuSidebar from "~components/DocMenuSidebar.astro";
-import TableOfContent from "~components/TableOfContent.astro";
+import TableOfContent from "~components/toc/TableOfContent.astro";
 import MarkdownLayout from "~layouts/MarkdownLayout.astro";
 
 export async function getStaticPaths() {
-    const blogEntries = await getCollection("courses");
-    return blogEntries.map(function (entry) {
-        return {
-            params: { slug: entry.slug },
-            props: { entry },
-        };
-    });
+  const blogEntries = await getCollection("courses");
+  return blogEntries.map(function (entry) {
+    return {
+      params: { slug: entry.slug },
+      props: { entry },
+    };
+  });
 }
 
 const { entry } = Astro.props as { entry: CollectionEntry<"courses"> };
@@ -21,23 +21,23 @@ const { Content, headings } = await entry.render();
 const entries = await getCollection("courses");
 
 const menu = entries.map((entry) => ({
-    title: entry.data.title,
-    slug: `/courses/${entry.slug}`,
-    index: entry.data.index,
+  title: entry.data.title,
+  slug: `/courses/${entry.slug}`,
+  index: entry.data.index,
 }));
 
 const type = entry.data.type.charAt(0).toUpperCase() + entry.data.type.slice(1);
 ---
 
 <MarkdownLayout
-    title={`${type}: ${entry.data.title}`}
-    description={entry.data.description}
+  title={`${type}: ${entry.data.title}`}
+  description={entry.data.description}
 >
-    <h1>{entry.data.title}</h1>
+  <h1>{entry.data.title}</h1>
 
-    <Content />
+  <Content />
 
-    <DocMenuSidebar slot="left-sidebar" entries={menu} title="Learn Python" />
+  <DocMenuSidebar slot="left-sidebar" entries={menu} title="Learn Python" />
 
-    <TableOfContent slot="rigth-sidebar" headings={headings} />
+  <TableOfContent slot="rigth-sidebar" headings={headings} />
 </MarkdownLayout>
