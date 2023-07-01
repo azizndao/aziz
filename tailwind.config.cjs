@@ -15,7 +15,7 @@ module.exports = {
       primary: colors.indigo,
       secondary: colors.purple,
       tertiary: colors.orange,
-      neutral: colors.gray,
+      neutral: colors.neutral,
       slate: colors.slate,
       danger: colors.red,
       warning: colors.yellow,
