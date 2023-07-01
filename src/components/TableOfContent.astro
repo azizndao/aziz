@@ -10,7 +10,7 @@ const headings = Astro.props.headings.filter((heading) => heading.depth > 1);
 
 <section class="toc">
     <h3>Table of Contents</h3>
-    <ul class="flex flex-col gap-2">
+    <ul>
         {
             headings.map((heading) => (
                 <li class={`heading heading-${heading.depth}`}>
@@ -29,7 +29,7 @@ const headings = Astro.props.headings.filter((heading) => heading.depth > 1);
 
     const callback = (entries: IntersectionObserverEntry[]): void => {
         entries = entries
-            .filter((a) => a.isIntersecting)
+            .filter((a) => a.target.id !== "" && a.isIntersecting)
             .sort((a, b) => a.intersectionRatio - b.intersectionRatio);
 
         const entry = entries[0];
@@ -67,24 +67,34 @@ const headings = Astro.props.headings.filter((heading) => heading.depth > 1);
         padding-bottom: 1rem;
     }
 
+    .toc ul {
+        display: flex;
+        flex-direction: column;
+        /* border-left: 1px solid rgb(var(--primary)); */
+        /* padding-left: 0.5rem; */
+    }
+
     li a {
         display: block;
         text-decoration: none;
         line-height: 2.25;
-        @apply border-l-primary line-clamp-1 rounded-md;
+        border-left: 1px solid rgb(var(--on-surface), 0.25);
+        padding-left: 1rem;
     }
 
     li a:hover {
-        @apply text-on-primary-container bg-primary-container;
+        background-color: rgba(var(--primary), 0.05);
     }
 
     li a.active {
-        @apply text-on-primary-container bg-primary-container;
+        color: rgba(var(--primary));
+        border-left: 2px solid rgba(var(--primary));
+        font-weight: 500;
     }
 
     .toc .heading-2 a {
         font-size: 1rem;
-        padding-left: 0.75rem;
+        padding-left: 1.25rem;
     }
 
     .toc .heading-3 a {

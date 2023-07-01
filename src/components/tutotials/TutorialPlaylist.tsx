@@ -26,32 +26,39 @@ export default function TutorialPlaylist({
       <section className={styles.currentVideo}>
         <CurrentVideoItem video={currentVideo} />
       </section>
-      <PlaylistSidebar videos={videos} setCurrentVideo={setCurrentVideo} />
+      <PlaylistSidebar
+        videos={videos}
+        currentVideoId={currentVideo.id}
+        setVideo={setCurrentVideo}
+      />
     </div>
   );
 }
 
 function PlaylistSidebar({
   videos,
-  setCurrentVideo,
+  currentVideoId,
+  setVideo: setVideo,
 }: {
   videos: Video[];
-  setCurrentVideo: (video: Video) => void;
+  currentVideoId: string;
+  setVideo: (video: Video) => void;
 }) {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <div className={styles.playlist}>
+      <div className={styles.playlist} aria-open={open}>
         <CustomScrollArea>
           <ul>
             <h3>Playlist</h3>
             {videos.map((video) => (
               <VideoItemCard
                 key={video.id}
+                selected={currentVideoId == video.id}
                 video={video}
                 onClick={() => {
                   setOpen(false);
-                  setCurrentVideo(video);
+                  setVideo(video);
                 }}
               />
             ))}

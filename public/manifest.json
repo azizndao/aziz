@@ -3,7 +3,7 @@
   "name": "Abdou Aziz Ndao",
   "short_name": "Aziz",
   "start_url": ".",
-  "display": "standalone",
+  "display": "minimal-ui",
   "background_color": "#fff",
   "description": "My name is Abdou Aziz Ndao and this is my personnel website where a make my portfoilio, and courses for web and mobile development and my blog",
   "icons": [
