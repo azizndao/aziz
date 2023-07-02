@@ -18,7 +18,7 @@ const headings = Astro.props.headings.filter((heading) => heading.depth > 1);
           <a
             href={`#${heading.slug}`}
             class={twMerge(
-              "block no-underline leading-relaxed border-l border-neutral-300 hover:bg-primary-200"
+              "block no-underline leading-relaxed border-l border-neutral-300 hover:bg-primary-500/10 hover:text-primary-500"
             )}
           >
             {heading.text}
@@ -66,7 +66,7 @@ const headings = Astro.props.headings.filter((heading) => heading.depth > 1);
 
 <style>
   li a.active {
-    @apply text-primary-500 font-medium border-l-2 border-primary-500;
+    @apply text-primary-500 bg-primary-500/10 font-medium border-l-2 border-primary-500;
   }
 
   .toc .heading-2 a {
