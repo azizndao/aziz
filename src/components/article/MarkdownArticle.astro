@@ -1,13 +1,13 @@
 ---
-import { twMerge } from "tailwind-merge";
+import { twMerge } from 'tailwind-merge'
 interface Props {
-  class?: string;
+  class?: string
 }
 ---
 
 <article
   class={twMerge(
-    "markdown prose prose-neutral dark:prose-invert lg:prose-lg xl:prose-xl",
+    'markdown mx-auto prose prose-neutral dark:prose-invert lg:prose-lg !prose-pre:bg-neutral-300',
     Astro.props.class
   )}
 >
