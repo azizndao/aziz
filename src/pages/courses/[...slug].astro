@@ -20,11 +20,15 @@ const { Content, headings } = await entry.render();
 
 const entries = await getCollection("courses");
 
-const menu = entries.map((entry) => ({
-  title: entry.data.title,
-  slug: `/courses/${entry.slug}`,
-  index: entry.data.index,
-}));
+const typ = Astro.url.pathname.split("/")[2];
+
+const menu = entries
+  .filter((entry) => entry.data.type == typ)
+  .map((entry) => ({
+    title: entry.data.title,
+    slug: `/courses/${entry.slug}`,
+    index: entry.data.index,
+  }));
 
 const type = entry.data.type.charAt(0).toUpperCase() + entry.data.type.slice(1);
 ---

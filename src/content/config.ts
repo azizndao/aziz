@@ -5,6 +5,7 @@ export const baseSchema = z
     title: z.string(),
     description: z.string(),
     type: z.literal("base").optional().default("base"),
+    tags: z.array(z.string()).optional().default([]),
     date: z
       .string()
       .or(z.date())
@@ -22,8 +23,6 @@ export const baseSchema = z
 const blog = defineCollection({
   schema: baseSchema.extend({
     type: z.literal("blog").optional().default("blog"),
-    tags: z.array(z.string()),
-    description: z.string(),
     cover: z.string().optional(),
     author: z.string().optional().default("Abdou Aziz Ndao"),
     category: z.string(),

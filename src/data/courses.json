@@ -1,6 +1,6 @@
 [
   {
-    "href": "/courses/python",
+    "href": "/courses/python/00-why-python",
     "title": "Python",
     "thumbnail": "/thumbnails/python.jpg",
     "description": "Python is a general-purpose programming language.",
@@ -16,6 +16,21 @@
       "Web Development",
       "Computer Vision",
       "Data Visualization"
+    ]
+  },
+  {
+    "title": "Flutter",
+    "thumbnail": "/thumbnails/flutter.jpg",
+    "href": "/courses/flutter/00-why-flutter",
+    "description": "Flutter is a mobile app framework.",
+    "duration": "2 months",
+    "tags": [
+      "Programming",
+      "Flutter",
+      "Web Development",
+      "Mobile Development",
+      "Mobile App",
+      "Cross Platform"
     ]
   },
   {
