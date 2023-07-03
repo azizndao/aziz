@@ -19,19 +19,19 @@ import ProfileImage from './ProfileImage.astro'
       I am a Creative Developer who is currently based in <b>Birkelene</b>,
       <b>Senegal</b>.
     </p>
-    <section class="flex gap-4">
+    <section class="flex gap-4 flex-wrap">
       <Pill>#Developer</Pill>
       <Pill>#Youtuber</Pill>
       <Pill>#Blogger</Pill>
       <Pill>#Student</Pill>
     </section>
-    <section class="hidden md:flex gap-4">
+    <section class="hidden md:flex gap-4 flex-wrap">
       <DownloadCVButton />
       <ContactMeButton />
     </section>
   </aside>
   <ProfileImage class="right-side md:py-8" />
-  <section class="block md:hidden self-center my-4">
+  <section class="flex gap-4 md:hidden self-center my-4 flex-wrap">
     <DownloadCVButton />
     <ContactMeButton />
   </section>
