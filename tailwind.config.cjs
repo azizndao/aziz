@@ -22,7 +22,7 @@ module.exports = {
       transparent: colors.transparent,
       white: colors.white,
       black: colors.black,
-      background: 'var(--bg-color)',
+      background: 'rgb(var(--bg-color) / <alpha-value>)',
     },
   },
   plugins: [require('@tailwindcss/typography')],
