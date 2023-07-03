@@ -3,7 +3,7 @@
     "href": "/courses/python/00-why-python",
     "title": "Python",
     "thumbnail": "/thumbnails/python.jpg",
-    "description": "Python is a general-purpose programming language.",
+    "summary": "Python is a high-level, interpreted programming language. It is a general-purpose language that can be used to build almost any type of application. Python is a great language for beginners because it is easy to learn and understand. It is also a great language for experienced programmers because it is very powerful and flexible.",
     "duration": "2 months",
     "tags": [
       "Programming",
@@ -22,7 +22,7 @@
     "title": "Flutter",
     "thumbnail": "/thumbnails/flutter.jpg",
     "href": "/courses/flutter/00-why-flutter",
-    "description": "Flutter is a mobile app framework.",
+    "summary": "Flutter is a mobile app framework that allows you to create native apps for Android and iOS. It is a cross-platform framework, which means that you can write code once and deploy it to multiple platforms. Flutter is a great choice for building mobile apps because it is fast, easy to learn, and has a large community of developers.",
     "duration": "2 months",
     "tags": [
       "Programming",
@@ -37,7 +37,7 @@
     "href": "/courses/next.js",
     "title": "Next.js",
     "thumbnail": "/thumbnails/nextjs.png",
-    "description": "Next.js is a React framework.",
+    "summary": "Next.js is a React framework that makes it easy to build web applications. It provides a set of tools for building modern web apps, including routing, server-side rendering, and code splitting. Next.js is a great choice for building web apps because it is fast, easy to learn, and has a large community of developers.",
     "duration": "2 months",
     "tags": [
       "Programming",
@@ -52,7 +52,7 @@
     "href": "/courses/react.js",
     "title": "React.js",
     "thumbnail": "/thumbnails/react.webp",
-    "description": "React.js is a JavaScript library for building user interfaces.",
+    "summary": "React.js is a JavaScript library for building user interfaces. It is used by many companies including Facebook, Instagram, Netflix, and Airbnb. React.js is a great choice for building web apps because it is fast, easy to learn, and has a large community of developers.",
     "duration": "2 months",
     "tags": ["Programming", "React", "Web Development", "Frontend"]
   },
@@ -60,7 +60,7 @@
     "href": "/courses/html",
     "title": "HTML",
     "thumbnail": "/logo/html5.svg",
-    "description": "HTML is the standard markup language for documents",
+    "summary": "HTML is the standard markup language for documents. It is used to create web pages and web applications. HTML is a great choice for building web apps because it is fast, easy to learn, and has a large community of developers.",
     "duration": "2 months",
     "tags": ["Programming", "HTML", "Web Development", "Frontend", "Fullstack"]
   },
@@ -68,7 +68,7 @@
     "href": "/courses/css",
     "title": "CSS",
     "thumbnail": "/logo/css3.svg",
-    "description": "CSS is the standard stylesheet language for documents",
+    "summary": "CSS is the standard stylesheet language for documents. It is used to style web pages and web applications. CSS is a great choice for building web apps because it is fast, easy to learn, and has a large community of developers.",
     "duration": "2 months",
     "tags": ["Programming", "CSS", "Web Development", "Frontend", "Fullstack"]
   },
@@ -76,7 +76,7 @@
     "href": "/courses/javascript",
     "title": "Javascript",
     "thumbnail": "/thumbnails/javascript.jpg",
-    "description": "Javascript is a high-level, interpreted programming language.",
+    "summary": "Javascript is a high-level, interpreted programming language. It is used to create interactive web pages and web applications. Javascript is a great choice for building web apps because it is fast, easy to learn, and has a large community of developers.",
     "duration": "2 months",
     "tags": [
       "Programming",
@@ -90,7 +90,7 @@
     "href": "/courses/typescript",
     "title": "Typescript",
     "thumbnail": "/logo/react.svg",
-    "description": "Typescript is a typed superset of JavaScript.",
+    "summary": "Typescript is a typed superset of JavaScript. It adds static typing to the language, which helps catch errors at compile time. Typescript is a great choice for building web apps because it is fast, easy to learn, and has a large community of developers.",
     "duration": "2 months",
     "tags": [
       "Programming",
@@ -104,7 +104,7 @@
     "href": "/courses/markdown",
     "title": "Markdown",
     "thumbnail": "/thumbnails/markdown.jpg",
-    "description": "Markdown is a lightweight markup language.",
+    "summary": "Markdown is a lightweight markup language. It is used to write content for the web. Markdown is a great choice for writing blog posts because it is fast, easy to learn, and has a large community of developers.",
     "duration": "2 months",
     "tags": [
       "Programming",

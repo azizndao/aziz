@@ -1,43 +1,49 @@
 ---
-import MarkdownArticle from "~components/article/MarkdownArticle.astro";
-import MenuIcon from "~components/svgs/MenuIcon.astro";
-import ChevronRightIcon from "~components/svgs/ChevronRightIcon.astro";
-import BaseLayout from "./BaseLayout.astro";
-import Header from "~components/header/Header.astro";
+import MarkdownArticle from '~components/article/MarkdownArticle.astro'
+import MenuIcon from '~components/svgs/MenuIcon.astro'
+import ChevronRightIcon from '~components/svgs/ChevronRightIcon.astro'
+import BaseLayout from './BaseLayout.astro'
+import Header from '~components/header/Header.astro'
+import TableOfContent from '~components/toc/TableOfContent.astro'
+import type { CollectionEntry } from 'astro:content'
+import DocMenuSidebar from '~components/DocMenuSidebar.astro'
 
 interface Props {
-  title: string;
-  description: string;
+  entry: CollectionEntry<'courses'>
 }
 
-const { title, description } = Astro.props;
+const { entry } = Astro.props
+
+const { Content, headings } = await entry.render()
+
+const category = Astro.url.pathname.split('/')[2]
 ---
 
 <script>
-  const container = document.querySelector(".main-wrapper");
+  const container = document.querySelector('.main-wrapper')
 
   document
-    .querySelector(".main-wrapper .md-container")
-    ?.addEventListener("click", () => {
-      if (container?.hasAttribute("aria-open")) {
-        container.attributes.removeNamedItem("aria-open");
+    .querySelector('.main-wrapper .md-container')
+    ?.addEventListener('click', () => {
+      if (container?.hasAttribute('aria-open')) {
+        container.attributes.removeNamedItem('aria-open')
       }
-    });
+    })
 
   document
-    .querySelector("#btn-left")
-    ?.addEventListener("click", () =>
-      container?.setAttribute("aria-open", "left")
-    );
+    .querySelector('#btn-left')
+    ?.addEventListener('click', () =>
+      container?.setAttribute('aria-open', 'left')
+    )
 
   document
-    .querySelector("#btn-right")
-    ?.addEventListener("click", () =>
-      container?.setAttribute("aria-open", "right")
-    );
+    .querySelector('#btn-right')
+    ?.addEventListener('click', () =>
+      container?.setAttribute('aria-open', 'right')
+    )
 </script>
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={entry.data.title} description={entry.data.description}>
   <main class="main-wrapper">
     <header class="appbar">
       <Header />
@@ -53,13 +59,13 @@ const { title, description } = Astro.props;
       </section>
     </header>
     <aside class="left">
-      <slot name="left-sidebar" />
+      <DocMenuSidebar type={category} title="Learn Python" />
     </aside>
     <MarkdownArticle class="md-container">
-      <slot />
+      <Content />
     </MarkdownArticle>
     <aside class="right">
-      <slot name="rigth-sidebar" />
+      <TableOfContent headings={headings} />
     </aside>
   </main>
 </BaseLayout>
@@ -81,7 +87,7 @@ const { title, description } = Astro.props;
     position: sticky;
     top: 0;
     z-index: 10;
-    @apply bg-neutral-50 dark:bg-neutral-900;
+    background-color: theme(colors.background);
   }
 
   .menubar {
@@ -123,7 +129,7 @@ const { title, description } = Astro.props;
     z-index: 12;
   }
 
-  [aria-open="left"] aside.left {
+  [aria-open='left'] aside.left {
     left: 0;
   }
 
@@ -132,7 +138,7 @@ const { title, description } = Astro.props;
     transition: right 0.25s ease;
   }
 
-  [aria-open="right"] aside.right {
+  [aria-open='right'] aside.right {
     right: 0;
   }
 
@@ -141,7 +147,7 @@ const { title, description } = Astro.props;
     z-index: 10;
     inset: 0;
     height: 100vh;
-    content: "";
+    content: '';
     background-color: rgba(0, 0, 0, 0.075);
     transition: color 0.35s ease;
   }
@@ -151,7 +157,7 @@ const { title, description } = Astro.props;
       grid-gap: 3rem;
       display: grid;
       gap: 3rem;
-      grid-template-areas: "sidebar main";
+      grid-template-areas: 'sidebar main';
       grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
       padding-left: 1.5rem;
       padding-right: 3rem;
@@ -195,7 +201,7 @@ const { title, description } = Astro.props;
       grid-gap: 3rem;
       display: grid;
       gap: 3rem;
-      grid-template-areas: "sidebar main toc";
+      grid-template-areas: 'sidebar main toc';
       grid-template-columns:
         minmax(0, 1fr)
         minmax(0, 2.5fr)

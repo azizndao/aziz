@@ -1,40 +1,25 @@
-<section>
-  <header>
-    <h1>Selected Work</h1>
-    <p>
+---
+import projects from '~data/projects.json'
+import ProjectItem from './ProjectItem.astro'
+---
+
+<section
+  class="space-y-8 max-w-6xl w-full mx-auto my-8 px-6 flex flex-col items-center"
+>
+  <header class="max-w-lg flex flex-col items-center">
+    <h1 class="font-semibold text-3xl py-4">Selected Work</h1>
+    <p class="text-center">
       Take a look below at some of my featured work for clients from the past
       few years.
     </p>
   </header>
+  <ul class="grid grid-cols-3 gap-6">
+    {
+      projects.map((project) => (
+        <li>
+          <ProjectItem {...project} />
+        </li>
+      ))
+    }
+  </ul>
 </section>
-
-<style>
-  section {
-    max-width: 72rem;
-    width: 100%;
-    margin: 2rem auto;
-    padding: 0 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  header {
-    max-width: 32rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  header h1 {
-    font-weight: 800;
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-    align-items: center;
-    padding: 1rem 0;
-  }
-
-  header p {
-    text-align: center;
-  }
-</style>

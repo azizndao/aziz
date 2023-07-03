@@ -1,29 +1,40 @@
 ---
-import Pill from "~components/Pill.astro";
-import DownloadCVButton from "./DownloadCVButton.astro";
-import ProfileImage from "./ProfileImage.astro";
+import Pill from '~components/Pill.astro'
+import ContactMeButton from './ContactMeButton.astro'
+import DownloadCVButton from './DownloadCVButton.astro'
+import ProfileImage from './ProfileImage.astro'
 ---
 
 <section
   class="header container max-w-7xl mx-auto flex justify-evenly items-center flex-col lg:flex-row lg:gap-6 lg:h-[calc((100dvh-var(--header-height)*2)*0.85)]"
 >
-  <aside class="left-side max-w-xs">
-    <h3 class="text-5xl leading-snug font-light">
-      Hi, my name is <b class="name">Abdou Aziz Ndao</b>
-    </h3>
+  <aside class="left-side max-w-[26rem]">
+    <p class="text-5xl leading-snug font-light">
+      Hi!, I am<br />
+      <strong class="name text-tertiary-600 text-5xl font-extrabold">
+        Abdou Aziz Ndao
+      </strong>
+    </p>
     <p class="text-lg">
       I am a Creative Developer who is currently based in <b>Birkelene</b>,
       <b>Senegal</b>.
     </p>
     <section class="flex gap-4">
-      <Pill>Developer</Pill>
-      <Pill>Youtuber</Pill>
-      <Pill>Student</Pill>
+      <Pill>#Developer</Pill>
+      <Pill>#Youtuber</Pill>
+      <Pill>#Blogger</Pill>
+      <Pill>#Student</Pill>
     </section>
-    <DownloadCVButton class="hidden md:inline-block" />
+    <section class="hidden md:flex gap-4">
+      <DownloadCVButton />
+      <ContactMeButton />
+    </section>
   </aside>
   <ProfileImage class="right-side md:py-8" />
-  <DownloadCVButton class="block md:hidden self-center my-4" />
+  <section class="block md:hidden self-center my-4">
+    <DownloadCVButton />
+    <ContactMeButton />
+  </section>
 </section>
 
 <style>
@@ -43,11 +54,6 @@ import ProfileImage from "./ProfileImage.astro";
 
   .download-bottom.primary {
     display: block;
-  }
-
-  .name {
-    font-weight: 800;
-    color: var(--secondary);
   }
 
   .download-bottom.secondary {

@@ -1,19 +1,23 @@
 ---
-import Header from "~components/header/Header.astro";
-import PortfolioHeader from "~components/portfolio/PortfolioHeader.astro";
-import ProjectList from "~components/portfolio/ProjectList.astro";
-import SkillList from "~components/portfolio/SkillList.astro";
-import ToolsList from "~components/portfolio/ToolsList.astro";
-import BaseLayout from "~layouts/BaseLayout.astro";
+import Header from '~components/header/Header.astro'
+import PortfolioHeader from '~components/portfolio/PortfolioHeader.astro'
+import ProjectList from '~components/portfolio/ProjectList.astro'
+import SkillList from '~components/portfolio/SkillList.astro'
+import ToolsList from '~components/portfolio/ToolsList.astro'
+import BaseLayout from '~layouts/BaseLayout.astro'
+
+const title = 'Portfolio'
+
+const description =
+  'My name is Abdou Aziz Ndao and this is my personnel website where a make my portfoilio, and courses for web and mobile development and my blog posts about web development and other things.'
 ---
 
-<BaseLayout
-  title="Portfolio"
-  description="My name is Abdou Aziz Ndao and this is my personnel website where a make my portfoilio, and courses for web and mobile development and my blog"
->
+<BaseLayout title={title} description={description}>
   <div slot="header"><span></span></div>
-  <div class="home content">
-    <header>
+  <div class="home bg-white dark:bg-black content flex flex-col gap-8">
+    <header
+      class="sticky z-10 top-0 bg-transparent backdrop-blur-xl backdrop-saturate-150"
+    >
       <Header />
     </header>
     <PortfolioHeader />
@@ -23,20 +27,16 @@ import BaseLayout from "~layouts/BaseLayout.astro";
   </div>
 </BaseLayout>
 
-<style>
-  .home {
-    display: flex;
-    background-color: black;
-    color: lightgray;
-    gap: 2rem;
-    flex-direction: column;
+<!-- <style>
+  .home::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    z-index: -1;
+    background-image: url(/images/back.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: blur(200px) saturate(150%);
   }
-
-  header {
-    position: sticky;
-    z-index: 10;
-    top: 0;
-    background-color: transparent;
-    backdrop-filter: blur(23px) saturate(4.5);
-  }
-</style>
+</style> -->

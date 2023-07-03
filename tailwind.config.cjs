@@ -1,15 +1,15 @@
-const colors = require("tailwindcss/colors");
-const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Poppins", defaultTheme.fontFamily.sans],
+        sans: ['Poppins', defaultTheme.fontFamily.sans],
       },
-      borderColor: ({ theme }) => theme("colors.neutral.400"),
+      borderColor: ({ theme }) => theme('colors.neutral.400'),
     },
     colors: {
       primary: colors.indigo,
@@ -22,7 +22,8 @@ module.exports = {
       transparent: colors.transparent,
       white: colors.white,
       black: colors.black,
+      background: 'var(--bg-color)',
     },
   },
-  plugins: [require("@tailwindcss/typography")],
-};
+  plugins: [require('@tailwindcss/typography')],
+}

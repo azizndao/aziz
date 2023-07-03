@@ -1,10 +1,10 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, z } from 'astro:content'
 
 export const baseSchema = z
   .object({
     title: z.string(),
     description: z.string(),
-    type: z.literal("base").optional().default("base"),
+    type: z.literal('base').optional().default('base'),
     tags: z.array(z.string()).optional().default([]),
     date: z
       .string()
@@ -18,27 +18,27 @@ export const baseSchema = z
     i18nReady: z.boolean().default(false),
     draft: z.boolean().default(false),
   })
-  .strict();
+  .strict()
 
 const blog = defineCollection({
   schema: baseSchema.extend({
-    type: z.literal("blog").optional().default("blog"),
+    type: z.literal('blog').optional().default('blog'),
     cover: z.string().optional(),
-    author: z.string().optional().default("Abdou Aziz Ndao"),
+    author: z.string().optional().default('Abdou Aziz Ndao'),
     category: z.string(),
   }),
-});
+})
 
 export const pythonSchema = baseSchema.extend({
-  type: z.literal("python"),
-});
+  type: z.literal('python'),
+})
 
 export const flutterSchema = baseSchema.extend({
-  type: z.literal("flutter"),
-});
+  type: z.literal('flutter'),
+})
 
 const courses = defineCollection({
   schema: z.union([pythonSchema, flutterSchema]),
-});
+})
 
-export const collections = { courses, blog };
+export const collections = { courses, blog }

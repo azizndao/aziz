@@ -1,21 +1,29 @@
 ---
+import { getCollection, type CollectionEntry } from 'astro:content'
 import { twMerge } from 'tailwind-merge'
+
 interface Props {
   title?: string
-  entries: {
-    title: string
-    slug: string
-  }[]
+  type: CollectionEntry<'courses'>['data']['type']
 }
-const { title, entries } = Astro.props
+
+const entries = await getCollection('courses')
+
+const menu = entries
+  .filter((entry) => entry.data.type == Astro.props.type)
+  .map((entry) => ({
+    title: entry.data.title,
+    slug: `/courses/${entry.slug}`,
+    index: entry.data.index,
+  }))
 ---
 
 <div class="menu">
-  <h3>{title ?? 'Menu'}</h3>
+  <h3>{Astro.props.title ?? 'Menu'}</h3>
   <nav>
     <ul>
       {
-        entries.map((entry) => (
+        menu.map((entry) => (
           <li>
             <a
               href={entry.slug}

@@ -1,24 +1,28 @@
 ---
-import MarkdownArticle from "~components/article/MarkdownArticle.astro";
-import Header from "~components/header/Header.astro";
-import BaseLayout from "./BaseLayout.astro";
+import type { CollectionEntry } from 'astro:content'
+import ArticleHeader from '~components/article/ArticleHeader.astro'
+import MarkdownArticle from '~components/article/MarkdownArticle.astro'
+import Header from '~components/header/Header.astro'
+import TableOfContent from '~components/toc/TableOfContent.astro'
+import BaseLayout from './BaseLayout.astro'
 
 interface Props {
-    title: string;
-    description: string;
-    hasMenu?: boolean;
+    entry: CollectionEntry<'blog'>
 }
-const { hasMenu = true, title, description } = Astro.props;
+const { entry } = Astro.props
+
+const { Content, headings } = await entry.render()
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={entry.data.title} description={entry.data.description}>
     <main class="main-wrapper">
         <Header class="appbar" />
         <MarkdownArticle class="md-container">
-            <slot />
+            <ArticleHeader entry={entry} />
+            <Content />
         </MarkdownArticle>
         <aside class="right">
-            <slot name="rigth-sidebar" />
+            <TableOfContent headings={headings} slot="rigth-sidebar" />
         </aside>
     </main>
 </BaseLayout>
@@ -51,7 +55,7 @@ const { hasMenu = true, title, description } = Astro.props;
             grid-gap: 3rem;
             display: grid;
             gap: 1.5rem;
-            grid-template-areas: "sidebar main";
+            grid-template-areas: 'sidebar main';
             grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
             padding-left: 1.5rem;
             padding-right: 3rem;
@@ -85,7 +89,7 @@ const { hasMenu = true, title, description } = Astro.props;
             grid-gap: 3rem;
             display: grid;
             gap: 3rem;
-            grid-template-areas: "sidebar main toc";
+            grid-template-areas: 'sidebar main toc';
             grid-template-columns:
                 minmax(0, 1fr)
                 minmax(0, 2.5fr)
