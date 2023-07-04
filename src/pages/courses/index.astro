@@ -1,15 +1,15 @@
 ---
-import type { CardProps } from '~components/Card.astro'
-import courses from '~data/courses.json'
-import CardListLayout from '~layouts/CardListLayout.astro'
+import type { CardProps } from "~components/Card.astro"
+import courses from "~data/courses.json"
+import CardListLayout from "~layouts/CardListLayout.astro"
 
 const cards: CardProps[] = courses.map((course) => ({
-  title: course.title,
-  description: course.summary,
-  href: course.href,
-  tags: course.tags,
-  thumbnail: course.thumbnail,
-  date: new Date(),
+    title: course.title,
+    description: course.summary,
+    href: course.href,
+    tags: course.tags,
+    thumbnail: course.thumbnail,
+    date: new Date()
 }))
 ---
 

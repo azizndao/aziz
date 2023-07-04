@@ -1,27 +1,27 @@
 ---
-export const prerender = false;
+export const prerender = false
 
-import CardListLayout from "~layouts/CardListLayout.astro";
-import { getAllPlaylists } from "~lib/youtube";
+import CardListLayout from "~layouts/CardListLayout.astro"
+import { getAllPlaylists } from "~lib/youtube"
 
-const data = await getAllPlaylists();
+const data = await getAllPlaylists()
 
 if (!data) {
-  return Astro.redirect("/404");
+    return Astro.redirect("/404")
 }
 
 const playlists = data?.items?.map((playlist) => ({
-  title: playlist.snippet.title,
-  description: playlist.snippet.description,
-  thumbnail: playlist.snippet.thumbnails.high.url,
-  href: `/tutorials/${playlist.id}`,
-  date: new Date(playlist.snippet.publishedAt),
-  // tags: playlist.snippet?.tags ?? [],
-}));
+    title: playlist.snippet.title,
+    description: playlist.snippet.description,
+    thumbnail: playlist.snippet.thumbnails.high.url,
+    href: `/tutorials/${playlist.id}`,
+    date: new Date(playlist.snippet.publishedAt)
+    // tags: playlist.snippet?.tags ?? [],
+}))
 ---
 
 <CardListLayout
-  title="Tutorials"
-  description="My tutorials on youtube"
-  cards={playlists ?? []}
+    title="Tutorials"
+    description="My tutorials on youtube"
+    cards={playlists ?? []}
 />

@@ -1,44 +1,44 @@
 ---
 import Image from 'astro/components/Image.astro'
 export type CardProps = {
-  title: string
-  description: string
-  href: string
-  thumbnail?: string
-  tags?: string[]
-  date?: Date
+    title: string
+    description: string
+    href: string
+    thumbnail?: string
+    tags?: string[]
+    date?: Date
 }
 
 const props = Astro.props as CardProps
 ---
 
 <a
-  href={props.href}
-  class="min-h-[28rem] overflow-hidden flex flex-col gap-4 rounded-2xl py-8 px-6 duration-150 h-full bg-white dark:bg-neutral-900 outline-none border border-slate-300 focus-within:ring-2 focus-within:ring-primary-500 focus-within:border-primary-500 hover:ring-2 hover:ring-primary-500 transition-all dark:border-neutral-400/40 hover:bg-neutral-50 dark:hover:bg-neutral-800"
+    href={props.href}
+    class="min-h-[28rem] overflow-hidden flex flex-col gap-4 rounded-2xl py-8 px-6 duration-150 h-full bg-white dark:bg-neutral-900 outline-none border border-slate-300 focus-within:ring-2 focus-within:ring-primary-500 focus-within:border-primary-500 hover:ring-2 hover:ring-primary-500 transition-all dark:border-neutral-400/40 hover:bg-neutral-50 dark:hover:bg-neutral-800"
 >
-  <Image
-    class="cover rounded-lg w-full h-auto aspect-video object-cover bg-neutral-300/70"
-    src={props.thumbnail ?? ''}
-    alt={props.title}
-    loading="lazy"
-    width={512}
-    height={(512 * 9) / 19}
-  />
-  <h3 class="text-2xl">{props.title}</h3>
-  <p class="text-ellipsis line-clamp-3">{props.description}</p>
-  <footer class="mt-auto">
-    {
-      props.tags && (
-        <ul class="flex gap-2 flex-wrap">
-          {props?.tags?.slice(0, 3)?.map((tag) => (
-            <li>
-              <span class="inline-block text-sm px-4 py-1.5 rounded-full bg-neutral-100 dark:bg-neutral-800/90  dark:border-neutral-400">
-                {tag}
-              </span>
-            </li>
-          ))}
-        </ul>
-      )
-    }
-  </footer>
+    <Image
+        class="cover rounded-lg w-full h-auto aspect-video object-cover bg-neutral-300/70"
+        src={props.thumbnail ?? ''}
+        alt={props.title}
+        loading="lazy"
+        width={512}
+        height={(512 * 9) / 19}
+    />
+    <h3 class="text-2xl">{props.title}</h3>
+    <p class="text-ellipsis line-clamp-3">{props.description}</p>
+    <footer class="mt-auto">
+        {
+            props.tags && (
+                <ul class="flex gap-2 flex-wrap">
+                    {props?.tags?.slice(0, 3)?.map((tag) => (
+                        <li>
+                            <span class="inline-block text-sm px-4 py-1.5 rounded-full bg-neutral-100 dark:bg-neutral-800/90  dark:border-neutral-400">
+                                {tag}
+                            </span>
+                        </li>
+                    ))}
+                </ul>
+            )
+        }
+    </footer>
 </a>

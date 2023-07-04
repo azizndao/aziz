@@ -1,20 +1,20 @@
 ---
 interface Props {
-  width?: number;
-  height?: number;
+    width?: number
+    height?: number
 }
 
-const { width = 24, height = 24 } = Astro.props;
+const { width = 24, height = 24 } = Astro.props
 ---
 
 <svg
-  width={width}
-  height={height}
-  fill="currentColor"
-  viewBox="0 0 512 512"
-  aria-hidden="true"
+    width={width}
+    height={height}
+    fill="currentColor"
+    viewBox="0 0 512 512"
+    aria-hidden="true"
 >
-  <circle cx="256" cy="256" r="48"></circle>
-  <circle cx="256" cy="416" r="48"></circle>
-  <circle cx="256" cy="96" r="48"></circle>
+    <circle cx="256" cy="256" r="48"></circle>
+    <circle cx="256" cy="416" r="48"></circle>
+    <circle cx="256" cy="96" r="48"></circle>
 </svg>

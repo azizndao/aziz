@@ -11,93 +11,102 @@ import mainMenu from './main-menu.json'
 const pathname = Astro.url.pathname
 
 interface Props {
-  class?: string
+    class?: string
 }
 
 const { class: cls } = Astro.props
 ---
 
 <section
-  class={twMerge(
-    'nav-bar bg-background/90 backdrop-blur-2xl backdrop-saturate-200  h-[var(--header-height)]',
-    cls
-  )}
+    class={twMerge(
+        'nav-bar bg-background/90 backdrop-blur-2xl backdrop-saturate-200  h-[var(--header-height)]',
+        cls
+    )}
 >
-  <nav
-    class="flex gap-6 items-center h-full px-6 max-w-[var(--max-width)] mx-auto"
-  >
-    <slot name="menu">
-      <FloatingMenu class="md:hidden" />
-    </slot>
-    <a href="/" class="font-bold text-3xl">Aziz</a>
+    <nav
+        class="flex gap-6 items-center h-full px-6 max-w-[var(--max-width)] mx-auto"
+    >
+        <slot name="menu">
+            <FloatingMenu class="md:hidden" />
+        </slot>
+        <a href="/" class="font-bold text-3xl">Aziz</a>
 
-    <span class="grow"></span>
-    <ul class="nav-items">
-      {
-        mainMenu.map(({ href, title }) => (
-          <li>
-            <HeaderLink
-              href={href}
-              active={
-                href == '/' ? pathname === '/' : pathname.startsWith(href)
-              }
-            >
-              {title}
-            </HeaderLink>
-          </li>
-        ))
-      }
-    </ul>
-    <ul class="contacts">
-      <li>
-        <a href="https://github.com/azizndao" title="Github" target="_blank">
-          <GithubLogo />
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/_abdouaziz_"
-          title="Twitter"
-          target="_blank"
-        >
-          <TwitterLogo />
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://youtube.com/@abdou-aziz"
-          title="YouTube"
-          target="_blank"
-        >
-          <YoutubeLogo />
-        </a>
-      </li>
-      <li>
-        <a href="https://www.linkedin.com/in/abdou-aziz-ndao" target="_blank">
-          <LinkedInLogo />
-        </a>
-      </li>
-    </ul>
-  </nav>
+        <span class="grow"></span>
+        <ul class="nav-items">
+            {
+                mainMenu.map(({ href, title }) => (
+                    <li>
+                        <HeaderLink
+                            href={href}
+                            active={
+                                href == '/'
+                                    ? pathname === '/'
+                                    : pathname.startsWith(href)
+                            }
+                        >
+                            {title}
+                        </HeaderLink>
+                    </li>
+                ))
+            }
+        </ul>
+        <ul class="contacts">
+            <li>
+                <a
+                    href="https://github.com/azizndao"
+                    title="Github"
+                    target="_blank"
+                >
+                    <GithubLogo />
+                </a>
+            </li>
+            <li>
+                <a
+                    href="https://twitter.com/_abdouaziz_"
+                    title="Twitter"
+                    target="_blank"
+                >
+                    <TwitterLogo />
+                </a>
+            </li>
+            <li>
+                <a
+                    href="https://youtube.com/@abdou-aziz"
+                    title="YouTube"
+                    target="_blank"
+                >
+                    <YoutubeLogo />
+                </a>
+            </li>
+            <li>
+                <a
+                    href="https://www.linkedin.com/in/abdou-aziz-ndao"
+                    target="_blank"
+                >
+                    <LinkedInLogo />
+                </a>
+            </li>
+        </ul>
+    </nav>
 </section>
 
 <style>
-  ul.nav-items {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 0 1rem;
-  }
-
-  @media screen and (max-width: 768px) {
     ul.nav-items {
-      display: none;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 0 1rem;
     }
-  }
 
-  ul.contacts {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
+    @media screen and (max-width: 768px) {
+        ul.nav-items {
+            display: none;
+        }
+    }
+
+    ul.contacts {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
 </style>

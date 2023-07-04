@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
   "name": "Abdou Aziz Ndao",
   "short_name": "Aziz",
-  "start_url": "?pwa=true",
+  "start_url": "/?standalone=true",
   "display": "standalone",
   "background_color": "#fff",
   "description": "My name is Abdou Aziz Ndao and this is my personnel website where a make my portfoilio, and courses for web and mobile development and my blog",

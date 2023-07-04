@@ -1,40 +1,40 @@
 ---
 import { twMerge } from 'tailwind-merge'
 interface Props {
-  class?: string
+    class?: string
 }
 ---
 
 <article
-  class={twMerge(
-    'markdown prose prose-slate dark:prose-invert lg:prose-lg prose-pre:w-full prose-headings:text-primary-500 dark:prose-headings:text-primary-400 prose-a:text-primary-500',
-    Astro.props.class
-  )}
+    class={twMerge(
+        'markdown prose prose-slate dark:prose-invert lg:prose-lg prose-pre:w-full prose-headings:text-primary-500 dark:prose-headings:text-primary-400 prose-a:text-primary-500',
+        Astro.props.class
+    )}
 >
-  <slot />
+    <slot />
 </article>
 
 <style is:global>
-  .prose :is(h2, h3, h4, h5) {
-    position: relative;
-  }
+    .prose :is(h2, h3, h4, h5) {
+        position: relative;
+    }
 
-  .prose :is(h2, h3, h4, h5) a::before {
-    content: url(/icons/link.svg);
-    height: 24px;
-    width: 24px;
-    stroke-width: 2px;
-    left: -2rem;
-    color: currentColor;
-    position: absolute;
-    display: inline-block;
-  }
+    .prose :is(h2, h3, h4, h5) a::before {
+        content: url(/icons/link.svg);
+        height: 24px;
+        width: 24px;
+        stroke-width: 2px;
+        left: -2rem;
+        color: currentColor;
+        position: absolute;
+        display: inline-block;
+    }
 
-  .prose * {
-    scroll-margin-top: var(--scroll-margin-top);
-  }
+    .prose * {
+        scroll-margin-top: var(--scroll-margin-top);
+    }
 
-  * {
-    scroll-behavior: smooth;
-  }
+    * {
+        scroll-behavior: smooth;
+    }
 </style>

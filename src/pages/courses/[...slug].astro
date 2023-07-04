@@ -1,18 +1,18 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content'
-import CourseLayout from '~layouts/CourseLayout.astro'
+import { CollectionEntry, getCollection } from "astro:content"
+import CourseLayout from "~layouts/CourseLayout.astro"
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('courses')
-  return blogEntries.map(function (entry) {
-    return {
-      params: { slug: entry.slug },
-      props: { entry },
-    }
-  })
+    const blogEntries = await getCollection("courses")
+    return blogEntries.map(function (entry) {
+        return {
+            params: { slug: entry.slug },
+            props: { entry }
+        }
+    })
 }
 
-const { entry } = Astro.props as { entry: CollectionEntry<'courses'> }
+const { entry } = Astro.props as { entry: CollectionEntry<"courses"> }
 ---
 
 <CourseLayout entry={entry} />

@@ -3,71 +3,71 @@ import { getCollection, type CollectionEntry } from 'astro:content'
 import { twMerge } from 'tailwind-merge'
 
 interface Props {
-  title?: string
-  type: CollectionEntry<'courses'>['data']['type']
+    title?: string
+    type: CollectionEntry<'courses'>['data']['type']
 }
 
 const entries = await getCollection('courses')
 
 const menu = entries
-  .filter((entry) => entry.data.type == Astro.props.type)
-  .map((entry) => ({
-    title: entry.data.title,
-    slug: `/courses/${entry.slug}`,
-    index: entry.data.index,
-  }))
+    .filter((entry) => entry.data.type == Astro.props.type)
+    .map((entry) => ({
+        title: entry.data.title,
+        slug: `/courses/${entry.slug}`,
+        index: entry.data.index,
+    }))
 ---
 
 <div class="menu">
-  <h3>{Astro.props.title ?? 'Menu'}</h3>
-  <nav>
-    <ul>
-      {
-        menu.map((entry) => (
-          <li>
-            <a
-              href={entry.slug}
-              aria-active={entry.slug === Astro.url.pathname}
-              class={twMerge(
-                'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-500/10',
-                entry.slug === Astro.url.pathname &&
-                  'text-primary-500 bg-primary-500/20'
-              )}
-            >
-              {entry.title}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
+    <h3>{Astro.props.title ?? 'Menu'}</h3>
+    <nav>
+        <ul>
+            {
+                menu.map((entry) => (
+                    <li>
+                        <a
+                            href={entry.slug}
+                            aria-active={entry.slug === Astro.url.pathname}
+                            class={twMerge(
+                                'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-500/10',
+                                entry.slug === Astro.url.pathname &&
+                                    'text-primary-500 bg-primary-500/20'
+                            )}
+                        >
+                            {entry.title}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </nav>
 </div>
 
 <style>
-  .menu {
-    padding: 0 1rem;
-  }
+    .menu {
+        padding: 0 1rem;
+    }
 
-  h3 {
-    font-weight: bold;
-    line-height: 2;
-    padding: 0 1rem;
-    @apply mb-8 text-3xl;
-  }
+    h3 {
+        font-weight: bold;
+        line-height: 2;
+        padding: 0 1rem;
+        @apply mb-8 text-3xl;
+    }
 
-  .menu nav ul {
-    display: flex;
-    flex-direction: column;
-    /* gap: 1.5rem; */
-  }
+    .menu nav ul {
+        display: flex;
+        flex-direction: column;
+        /* gap: 1.5rem; */
+    }
 
-  li a {
-    padding: 0 1rem;
-    display: block;
-    text-decoration: none;
-    line-height: 2.25;
-    width: 100%;
-    @apply line-clamp-1;
-    border-radius: 6px;
-  }
+    li a {
+        padding: 0 1rem;
+        display: block;
+        text-decoration: none;
+        line-height: 2.25;
+        width: 100%;
+        @apply line-clamp-1;
+        border-radius: 6px;
+    }
 </style>
