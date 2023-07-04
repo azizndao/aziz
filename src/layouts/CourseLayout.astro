@@ -1,12 +1,11 @@
 ---
-import MarkdownArticle from '~components/article/MarkdownArticle.astro'
-import MenuIcon from '~components/svgs/MenuIcon.astro'
-import ChevronRightIcon from '~components/svgs/ChevronRightIcon.astro'
-import BaseLayout from './BaseLayout.astro'
-import Header from '~components/header/Header.astro'
-import TableOfContent from '~components/toc/TableOfContent.astro'
 import type { CollectionEntry } from 'astro:content'
 import DocMenuSidebar from '~components/DocMenuSidebar.astro'
+import MarkdownArticle from '~components/article/MarkdownArticle.astro'
+import Breadcrumbs from '~components/header/Breadcrumbs.astro'
+import Header from '~components/header/Header.astro'
+import TableOfContent from '~components/toc/TableOfContent.astro'
+import BaseLayout from './BaseLayout.astro'
 
 interface Props {
   entry: CollectionEntry<'courses'>
@@ -16,52 +15,20 @@ const { entry } = Astro.props
 
 const { Content, headings } = await entry.render()
 
-const category = Astro.url.pathname.split('/')[2]
+const category = entry.data.type
 ---
-
-<script>
-  const container = document.querySelector('.main-wrapper')
-
-  document
-    .querySelector('.main-wrapper .md-container')
-    ?.addEventListener('click', () => {
-      if (container?.hasAttribute('aria-open')) {
-        container.attributes.removeNamedItem('aria-open')
-      }
-    })
-
-  document
-    .querySelector('#btn-left')
-    ?.addEventListener('click', () =>
-      container?.setAttribute('aria-open', 'left')
-    )
-
-  document
-    .querySelector('#btn-right')
-    ?.addEventListener('click', () =>
-      container?.setAttribute('aria-open', 'right')
-    )
-</script>
 
 <BaseLayout title={entry.data.title} description={entry.data.description}>
   <main class="main-wrapper">
     <header class="appbar">
       <Header />
-      <section class="menubar">
-        <button id="btn-left">
-          <MenuIcon />
-          Menu
-        </button>
-        <button id="btn-right">
-          On this page
-          <ChevronRightIcon />
-        </button>
-      </section>
+      <Breadcrumbs data={entry.data} />
     </header>
     <aside class="left">
       <DocMenuSidebar type={category} title="Learn Python" />
     </aside>
-    <MarkdownArticle class="md-container">
+    <MarkdownArticle class="md-container flex flex-col w-full justify-center">
+      <h1>{entry.data.title}</h1>
       <Content />
     </MarkdownArticle>
     <aside class="right">
@@ -80,7 +47,7 @@ const category = Astro.url.pathname.split('/')[2]
   }
 
   .md-container {
-    padding: 0 1.5rem;
+    padding: 1.5rem;
   }
 
   .appbar {
@@ -88,26 +55,6 @@ const category = Astro.url.pathname.split('/')[2]
     top: 0;
     z-index: 10;
     background-color: theme(colors.background);
-  }
-
-  .menubar {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: calc(var(--header-height) * 0.75);
-    @apply border-b border-neutral-400 dark:border-neutral-700;
-  }
-
-  .menubar button {
-    display: inline-flex;
-    gap: 0.75rem;
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-  }
-
-  .menubar button:is(:hover, :focus-within) {
-    @apply text-primary-300;
   }
 
   aside {
@@ -170,10 +117,6 @@ const category = Astro.url.pathname.split('/')[2]
     .appbar {
       grid-column: 1 / 4;
       grid-row: 1;
-    }
-
-    .menubar {
-      display: none;
     }
 
     aside {

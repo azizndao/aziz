@@ -1,0 +1,20 @@
+---
+import { twMerge } from 'tailwind-merge'
+interface Props {
+    name: string
+    link: string
+    description: string
+    image: string
+    class?: string
+}
+
+const { name, link, description, image, class: cls } = Astro.props
+---
+
+<li class={twMerge('w-full rounded-3xl shadow-md', cls)}>
+    <a href={link} target="_blank" class="w-full px-6 py-8 flex flex-col gap-2">
+        <img src={image} alt={name} class="h-28 w-28 object-contain" />
+        <h4 class="text-3xl">{name}</h4>
+        <p>{description}</p>
+    </a>
+</li>

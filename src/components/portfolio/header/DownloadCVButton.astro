@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { twMerge } from 'tailwind-merge'
+
+interface Props extends HTMLAttributes<'a'> {}
+
+const { class: cls, ...attrs } = Astro.props
+---
+
+<a
+    {...attrs}
+    class={twMerge(
+        'block px-8 py-4 rounded-lg bg-tertiary-600 dark:bg-tertiary-500 text-tertiary-50',
+        cls
+    )}
+>
+    Download my CV
+</a>

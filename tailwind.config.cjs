@@ -24,6 +24,14 @@ module.exports = {
       black: colors.black,
       background: 'rgb(var(--bg-color) / <alpha-value>)',
     },
+    ringColor: ({ theme }) => ({
+      DEFAULT: theme('colors.primary.500'),
+      ...theme('colors'),
+    }),
+    borderColor: ({ theme }) => ({
+      DEFAULT: theme('colors.slate.500'),
+      ...theme('colors'),
+    }),
   },
   plugins: [require('@tailwindcss/typography')],
 }

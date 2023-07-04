@@ -1,42 +1,42 @@
 ---
 import Header from '~components/header/Header.astro'
-import PortfolioHeader from '~components/portfolio/PortfolioHeader.astro'
-import ProjectList from '~components/portfolio/ProjectList.astro'
-import SkillList from '~components/portfolio/SkillList.astro'
-import ToolsList from '~components/portfolio/ToolsList.astro'
+import PortfolioHeader from '~components/portfolio/header/PortfolioHeader.astro'
+import ProjectList from '~components/portfolio/projects/ProjectList.astro'
+import SkillList from '~components/portfolio/skills/SkillList.astro'
+import ToolsList from '~components/portfolio/tools/ToolsList.astro'
 import BaseLayout from '~layouts/BaseLayout.astro'
 
 const title = 'Portfolio'
 
 const description =
-  'My name is Abdou Aziz Ndao and this is my personnel website where a make my portfoilio, and courses for web and mobile development and my blog posts about web development and other things.'
+    'My name is Abdou Aziz Ndao and this is my personnel website where a make my portfoilio, and courses for web and mobile development and my blog posts about web development and other things.'
 ---
 
 <BaseLayout title={title} description={description}>
-  <div slot="header"><span></span></div>
-  <div class="home bg-white dark:bg-black content flex flex-col gap-8">
-    <header
-      class="sticky z-10 top-0 bg-transparent backdrop-blur-xl backdrop-saturate-150"
-    >
-      <Header />
-    </header>
-    <PortfolioHeader />
-    <SkillList />
-    <ProjectList />
-    <ToolsList />
-  </div>
+    <div slot="header"><span></span></div>
+    <div class="home bg-white dark:bg-black content flex flex-col gap-8">
+        <header
+            class="sticky z-10 top-0 bg-transparent backdrop-blur-xl backdrop-saturate-150"
+        >
+            <Header />
+        </header>
+        <PortfolioHeader />
+        <SkillList />
+        <ProjectList />
+        <ToolsList />
+    </div>
 </BaseLayout>
 
-<!-- <style>
-  .home::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    height: 100%;
-    z-index: -1;
-    background-image: url(/images/back.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    filter: blur(200px) saturate(150%);
-  }
-</style> -->
+<style>
+    .home::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        z-index: -1;
+        background-image: url(/images/back.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        filter: blur(200px) saturate(150%);
+    }
+</style>

@@ -1,0 +1,43 @@
+---
+import SectionHeader from '../SectionHeader.astro'
+import ToolItem from './ToolItem.astro'
+---
+
+<section
+    class="max-w-7xl mx-auto flex flex-col items-center justify-center gap-8 py-6"
+>
+    <SectionHeader
+        title="My favorite Tools"
+        description="Here some app, I use very often"
+    />
+    <ul class="flex flex-col items-center gap-6 md:grid grid-cols-2 mx-4">
+        <ToolItem
+            name="Visual Studio Code"
+            link="https://code.visualstudio.com/"
+            description="I use vs code for Web, Flutter and Python development"
+            image="/logo/vscode.png"
+            class="bg-gradient-to-br from-[#141414] to-primary-950 text-white"
+        />
+        <ToolItem
+            name="Android Studio"
+            link="https://developer.android.com/studio/"
+            description="I use android studio for android development"
+            image="/logo/android-studio.png"
+            class="bg-gradient-to-br from-[#05e097] to-[#1692e6] text-white"
+        />
+        <ToolItem
+            name="Figma"
+            link="https://www.figma.com/"
+            description="I use figma for UI/UX design"
+            image="/logo/figma.png"
+            class="bg-gradient-to-br from-[#a510fc] to-[#ff20e1] text-white"
+        />
+        <ToolItem
+            name="Github"
+            link="https://www.github.com/"
+            description="I use github for version control and open source projects"
+            image="/logo/github.png"
+            class="bg-gradient-to-br from-primary-50 via-primary-50 to-primary-100 text-slate-800"
+        />
+    </ul>
+</section>

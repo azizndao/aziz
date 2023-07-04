@@ -1,0 +1,20 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { twMerge } from 'tailwind-merge'
+
+interface Props extends HTMLAttributes<'a'> {}
+
+const { class: cls, ...attrs } = Astro.props
+const mail = import.meta.env.EMAIL
+---
+
+<a
+    {...attrs}
+    href={`mailto:${mail}`}
+    class={twMerge(
+        'block px-8 py-4 rounded-lg border-2 border-tertiary-600  dark:border-tertiary-400 text-tertiary-600 dark:text-tertiary-400',
+        cls
+    )}
+>
+    Contact me
+</a>

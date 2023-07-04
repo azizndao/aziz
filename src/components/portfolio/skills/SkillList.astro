@@ -1,0 +1,49 @@
+---
+import Android from '~components/svgs/AndroidLogo.astro'
+import FigmaLogo from '~components/svgs/FigmaLogo.astro'
+import SquareStack from '~components/svgs/SquareStack.astro'
+import SectionHeader from '../SectionHeader.astro'
+import SkillItem from './SkillItem.astro'
+---
+
+<section
+    class="max-w-7xl py-8 flex flex-col gap-12 items-center mx-6 lg:mx-auto my-6"
+>
+    <SectionHeader
+        title="My skills"
+        description="I have experience building websites and applications using JavaScript for web, Kotlin for Android and Figma for design purpose."
+    />
+    <section>
+        <ul
+            class="border-2 border-primary-500 rounded-3xl lg:rounded-[3rem] px-6 lg:px-10 py-10 flex gap-8 lg:gap-6 items-center justify-evenly flex-wrap"
+        >
+            <SkillItem
+                class="skill"
+                title="Full Stack Development"
+                description="I have experience building websites and applications using JavaScript, Next.js, Node, and MongoDB."
+            >
+                <SquareStack />
+            </SkillItem>
+            <SkillItem
+                class="skill"
+                title="Mobile Development"
+                description="I have experience building websites and applications using JavaScript, React, Node, and MongoDB."
+            >
+                <Android />
+            </SkillItem>
+            <SkillItem
+                class="skill"
+                title="UX/UI Design"
+                description="I have experience building websites and applications using JavaScript, React, Node, and MongoDB."
+            >
+                <FigmaLogo />
+            </SkillItem>
+        </ul>
+    </section>
+</section>
+
+<style>
+    .skill {
+        max-width: 22rem;
+    }
+</style>

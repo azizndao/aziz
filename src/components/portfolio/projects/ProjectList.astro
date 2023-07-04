@@ -1,0 +1,55 @@
+---
+import SectionHeader from '../SectionHeader.astro'
+import ProjectItem from './ProjectItem.astro'
+---
+
+<section
+    class="space-y-8 max-w-7xl w-full mx-auto my-4 px-6 flex flex-col items-center"
+>
+    <SectionHeader
+        title="Featured Projects"
+        description="Take a look below at some of my featured work for clients from the past few years."
+    />
+    <ul class="flex flex-wrap md:grid grid-cols-3 gap-6">
+        <ProjectItem
+            name="Personel Website"
+            description="A personal website that showcases my projects and skills. It also has a blog section where I write about my experiences and things I learn."
+            images={['/images/projects/nyt.png']}
+            url="#"
+            framework="Jetpack Compose"
+            platform="Android"
+            language="Kotlin"
+            class="bg-gradient-to-br from-primary-600 to-primary-900 text-white"
+        />
+        <ProjectItem
+            name="Machine Translate"
+            description="An Android app that translates text from one language to another using the Google Translate API."
+            images={['/images/projects/nyt.png']}
+            url="#"
+            framework="Jetpack Compose"
+            platform="Android"
+            language="Kotlin"
+            class="bg-gradient-to-br from-[#05e097] to-[#1692e6] text-white"
+        />
+        <ProjectItem
+            name="ThiakThiak"
+            description="An Android app that allows users to order or deliver food from restaurants or any other package."
+            images={['/images/projects/nyt.png']}
+            url="#"
+            framework="View Framework"
+            platform="Android"
+            language="Kotlin"
+            class="bg-gradient-to-br from-[#05e097] to-[#1692e6] text-white"
+        />
+        <ProjectItem
+            name="Muslims App"
+            description="An Android app that allows users to read and listen the Quran and also get prayer times as well as hadeeths."
+            images={['/images/projects/nyt.png']}
+            url="#"
+            framework="View Framework"
+            platform="Android"
+            language="Kotlin"
+            class="bg-gradient-to-br from-[#05e097] to-[#1692e6] text-white"
+        />
+    </ul>
+</section>

@@ -1,15 +1,18 @@
 ---
-import CloseIcon from "~components/svgs/CloseIcon.astro";
-import MenuIcon from "~components/svgs/MenuIcon.astro";
-import mainMenu from "./main-menu.json";
-const pathname = Astro.url.pathname;
+import CloseIcon from '~components/svgs/CloseIcon.astro'
+import MenuIcon from '~components/svgs/MenuIcon.astro'
+import mainMenu from './main-menu.json'
+const pathname = Astro.url.pathname
 
 interface Props {
-  class?: string;
+  class?: string
 }
 ---
 
 <div class={Astro.props.class}>
+  <button class="open-button rounded-md p-1">
+    <MenuIcon class="stroke-[3px]" />
+  </button>
   <dialog id="main-menu">
     <ul role="menu" class="md:flex flex-col px-4 items-center gap-6">
       {
@@ -18,7 +21,7 @@ interface Props {
             <a
               href={href}
               aria-current-page={
-                href == "/" ? pathname === "/" : pathname.startsWith(href)
+                href == '/' ? pathname === '/' : pathname.startsWith(href)
               }
             >
               {title}
@@ -33,21 +36,18 @@ interface Props {
       </li>
     </ul>
   </dialog>
-  <button class="open-button border-2 rounded-md p-1">
-    <MenuIcon />
-  </button>
 </div>
 
 <script>
-  const menu = document.querySelector("dialog#main-menu") as HTMLDialogElement;
+  const menu = document.querySelector('dialog#main-menu') as HTMLDialogElement
 
   document
-    .querySelector(".open-button")
-    ?.addEventListener("click", () => menu?.showModal());
+    .querySelector('.open-button')
+    ?.addEventListener('click', () => menu?.showModal())
 
   document
-    .querySelector(".close-button")
-    ?.addEventListener("click", () => menu?.close());
+    .querySelector('.close-button')
+    ?.addEventListener('click', () => menu?.close())
 </script>
 
 <style>
@@ -73,7 +73,7 @@ interface Props {
     @apply stroke-danger-600 stroke-[4px];
   }
 
-  ul[role="menu"] {
+  ul[role='menu'] {
     display: flex;
     gap: 1rem;
     flex-direction: column;

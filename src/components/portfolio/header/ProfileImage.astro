@@ -1,27 +1,28 @@
 ---
-import type { HTMLAttributes } from "astro/types";
-import { twMerge } from "tailwind-merge";
-interface Props extends HTMLAttributes<"div"> {
-    class?: string;
+import { twMerge } from 'tailwind-merge'
+
+interface Props {
+    class?: string
 }
-const { class: cls, ...attrs } = Astro.props;
+
+const { class: cls } = Astro.props
 ---
 
-<div class={twMerge("img-container", cls)} {...attrs}>
+<div class={twMerge('img-container', cls)}>
     <div>
-        <img src="/images/me.png" class={"original"} />
+        <img src="/images/me.png" class="original" />
         <img class="blur" src="/images/me16x35.png" />
     </div>
 </div>
 
 <script>
-    const container = document.querySelector(".img-container");
+    const container = document.querySelector('.img-container')
 
     document
-        .querySelector(".img-container img.original")
-        ?.addEventListener("load", (event) => {
-            container?.classList.add("loaded");
-        });
+        .querySelector('.img-container img.original')
+        ?.addEventListener('load', (event) => {
+            container?.classList.add('loaded')
+        })
 </script>
 
 <style>

@@ -1,6 +1,7 @@
 ---
 import { twMerge } from 'tailwind-merge'
 import GithubLogo from '~components/svgs/GithubLogo.astro'
+import LinkedInLogo from '~components/svgs/LinkedInLogo.astro'
 import TwitterLogo from '~components/svgs/TwitterLogo.astro'
 import YoutubeLogo from '~components/svgs/YoutubeLogo.astro'
 import FloatingMenu from './FloatingMenu.astro'
@@ -18,13 +19,16 @@ const { class: cls } = Astro.props
 
 <section
   class={twMerge(
-    'nav-bar bg-background/40 backdrop-blur-lg backdrop-saturate-200  h-[var(--header-height)] backdrop-filter-sm',
+    'nav-bar bg-background/90 backdrop-blur-2xl backdrop-saturate-200  h-[var(--header-height)]',
     cls
   )}
 >
   <nav
-    class="flex gap-6 items-center h-full px-4 max-w-[var(--max-width)] mx-auto"
+    class="flex gap-6 items-center h-full px-6 max-w-[var(--max-width)] mx-auto"
   >
+    <slot name="menu">
+      <FloatingMenu class="md:hidden" />
+    </slot>
     <a href="/" class="font-bold text-3xl">Aziz</a>
 
     <span class="grow"></span>
@@ -68,8 +72,11 @@ const { class: cls } = Astro.props
           <YoutubeLogo />
         </a>
       </li>
-
-      <FloatingMenu class="md:hidden" />
+      <li>
+        <a href="https://www.linkedin.com/in/abdou-aziz-ndao" target="_blank">
+          <LinkedInLogo />
+        </a>
+      </li>
     </ul>
   </nav>
 </section>

@@ -1,18 +1,21 @@
 ---
-import SquareStack from "~components/svgs/SquareStack.astro";
+import SquareStack from '~components/svgs/SquareStack.astro'
 
 interface Props {
-    title: string;
-    description: string;
-    icon: string;
-    class?: string;
+    title: string
+    description: string
+    class?: string
 }
 
-const { title, description, class: cls } = Astro.props;
+const { title, description, class: cls } = Astro.props
 ---
 
-<li class:list={["skill", cls]}>
-    <SquareStack class="icon" />
+<li class:list={['skill', cls]}>
+    <span class="icon">
+        <slot>
+            <SquareStack />
+        </slot>
+    </span>
     <h3>{title}</h3>
     <p>{description}</p>
 </li>
@@ -38,7 +41,8 @@ const { title, description, class: cls } = Astro.props;
     .icon {
         height: 5rem;
         width: 5rem;
-        @apply stroke-primary-500;
+        @apply text-primary-500 stroke-primary-500
+            fill-primary-500;
     }
 
     h3 {
