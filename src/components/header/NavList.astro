@@ -1,0 +1,118 @@
+---
+import { twMerge } from "tailwind-merge"
+import mainMenu from "./main-menu.json"
+
+const { pathname } = Astro.url
+---
+
+<script>
+    document.querySelector("#btn-open")?.addEventListener("click", () => {
+        document.body.attributes.removeNamedItem("open-menu")
+    })
+</script>
+
+<section class="links">
+    <header class="md:hidden">
+        <button id="btn-open" class="px-6">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="3"
+                stroke="currentColor"
+                class="w-6 h-6"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <h1 class="headline text-5xl p-8 font-bold">Aziz</h1>
+    </header>
+    <ul class="nav-items">
+        {
+            mainMenu.map(({ href, title }) => (
+                <li>
+                    <a
+                        href={href}
+                        class={twMerge(
+                            "link",
+                            (href == "/"
+                                ? pathname === "/"
+                                : pathname.startsWith(href)) && "link-active"
+                        )}
+                    >
+                        {title}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</section>
+
+<style>
+    .nav-items {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    .link {
+        @apply block px-8 py-3 md:p-0 mr-8 md:m-0 text-base rounded-r-full;
+        display: block;
+    }
+
+    .link-active {
+        color: theme(colors.primary.500);
+        font-weight: 600;
+        text-decoration-thickness: 4px;
+        text-decoration-style: solid;
+        text-decoration-color: theme(colors.primary.500);
+        text-decoration-line: underline;
+    }
+
+    .link-active:hover {
+        color: theme(colors.primary.600);
+    }
+
+    @media (max-width: 768px) {
+        .links {
+            position: fixed;
+            left: -90vw;
+            bottom: 0;
+            top: 0;
+            height: 100vh;
+            background-color: theme(colors.background);
+            box-shadow: theme(boxShadow.2xl);
+            padding-top: 2rem;
+            transition: left 0.25s ease;
+        }
+
+        :global([open-menu]) .links {
+            left: 0;
+        }
+
+        .nav-items {
+            flex-direction: column;
+            justify-content: center;
+            min-width: 20rem;
+            max-width: 90vw;
+        }
+
+        .link {
+            @apply text-xl;
+        }
+
+        .link:not(.link-active):hover {
+            @apply hover:bg-neutral-200;
+        }
+
+        .link-active {
+            color: theme(colors.primary.600);
+            background-color: theme(colors.primary.200);
+            border-top-right-radius: 1000px;
+            border-bottom-right-radius: 1000px;
+            text-decoration: none;
+        }
+    }
+</style>

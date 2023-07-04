@@ -1,5 +1,5 @@
 ---
-import PageFooter from '~components/footer/Footer.astro'
+import PageFooter from "~components/footer/Footer.astro"
 
 interface Props {
     title: string
@@ -30,16 +30,16 @@ const { title, description } = Astro.props
             rel="stylesheet"
         />
         <script>
-            if ('serviceWorker' in navigator) {
+            if ("serviceWorker" in navigator) {
                 navigator.serviceWorker
-                    .register('/sw.js')
+                    .register("/sw.js")
                     .then((registration) => {
-                        registration.addEventListener('updatefound', () => {
+                        registration.addEventListener("updatefound", () => {
                             // If updatefound is fired, it means that there's
                             // a new service worker being installed.
                             const installingWorker = registration.installing
                             console.log(
-                                'A new service worker is being installed:',
+                                "A new service worker is being installed:",
                                 installingWorker
                             )
 
@@ -53,7 +53,7 @@ const { title, description } = Astro.props
                         )
                     })
             } else {
-                console.error('Service workers are not supported.')
+                console.error("Service workers are not supported.")
             }
         </script>
     </head>
@@ -84,7 +84,7 @@ const { title, description } = Astro.props
     }
 
     .home .nav-bar {
-        background: transparent !important;
+        @apply !bg-white/80 dark:!bg-black/80;
     }
 
     code {

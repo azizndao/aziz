@@ -1,12 +1,11 @@
 ---
-import { twMerge } from 'tailwind-merge'
-import GithubLogo from '~components/svgs/GithubLogo.astro'
-import LinkedInLogo from '~components/svgs/LinkedInLogo.astro'
-import TwitterLogo from '~components/svgs/TwitterLogo.astro'
-import YoutubeLogo from '~components/svgs/YoutubeLogo.astro'
-import FloatingMenu from './FloatingMenu.astro'
-import HeaderLink from './HeaderLink.astro'
-import mainMenu from './main-menu.json'
+import { twMerge } from "tailwind-merge"
+import GithubLogo from "~components/svgs/GithubLogo.astro"
+import LinkedInLogo from "~components/svgs/LinkedInLogo.astro"
+import MenuIcon from "~components/svgs/MenuIcon.astro"
+import TwitterLogo from "~components/svgs/TwitterLogo.astro"
+import YoutubeLogo from "~components/svgs/YoutubeLogo.astro"
+import NavList from "./NavList.astro"
 
 const pathname = Astro.url.pathname
 
@@ -17,64 +16,42 @@ interface Props {
 const { class: cls } = Astro.props
 ---
 
+<script>
+    document.querySelector(".open-button")?.addEventListener("click", () => {
+        document.body?.setAttribute("open-menu", "")
+    })
+</script>
+
 <section
+    id="nav-bar"
     class={twMerge(
-        'nav-bar bg-background/90 backdrop-blur-2xl backdrop-saturate-200  h-[var(--header-height)]',
+        "nav-bar bg-background/90 backdrop-blur-2xl backdrop-saturate-200  h-[var(--header-height)]",
         cls
     )}
 >
     <nav
         class="flex gap-6 items-center h-full px-6 max-w-[var(--max-width)] mx-auto"
     >
-        <slot name="menu">
-            <FloatingMenu class="md:hidden" />
-        </slot>
+        <button class="open-button md:hidden rounded-md p-1">
+            <MenuIcon />
+        </button>
         <a href="/" class="font-bold text-3xl">Aziz</a>
 
         <span class="grow"></span>
-        <ul class="nav-items">
-            {
-                mainMenu.map(({ href, title }) => (
-                    <li>
-                        <HeaderLink
-                            href={href}
-                            active={
-                                href == '/'
-                                    ? pathname === '/'
-                                    : pathname.startsWith(href)
-                            }
-                        >
-                            {title}
-                        </HeaderLink>
-                    </li>
-                ))
-            }
-        </ul>
+        <NavList pathname={pathname} client:load />
         <ul class="contacts">
             <li>
-                <a
-                    href="https://github.com/azizndao"
-                    title="Github"
-                    target="_blank"
-                >
+                <a href="https://github.com/azizndao" target="_blank">
                     <GithubLogo />
                 </a>
             </li>
             <li>
-                <a
-                    href="https://twitter.com/_abdouaziz_"
-                    title="Twitter"
-                    target="_blank"
-                >
+                <a href="https://twitter.com/_abdouaziz_" target="_blank">
                     <TwitterLogo />
                 </a>
             </li>
             <li>
-                <a
-                    href="https://youtube.com/@abdou-aziz"
-                    title="YouTube"
-                    target="_blank"
-                >
+                <a href="https://youtube.com/@abdou-aziz" target="_blank">
                     <YoutubeLogo />
                 </a>
             </li>
@@ -91,13 +68,6 @@ const { class: cls } = Astro.props
 </section>
 
 <style>
-    ul.nav-items {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        padding: 0 1rem;
-    }
-
     @media screen and (max-width: 768px) {
         ul.nav-items {
             display: none;
