@@ -1,9 +1,9 @@
 ---
-import Image from 'astro/components/Image.astro'
-import type { CollectionEntry } from 'astro:content'
+import Image from "astro/components/Image.astro"
+import type { CollectionEntry } from "astro:content"
 
 interface Props {
-    entry: CollectionEntry<'blog'>
+    entry: CollectionEntry<"blog">
 }
 
 const { entry } = Astro.props
@@ -13,7 +13,7 @@ const { entry } = Astro.props
     <h1 class="mx-1">{entry.data.title}</h1>
 
     <Image
-        src={entry.data.cover ?? ''}
+        src={entry.data.cover ?? ""}
         alt={entry.data.title}
         height={512}
         width={(512 * 16) / 9}
@@ -30,7 +30,9 @@ const { entry } = Astro.props
             alt={entry.data.author}
             class="avatar rounded-full h-[56px] w-[56px] object-cover row-span-2"
         />
-        <h6 class="!p-0 !m-0 col-start-2 font-medium">{entry.data.author}</h6>
+        <p class="!p-0 !m-0 col-start-2 not-prose font-medium">
+            {entry.data.author}
+        </p>
         <small class="!p-0 !m-0">{entry.data.date.toDateString()}</small>
     </section>
 </header>

@@ -1,5 +1,5 @@
 ---
-import { twMerge } from 'tailwind-merge'
+import { twMerge } from "tailwind-merge"
 interface Props {
     class?: string
 }
@@ -7,7 +7,7 @@ interface Props {
 
 <article
     class={twMerge(
-        'markdown prose prose-slate dark:prose-invert lg:prose-lg prose-pre:w-full prose-headings:text-primary-500 dark:prose-headings:text-primary-400 prose-a:text-primary-500',
+        "markdown prose prose-slate dark:prose-invert lg:prose-lg prose-pre:w-full prose-headings:text-primary-500 dark:prose-headings:text-primary-400 prose-a:text-primary-500",
         Astro.props.class
     )}
 >
@@ -20,12 +20,12 @@ interface Props {
     }
 
     .prose :is(h2, h3, h4, h5) a::before {
-        content: url(/icons/link.svg);
+        content: "#";
         height: 24px;
         width: 24px;
         stroke-width: 2px;
-        left: -2rem;
-        color: currentColor;
+        inset: 0;
+        @apply -left-6 md:-left-8 text-neutral-400 hover:text-primary-500 dark:text-neutral-600 dark:hover:text-primary-400;
         position: absolute;
         display: inline-block;
     }
