@@ -18,6 +18,7 @@ interface Props {
     .prose :is(h2, h3, h4, h5) {
         position: relative;
     }
+
     .prose :is(h2, h3, h4, h5) a {
         position: absolute;
         inset: 0;
@@ -53,5 +54,20 @@ interface Props {
 
     * {
         scroll-behavior: smooth;
+    }
+
+    .prose :where(code):not(:where([class~="not-prose"] *))::before {
+        content: none;
+    }
+
+    .prose :where(code):not(:where([class~="not-prose"] *))::after {
+        content: none;
+    }
+
+    .prose :where(code):not(:where([class~="not-prose"] pre *), :where(pre *)) {
+        @apply rounded-sm bg-slate-300 dark:bg-neutral-800 text-slate-800 dark:text-neutral-300;
+        user-select: all;
+        padding: 4px;
+        white-space: nowrap;
     }
 </style>
