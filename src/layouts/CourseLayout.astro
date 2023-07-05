@@ -1,14 +1,14 @@
 ---
-import type { CollectionEntry } from 'astro:content'
-import DocMenuSidebar from '~components/DocMenuSidebar.astro'
-import MarkdownArticle from '~components/article/MarkdownArticle.astro'
-import Breadcrumbs from '~components/header/Breadcrumbs.astro'
-import Header from '~components/header/Header.astro'
-import TableOfContent from '~components/toc/TableOfContent.astro'
-import BaseLayout from './BaseLayout.astro'
+import type { CollectionEntry } from "astro:content"
+import DocMenuSidebar from "~components/DocMenuSidebar.astro"
+import MarkdownArticle from "~components/article/MarkdownArticle.astro"
+import Breadcrumbs from "~components/header/Breadcrumbs.astro"
+import Header from "~components/header/Header.astro"
+import TableOfContent from "~components/toc/TableOfContent.astro"
+import BaseLayout from "./BaseLayout.astro"
 
 interface Props {
-    entry: CollectionEntry<'courses'>
+    entry: CollectionEntry<"courses">
 }
 
 const { entry } = Astro.props
@@ -78,7 +78,7 @@ const category = entry.data.type
         z-index: 12;
     }
 
-    [aria-open='left'] aside.left {
+    [aria-open="left"] aside.left {
         left: 0;
     }
 
@@ -87,7 +87,7 @@ const category = entry.data.type
         transition: right 0.25s ease;
     }
 
-    [aria-open='right'] aside.right {
+    [aria-open="right"] aside.right {
         right: 0;
     }
 
@@ -96,7 +96,7 @@ const category = entry.data.type
         z-index: 10;
         inset: 0;
         height: 100vh;
-        content: '';
+        content: "";
         background-color: rgba(0, 0, 0, 0.075);
         transition: color 0.35s ease;
     }
@@ -106,7 +106,7 @@ const category = entry.data.type
             grid-gap: 3rem;
             display: grid;
             gap: 3rem;
-            grid-template-areas: 'sidebar main';
+            grid-template-areas: "sidebar main";
             grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
             padding-left: 1.5rem;
             padding-right: 3rem;
@@ -146,7 +146,7 @@ const category = entry.data.type
             grid-gap: 3rem;
             display: grid;
             gap: 3rem;
-            grid-template-areas: 'sidebar main toc';
+            grid-template-areas: "sidebar main toc";
             grid-template-columns:
                 minmax(0, 1fr)
                 minmax(0, 2.5fr)

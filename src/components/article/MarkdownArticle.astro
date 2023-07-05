@@ -65,7 +65,8 @@ interface Props {
     }
 
     .prose :where(code):not(:where([class~="not-prose"] pre *), :where(pre *)) {
-        @apply rounded-sm bg-slate-300 dark:bg-neutral-800 text-slate-800 dark:text-neutral-300;
+        @apply bg-slate-300 dark:bg-neutral-800 text-slate-700 dark:text-neutral-300;
+        border-radius: 0.25rem;
         user-select: all;
         padding: 4px;
         white-space: nowrap;

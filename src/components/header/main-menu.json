@@ -1,22 +1,22 @@
 [
-  {
-    "href": "/",
-    "title": "Home"
-  },
-  {
-    "href": "/blog",
-    "title": "Blog"
-  },
-  {
-    "href": "/courses",
-    "title": "Courses"
-  },
-  {
-    "href": "/tutorials",
-    "title": "Tutorials"
-  },
-  {
-    "href": "/challenges",
-    "title": "Challenges"
-  }
+    {
+        "href": "/",
+        "title": "Home"
+    },
+    {
+        "href": "/blog",
+        "title": "Blog"
+    },
+    {
+        "href": "/courses",
+        "title": "Courses"
+    },
+    {
+        "href": "/tutorials",
+        "title": "Tutorials"
+    },
+    {
+        "href": "/challenges",
+        "title": "Challenges"
+    }
 ]
