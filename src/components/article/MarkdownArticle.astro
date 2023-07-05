@@ -18,16 +18,33 @@ interface Props {
     .prose :is(h2, h3, h4, h5) {
         position: relative;
     }
+    .prose :is(h2, h3, h4, h5) a {
+        position: absolute;
+        inset: 0;
+        display: inline-flex;
+        align-items: center;
+        @apply -left-6 md:-left-8 no-underline;
+    }
 
     .prose :is(h2, h3, h4, h5) a::before {
         content: "#";
-        height: 24px;
-        width: 24px;
-        stroke-width: 2px;
-        inset: 0;
-        @apply -left-6 md:-left-8 text-neutral-400 hover:text-primary-500 dark:text-neutral-600 dark:hover:text-primary-400;
-        position: absolute;
-        display: inline-block;
+        height: 28px;
+        @apply bg-primary-100 dark:bg-neutral-800 shadow-2xl rounded-lg aspect-square text-lg text-neutral-400 hover:text-primary-500 dark:text-neutral-600 dark:hover:text-primary-400 transition-all;
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .prose :is(h2, h3, h4, h5) a:hover::before {
+        display: inline-flex;
+    }
+
+    @media (max-width: 768px) {
+        .prose :is(h2, h3, h4, h5) a::before {
+            height: 22px;
+            @apply text-sm;
+            display: inline-flex;
+        }
     }
 
     .prose * {
