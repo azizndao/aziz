@@ -3,87 +3,87 @@ import type { MarkdownHeading } from "astro"
 import { twMerge } from "tailwind-merge"
 
 interface Props {
-    headings: MarkdownHeading[]
+  headings: MarkdownHeading[]
 }
 
 const headings = Astro.props.headings.filter((heading) => heading.depth > 1)
 ---
 
 <section class="toc px-4">
-    <h3 class="text-xl font-bold pb-4">Table of Contents</h3>
-    <ul class="flex flex-col">
-        {
-            headings.map((heading) => (
-                <li class={`heading heading-${heading.depth}`}>
-                    <a
-                        href={`#${heading.slug}`}
-                        class={twMerge(
-                            "block no-underline leading-relaxed border-l border-neutral-300 hover:bg-primary-500/10 hover:text-primary-500"
-                        )}
-                    >
-                        {heading.text}
-                    </a>
-                </li>
-            ))
-        }
-    </ul>
+  <h3 class="text-xl font-bold pb-4">Table of Contents</h3>
+  <ul class="flex flex-col">
+    {
+      headings.map((heading) => (
+        <li class={`heading heading-${heading.depth}`}>
+          <a
+            href={`#${heading.slug}`}
+            class={twMerge(
+              "block no-underline leading-relaxed border-l border-neutral-300 hover:bg-primary-500/10 hover:text-primary-500"
+            )}
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </section>
 
 <script>
-    const headings = document.querySelectorAll(".markdown :is(h2,h3,h4,h5,h6)")
+  const headings = document.querySelectorAll(".markdown :is(h2,h3,h4,h5,h6)")
 
-    const headingLinks: NodeListOf<HTMLAnchorElement> =
-        document.querySelectorAll(".toc .heading a")
+  const headingLinks: NodeListOf<HTMLAnchorElement> =
+    document.querySelectorAll(".toc .heading a")
 
-    const callback = (entries: IntersectionObserverEntry[]): void => {
-        entries = entries
-            .filter((a) => a.target.id !== "" && a.isIntersecting)
-            .sort((a, b) => a.intersectionRatio - b.intersectionRatio)
+  const callback = (entries: IntersectionObserverEntry[]): void => {
+    entries = entries
+      .filter((a) => a.target.id !== "" && a.isIntersecting)
+      .sort((a, b) => a.intersectionRatio - b.intersectionRatio)
 
-        const entry = entries[0]
+    if (entries.length == 0) return
 
-        if (entry) {
-            headingLinks.forEach((link) => {
-                if (link.href.includes(entry.target.id)) {
-                    console.log(entry.target.textContent)
-                    link.classList.add("active")
-                } else {
-                    link.classList.remove("active")
-                }
-            })
-        }
+    const entry = entries[0]
+
+    for (const link of headingLinks) {
+      const linkId = link.href.split("#")[1]
+      if (linkId === entry.target.id) {
+        link.classList.add("active")
+      } else {
+        link.classList.remove("active")
+      }
     }
+  }
 
-    const observer = new IntersectionObserver(callback, {
-        root: document,
-        rootMargin: "0px 80px 0px 80px"
-    })
+  const observer = new IntersectionObserver(callback, {
+    root: document,
+    rootMargin: "0px 80px 0px 80px"
+  })
 
-    headings.forEach((heading) => {
-        observer.observe(heading)
-    })
+  headings.forEach((heading) => {
+    observer.observe(heading)
+  })
 </script>
 
 <style>
-    li a.active {
-        @apply text-primary-500 bg-primary-500/10 font-medium border-l-2 border-primary-500;
-    }
+  li a.active {
+    @apply text-primary-500 bg-primary-500/10 font-medium border-l-2 border-primary-500;
+  }
 
-    .toc .heading-2 a {
-        font-size: 1rem;
-        padding-left: 1.25rem;
-    }
+  .toc .heading-2 a {
+    font-size: 1rem;
+    padding-left: 1.25rem;
+  }
 
-    .toc .heading-3 a {
-        font-size: 0.9rem;
-        padding-left: 2rem;
-        text-overflow: ellipsis;
-        line-clamp: 1;
-        max-lines: 1;
-    }
+  .toc .heading-3 a {
+    font-size: 0.9rem;
+    padding-left: 2rem;
+    text-overflow: ellipsis;
+    line-clamp: 1;
+    max-lines: 1;
+  }
 
-    .toc .heading-4 a {
-        font-size: 1rem;
-        padding-left: 3rem;
-    }
+  .toc .heading-4 a {
+    font-size: 1rem;
+    padding-left: 3rem;
+  }
 </style>
