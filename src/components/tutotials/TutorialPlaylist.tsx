@@ -1,14 +1,11 @@
 import { HtmlHTMLAttributes, useState } from "react"
-import type { Video } from "~types/youtube"
-
 import { twMerge } from "tailwind-merge"
 import CustomScrollArea from "~components/scroll-area/CustomScrollArea"
-import styles from "./TutorialPlaylist.module.css"
-import CurrentVideoItem from "./current-video/CurrentVideoItem"
-import VideoItemCard from "./video/VideoCard"
+import type { Video } from "~types/youtube"
+import CurrentVideoItem from "./CurrentVideoItem"
+import VideoItemCard from "./VideoCard"
 
-export interface TutorialPlaylistProps
-    extends HtmlHTMLAttributes<HTMLDivElement> {
+interface TutorialPlaylistProps extends HtmlHTMLAttributes<HTMLDivElement> {
     videos: Video[]
 }
 
@@ -17,15 +14,17 @@ export default function TutorialPlaylist({
     className,
     ...attrs
 }: TutorialPlaylistProps) {
-    const [currentVideo, setCurrentVideo] = useState(() => {
-        return videos[0]
-    })
+    const [currentVideo, setCurrentVideo] = useState(() => videos[0])
 
     return (
-        <div className={twMerge(styles.root, className)} {...attrs}>
-            <section className={styles.currentVideo}>
-                <CurrentVideoItem video={currentVideo} />
-            </section>
+        <div
+            className={twMerge(
+                "max-w-[var(--max-width)] mx-auto w-full flex lg:grid lg:grid-cols-[7fr_3fr] flex-col gap-4 p-6 mb-12 overflow-x-hidden",
+                className
+            )}
+            {...attrs}
+        >
+            <CurrentVideoItem video={currentVideo} />
             <PlaylistSidebar
                 videos={videos}
                 currentVideoId={currentVideo.id}
@@ -47,10 +46,17 @@ function PlaylistSidebar({
     const [open, setOpen] = useState(false)
     return (
         <>
-            <div className={styles.playlist} aria-open={open}>
+            <div
+                className={twMerge(
+                    "fixed lg:sticky top-[var(--header-height)] max-w-[350px] lg:max-w-full w-full h-screen lg:h-[calc(100dvh-var(--header-height))] lg:shadow-none lg:p-0 max-w[400px] bg-background shadow-xl px-4 transition-[right] duration-[250ms] -right-[100vw]",
+                    open && "-right-0"
+                )}
+            >
                 <CustomScrollArea>
-                    <ul>
-                        <h3>Playlist</h3>
+                    <ul className="flex flex-col gap-3">
+                        <h3 className="sticky top-0 font-bold pl-1 text-lg bg-background">
+                            Playlist
+                        </h3>
                         {videos.map((video) => (
                             <VideoItemCard
                                 key={video.id}
@@ -78,12 +84,17 @@ function CloseButton({
     onClick: () => void
 }) {
     return (
-        <button className={styles.closeButton} onClick={onClick}>
+        <button
+            className={twMerge(
+                "fixed z-10 right-6 bottom-6 bg-primary-500 text-primary-50 rounded-full shadow-2xl h-14 w-14 flex lg:hidden items-center justify-center"
+            )}
+            onClick={onClick}
+        >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                strokeWidth={2}
+                strokeWidth="2"
                 stroke="currentColor"
                 className="w-5 h-5"
             >

@@ -1,5 +1,5 @@
+import { twMerge } from "tailwind-merge"
 import type { Video } from "~types/youtube"
-import styles from "./VideoCard.module.css"
 
 interface Props {
     selected: boolean
@@ -12,14 +12,18 @@ export default function VideoItemCard({ video, onClick, selected }: Props) {
         <li>
             <button
                 onClick={onClick}
-                aria-selected={selected}
-                className={styles.video}
+                className={twMerge(
+                    "flex gap-7 w-full",
+                    selected && "bg-primary-300/50"
+                )}
             >
                 <img
-                    className={styles.image}
+                    className="aspect-video h-[3.5rem] lg:h-[4.5rem] w-auto rounded-md"
                     src={video.snippet.thumbnails.medium.url}
                 />
-                <h6 className={styles.headline}>{video.snippet.title}</h6>
+                <h6 className="flex-8  text-start py-1 line-clamp-2 w-full">
+                    {video.snippet.title}
+                </h6>
             </button>
         </li>
     )

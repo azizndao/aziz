@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { twJoin } from "tailwind-merge"
 import type { Video } from "~types/youtube"
-import styles from "./CurrentVideo.module.css"
 
 export default function CurrentVideoItem({ video }: { video: Video }) {
     return (
@@ -12,10 +11,12 @@ export default function CurrentVideoItem({ video }: { video: Video }) {
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
-                className={styles["video-frame"]}
+                className={"w-full aspect-video"}
             ></iframe>
             <div>
-                <h3 className={styles.headline}>{video.snippet.title}</h3>
+                <h3 className="py-4 text-3xl font-bold">
+                    {video.snippet.title}
+                </h3>
                 <VideoDescription description={video.snippet.description} />
             </div>
         </section>
@@ -31,7 +32,10 @@ function VideoDescription({ description }: { description: string }) {
 
     return (
         <article
-            className={twJoin(styles.description, !open && "cursor-pointer")}
+            className={twJoin(
+                "bg-neutral-200 p-4 rounded-xl lg:rounded-3xl mb-6 lg:mx-4 lg:m-0",
+                !open && "cursor-pointer"
+            )}
             onClick={() => {
                 if (!open) setOpen(true)
             }}
@@ -48,14 +52,14 @@ function VideoDescription({ description }: { description: string }) {
                 ))}
             </section>
 
-            {open && (
+            {/* {open && (
                 <button
                     className="px-4 py-2 font-medium text-sm bg-neutral-300 dark:bg-neutral-900 mt-4 rounded-full"
                     onClick={() => setOpen(false)}
                 >
                     Close
                 </button>
-            )}
+            )} */}
         </article>
     )
 }
