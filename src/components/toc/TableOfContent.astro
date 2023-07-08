@@ -18,7 +18,7 @@ const headings = Astro.props.headings.filter((heading) => heading.depth > 1)
           <a
             href={`#${heading.slug}`}
             class={twMerge(
-              "block no-underline leading-relaxed border-l border-neutral-300 hover:bg-primary-500/10 hover:text-primary-500"
+              "block leading-relaxed border-l no-underline border-neutral-300 hover:bg-primary-500/10 hover:text-primary-500"
             )}
           >
             {heading.text}

@@ -1,74 +1,74 @@
 ---
 import { twMerge } from "tailwind-merge"
 interface Props {
-    class?: string
+  class?: string
 }
 ---
 
 <article
-    class={twMerge(
-        "markdown prose prose-slate dark:prose-invert lg:prose-lg prose-pre:w-full prose-headings:text-primary-500 dark:prose-headings:text-primary-400 prose-a:text-primary-500",
-        Astro.props.class
-    )}
+  class={twMerge(
+    "markdown prose prose-slate dark:prose-invert lg:prose-lg prose-pre:w-full prose-headings:text-primary-500 dark:prose-headings:text-primary-400 prose-a:text-primary-500",
+    Astro.props.class
+  )}
 >
-    <slot />
+  <slot />
 </article>
 
 <style is:global>
-    .prose :is(h2, h3, h4, h5) {
-        position: relative;
-    }
+  .prose :is(h2, h3, h4, h5) {
+    position: relative;
+  }
 
-    .prose :is(h2, h3, h4, h5) a {
-        position: absolute;
-        inset: 0;
-        display: inline-flex;
-        align-items: center;
-        @apply -left-6 md:-left-8 no-underline;
-    }
+  .prose :is(h2, h3, h4, h5) a {
+    position: absolute;
+    inset: 0;
+    display: inline-flex;
+    align-items: center;
+    @apply -left-6 md:-left-8 no-underline;
+  }
 
+  .prose :is(h2, h3, h4, h5) a::before {
+    content: "#";
+    height: 28px;
+    @apply bg-primary-100 dark:bg-neutral-800 shadow-2xl rounded-lg aspect-square text-lg text-neutral-400 hover:text-primary-500 dark:text-neutral-600 dark:hover:text-primary-400 transition-all;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .prose :is(h2, h3, h4, h5) a:hover::before {
+    display: inline-flex;
+  }
+
+  @media (max-width: 768px) {
     .prose :is(h2, h3, h4, h5) a::before {
-        content: "#";
-        height: 28px;
-        @apply bg-primary-100 dark:bg-neutral-800 shadow-2xl rounded-lg aspect-square text-lg text-neutral-400 hover:text-primary-500 dark:text-neutral-600 dark:hover:text-primary-400 transition-all;
-        display: none;
-        align-items: center;
-        justify-content: center;
+      height: 22px;
+      @apply text-sm;
+      display: inline-flex;
     }
+  }
 
-    .prose :is(h2, h3, h4, h5) a:hover::before {
-        display: inline-flex;
-    }
+  .prose * {
+    scroll-margin-top: var(--scroll-margin-top);
+  }
 
-    @media (max-width: 768px) {
-        .prose :is(h2, h3, h4, h5) a::before {
-            height: 22px;
-            @apply text-sm;
-            display: inline-flex;
-        }
-    }
+  * {
+    scroll-behavior: smooth;
+  }
 
-    .prose * {
-        scroll-margin-top: var(--scroll-margin-top);
-    }
+  .prose :where(code):not(:where([class~="not-prose"] *))::before {
+    content: none;
+  }
 
-    * {
-        scroll-behavior: smooth;
-    }
+  .prose :where(code):not(:where([class~="not-prose"] *))::after {
+    content: none;
+  }
 
-    .prose :where(code):not(:where([class~="not-prose"] *))::before {
-        content: none;
-    }
-
-    .prose :where(code):not(:where([class~="not-prose"] *))::after {
-        content: none;
-    }
-
-    .prose :where(code):not(:where([class~="not-prose"] pre *), :where(pre *)) {
-        @apply bg-slate-300 dark:bg-neutral-800 text-slate-700 dark:text-neutral-300;
-        border-radius: 0.25rem;
-        user-select: all;
-        padding: 4px;
-        white-space: nowrap;
-    }
+  .prose :where(code):not(:where([class~="not-prose"] pre *), :where(pre *)) {
+    @apply bg-slate-300 dark:bg-neutral-800 text-slate-700 dark:text-neutral-300;
+    border-radius: 0.25rem;
+    user-select: all;
+    padding: 4px;
+    white-space: nowrap;
+  }
 </style>

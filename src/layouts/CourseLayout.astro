@@ -8,7 +8,7 @@ import TableOfContent from "~components/toc/TableOfContent.astro"
 import BaseLayout from "./BaseLayout.astro"
 
 interface Props {
-    entry: CollectionEntry<"courses">
+  entry: CollectionEntry<"courses">
 }
 
 const { entry } = Astro.props
@@ -19,144 +19,142 @@ const category = entry.data.type
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description}>
-    <main class="main-wrapper">
-        <header class="appbar">
-            <Header />
-            <Breadcrumbs data={entry.data} />
-        </header>
-        <aside class="left">
-            <DocMenuSidebar type={category} title="Learn Python" />
-        </aside>
-        <MarkdownArticle
-            class="md-container flex flex-col w-full justify-center"
-        >
-            <h1>{entry.data.title}</h1>
-            <Content />
-        </MarkdownArticle>
-        <aside class="right">
-            <TableOfContent headings={headings} />
-        </aside>
-    </main>
+  <main class="main-wrapper">
+    <header class="appbar">
+      <Header />
+      <Breadcrumbs data={entry.data} />
+    </header>
+    <aside class="left">
+      <DocMenuSidebar type={category} title="Learn Python" />
+    </aside>
+    <MarkdownArticle class="md-container flex flex-col w-full justify-center">
+      <h1>{entry.data.title}</h1>
+      <Content />
+    </MarkdownArticle>
+    <aside class="right">
+      <TableOfContent headings={headings} />
+    </aside>
+  </main>
 </BaseLayout>
 
 <style>
+  .main-wrapper {
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+    flex-direction: column;
+    overflow-x: visible;
+  }
+
+  .md-container {
+    padding: 1.5rem;
+  }
+
+  .appbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: theme(colors.background);
+  }
+
+  aside {
+    position: fixed;
+    z-index: 3;
+    @apply bg-neutral-50 dark:bg-neutral-900;
+    height: 100vh;
+    width: 300px;
+    box-shadow: 0 12px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  aside.left {
+    left: -100%;
+    transition: left 0.25s ease;
+  }
+
+  [aria-open] aside {
+    padding-top: 3rem;
+    z-index: 12;
+  }
+
+  [aria-open="left"] aside.left {
+    left: 0;
+  }
+
+  aside.right {
+    right: -100%;
+    transition: right 0.25s ease;
+  }
+
+  [aria-open="right"] aside.right {
+    right: 0;
+  }
+
+  [aria-open] .md-container::before {
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    height: 100vh;
+    content: "";
+    background-color: rgba(0, 0, 0, 0.075);
+    transition: color 0.35s ease;
+  }
+
+  @media screen and (min-width: 769px) {
     .main-wrapper {
-        display: flex;
-        margin: 0 auto;
-        margin-bottom: 3rem;
-        flex-direction: column;
-        overflow-x: visible;
+      grid-gap: 3rem;
+      display: grid;
+      gap: 3rem;
+      grid-template-areas: "sidebar main";
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+      padding-left: 1.5rem;
+      padding-right: 3rem;
     }
 
     .md-container {
-        padding: 1.5rem;
+      padding: 0;
     }
 
     .appbar {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        background-color: theme(colors.background);
+      grid-column: 1 / 4;
+      grid-row: 1;
     }
 
     aside {
-        position: fixed;
-        z-index: 3;
-        @apply bg-neutral-50 dark:bg-neutral-900;
-        height: 100vh;
-        width: 300px;
-        box-shadow: 0 12px 12px rgba(0, 0, 0, 0.25);
+      --top: calc(3rem + var(--header-height) * 1.75);
+      position: sticky;
+      inset: 0;
+      top: var(--top);
+      height: calc(100dvh - var(--top));
+      width: 100%;
+      box-shadow: none;
     }
 
     aside.left {
-        left: -100%;
-        transition: left 0.25s ease;
-    }
-
-    [aria-open] aside {
-        padding-top: 3rem;
-        z-index: 12;
-    }
-
-    [aria-open="left"] aside.left {
-        left: 0;
+      display: block;
     }
 
     aside.right {
-        right: -100%;
-        transition: right 0.25s ease;
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .main-wrapper {
+      max-width: var(--max-width);
+      grid-gap: 3rem;
+      display: grid;
+      gap: 3rem;
+      grid-template-areas: "sidebar main toc";
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 2.5fr)
+        minmax(0, 15rem);
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
 
-    [aria-open="right"] aside.right {
-        right: 0;
+    aside.right {
+      display: block;
     }
-
-    [aria-open] .md-container::before {
-        position: fixed;
-        z-index: 10;
-        inset: 0;
-        height: 100vh;
-        content: "";
-        background-color: rgba(0, 0, 0, 0.075);
-        transition: color 0.35s ease;
-    }
-
-    @media screen and (min-width: 769px) {
-        .main-wrapper {
-            grid-gap: 3rem;
-            display: grid;
-            gap: 3rem;
-            grid-template-areas: "sidebar main";
-            grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-            padding-left: 1.5rem;
-            padding-right: 3rem;
-        }
-
-        .md-container {
-            padding: 0;
-        }
-
-        .appbar {
-            grid-column: 1 / 4;
-            grid-row: 1;
-        }
-
-        aside {
-            --top: calc(3rem + var(--header-height) * 1.75);
-            position: sticky;
-            inset: 0;
-            top: var(--top);
-            height: calc(100dvh - var(--top));
-            width: 100%;
-            box-shadow: none;
-        }
-
-        aside.left {
-            display: block;
-        }
-
-        aside.right {
-            display: none;
-        }
-    }
-
-    @media screen and (min-width: 1200px) {
-        .main-wrapper {
-            max-width: var(--max-width);
-            grid-gap: 3rem;
-            display: grid;
-            gap: 3rem;
-            grid-template-areas: "sidebar main toc";
-            grid-template-columns:
-                minmax(0, 1fr)
-                minmax(0, 2.5fr)
-                minmax(0, 15rem);
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-
-        aside.right {
-            display: block;
-        }
-    }
+  }
 </style>

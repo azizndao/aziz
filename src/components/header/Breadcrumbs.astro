@@ -1,9 +1,9 @@
 ---
-import type { CollectionEntry } from 'astro:content'
-import ChevronRightIcon from '~components/svgs/ChevronRightIcon.astro'
+import type { CollectionEntry } from "astro:content"
+import ChevronRightIcon from "~components/svgs/ChevronRightIcon.astro"
 
 interface Props {
-    data: CollectionEntry<'courses'>['data']
+  data: CollectionEntry<"courses">["data"]
 }
 
 const { data } = Astro.props
@@ -14,33 +14,33 @@ const titleCapitalized = typ.charAt(0).toUpperCase() + typ.slice(1)
 ---
 
 <section
-    class="menubar w-full border-b border-neutral-300 dark:border-neutral-800 flex gap-3 px-6 items-center h-[calc(var(--header-height)*0.5)] md:hidden"
+  class="menubar w-full border-b border-neutral-300 dark:border-neutral-800 flex gap-3 px-6 items-center h-[calc(var(--header-height)*0.5)] md:hidden"
 >
-    <button id="btn-left">{titleCapitalized}</button>
-    <ChevronRightIcon class="h-4 w-4" />
-    <span id="btn-right">{data.title}</span>
+  <button id="btn-left">{titleCapitalized}</button>
+  <ChevronRightIcon class="h-4 w-4" />
+  <span id="btn-right">{data.title}</span>
 </section>
 
 <script>
-    const container = document.querySelector('.main-wrapper')
+  const container = document.querySelector(".main-wrapper")
 
-    document
-        .querySelector('.main-wrapper .md-container')
-        ?.addEventListener('click', () => {
-            if (container?.hasAttribute('aria-open')) {
-                container.attributes.removeNamedItem('aria-open')
-            }
-        })
+  document
+    .querySelector(".main-wrapper .md-container")
+    ?.addEventListener("click", () => {
+      if (container?.hasAttribute("aria-open")) {
+        container.attributes.removeNamedItem("aria-open")
+      }
+    })
 
-    document
-        .querySelector('#btn-left')
-        ?.addEventListener('click', () =>
-            container?.setAttribute('aria-open', 'left')
-        )
+  document
+    .querySelector("#btn-left")
+    ?.addEventListener("click", () =>
+      container?.setAttribute("aria-open", "left")
+    )
 
-    document
-        .querySelector('#btn-right')
-        ?.addEventListener('click', () =>
-            container?.setAttribute('aria-open', 'right')
-        )
+  document
+    .querySelector("#btn-right")
+    ?.addEventListener("click", () =>
+      container?.setAttribute("aria-open", "right")
+    )
 </script>

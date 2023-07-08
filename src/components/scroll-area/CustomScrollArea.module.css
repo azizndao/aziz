@@ -1,64 +1,64 @@
 :root {
-    --scrollbar-size: 0.5rem;
+  --scrollbar-size: 0.5rem;
 }
 
 .ScrollAreaRoot {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .ScrollAreaViewport {
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
 }
 
 .ScrollAreaScrollbar {
-    display: flex;
-    /* ensures no selection */
-    user-select: none;
-    /* disable browser handling of all panning and zooming gestures on touch devices */
-    touch-action: none;
-    padding: 2px;
-    background: transparent;
-    /* transition: background 160ms ease-out; */
+  display: flex;
+  /* ensures no selection */
+  user-select: none;
+  /* disable browser handling of all panning and zooming gestures on touch devices */
+  touch-action: none;
+  padding: 2px;
+  background: transparent;
+  /* transition: background 160ms ease-out; */
 }
 
 .ScrollAreaScrollbar:hover {
-    @apply bg-neutral-800/25;
-    --scrollbar-size: 0.75rem;
+  @apply bg-neutral-800/25;
+  --scrollbar-size: 0.75rem;
 }
 
 .ScrollAreaScrollbar[data-orientation="vertical"] {
-    width: var(--scrollbar-size);
+  width: var(--scrollbar-size);
 }
 
 .ScrollAreaScrollbar[data-orientation="horizontal"] {
-    flex-direction: column;
-    height: var(--scrollbar-size);
+  flex-direction: column;
+  height: var(--scrollbar-size);
 }
 
 .ScrollAreaThumb {
-    flex: 1;
-    @apply bg-neutral-600;
-    border-radius: var(--scrollbar-size);
-    position: relative;
+  flex: 1;
+  @apply bg-neutral-600;
+  border-radius: var(--scrollbar-size);
+  position: relative;
 }
 
 /* increase target size for touch devices https://www.w3.org/WAI/WCAG21/Understanding/target-size.html */
 .ScrollAreaThumb::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    min-width: 44px;
-    min-height: 44px;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .ScrollAreaCorner {
-    @apply bg-neutral-800;
+  @apply bg-neutral-800;
 }

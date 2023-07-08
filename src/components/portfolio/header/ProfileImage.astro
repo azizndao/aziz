@@ -1,83 +1,83 @@
 ---
-import { twMerge } from 'tailwind-merge'
+import { twMerge } from "tailwind-merge"
 
 interface Props {
-    class?: string
+  class?: string
 }
 
 const { class: cls } = Astro.props
 ---
 
-<div class={twMerge('img-container', cls)}>
-    <div>
-        <img src="/images/me.png" class="original" />
-        <img class="blur" src="/images/me16x35.png" />
-    </div>
+<div class={twMerge("img-container", cls)}>
+  <div>
+    <img src="/images/me.png" class="original" />
+    <img class="blur" src="/images/me16x35.png" />
+  </div>
 </div>
 
 <script>
-    const container = document.querySelector('.img-container')
+  const container = document.querySelector(".img-container")
 
-    document
-        .querySelector('.img-container img.original')
-        ?.addEventListener('load', (event) => {
-            container?.classList.add('loaded')
-        })
+  document
+    .querySelector(".img-container img.original")
+    ?.addEventListener("load", (event) => {
+      container?.classList.add("loaded")
+    })
 </script>
 
 <style>
-    .img-container {
-        width: 100%;
-        height: 100%;
-    }
+  .img-container {
+    width: 100%;
+    height: 100%;
+  }
 
+  .img-container > div {
+    position: relative;
+    overflow: hidden;
+    margin-left: auto;
+    width: 100%;
+    border-radius: 1.5rem;
+    object-fit: cover;
+    aspect-ratio: 4/5;
+  }
+
+  @media (min-width: 768px) {
     .img-container > div {
-        position: relative;
-        overflow: hidden;
-        margin-left: auto;
-        width: 100%;
-        border-radius: 1.5rem;
-        object-fit: cover;
-        aspect-ratio: 4/5;
+      width: auto;
     }
+  }
 
-    @media (min-width: 768px) {
-        .img-container > div {
-            width: auto;
-        }
+  @media (min-width: 1024px) {
+    .img-container > div {
+      aspect-ratio: 3/5;
+      border-radius: 3rem;
+      height: 100%;
     }
+  }
 
-    @media (min-width: 1024px) {
-        .img-container > div {
-            aspect-ratio: 3/5;
-            border-radius: 3rem;
-            height: 100%;
-        }
-    }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease-in-out;
+  }
 
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: all 0.3s ease-in-out;
-    }
+  img.original {
+    opacity: 0;
+  }
 
-    img.original {
-        opacity: 0;
-    }
+  .blur {
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+  }
 
-    .blur {
-        object-fit: cover;
-        position: absolute;
-        inset: 0;
-    }
+  .img-container.loaded .original {
+    opacity: 1;
+  }
 
-    .img-container.loaded .original {
-        opacity: 1;
-    }
-
-    .img-container.loaded .blur {
-        animation: none;
-        opacity: 0;
-    }
+  .img-container.loaded .blur {
+    animation: none;
+    opacity: 0;
+  }
 </style>

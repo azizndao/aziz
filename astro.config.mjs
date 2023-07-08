@@ -1,26 +1,26 @@
-import mdx from '@astrojs/mdx'
-import prefetch from '@astrojs/prefetch'
-import react from '@astrojs/react'
-import tailwind from '@astrojs/tailwind'
-import vercel from '@astrojs/vercel/serverless'
-import { defineConfig } from 'astro/config'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypeSlug from 'rehype-slug'
+import mdx from "@astrojs/mdx"
+import prefetch from "@astrojs/prefetch"
+import react from "@astrojs/react"
+import tailwind from "@astrojs/tailwind"
+import vercel from "@astrojs/vercel/serverless"
+import { defineConfig } from "astro/config"
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
+import rehypeSlug from "rehype-slug"
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'hybrid',
+  output: "hybrid",
   experimental: {
     assets: true,
-    redirects: true,
+    redirects: true
   },
   integrations: [
     mdx({
-      drafts: true,
+      drafts: true
     }),
     prefetch(),
     react(),
-    tailwind(),
+    tailwind()
   ],
   markdown: {
     drafts: true,
@@ -29,10 +29,10 @@ export default defineConfig({
       [
         rehypeAutolinkHeadings,
         {
-          behavior: 'append',
-        },
-      ],
-    ],
+          behavior: "append"
+        }
+      ]
+    ]
   },
-  adapter: vercel(),
+  adapter: vercel()
 })

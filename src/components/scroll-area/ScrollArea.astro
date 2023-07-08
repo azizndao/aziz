@@ -2,10 +2,10 @@
 import CustomScrollArea from "./CustomScrollArea"
 
 interface Props {
-    class?: string
+  class?: string
 }
 ---
 
 <CustomScrollArea className={Astro.props.class} client:load>
-    <slot />
+  <slot />
 </CustomScrollArea>

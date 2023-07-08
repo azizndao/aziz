@@ -1,81 +1,80 @@
 ---
-import Pill from '~components/Pill.astro'
-import ContactMeButton from './ContactMeButton.astro'
-import DownloadCVButton from './DownloadCVButton.astro'
-import ProfileImage from './ProfileImage.astro'
+import Pill from "~components/Pill.astro"
+import ContactMeButton from "./ContactMeButton.astro"
+import DownloadCVButton from "./DownloadCVButton.astro"
+import ProfileImage from "./ProfileImage.astro"
 ---
 
 <section
-    class="header container max-w-7xl mx-auto flex justify-evenly items-center flex-col lg:flex-row lg:gap-6 lg:h-[calc((100dvh-var(--header-height)*2)*0.85)]"
+  class="header container max-w-7xl mx-auto flex justify-evenly items-center flex-col lg:flex-row lg:gap-6 lg:h-[calc((100dvh-var(--header-height)*2)*0.85)]"
 >
-    <aside class="left-side max-w-[26rem]">
-        <p class="text-5xl leading-snug font-light">
-            Hi!, I am<br />
-            <strong
-                class="name text-tertiary-600 dark:text-tertiary-400 text-5xl font-extrabold"
-            >
-                Abdou Aziz Ndao
-            </strong>
-        </p>
-        <p class="text-lg">
-            I am a Creative Developer who is currently based in <b>Birkelene</b
-            >,
-            <b>Senegal</b>.
-        </p>
-        <section class="flex gap-4 flex-wrap">
-            <Pill>#Developer</Pill>
-            <Pill>#Youtuber</Pill>
-            <Pill>#Blogger</Pill>
-            <Pill>#Student</Pill>
-        </section>
-        <section class="hidden md:flex gap-4 flex-wrap">
-            <DownloadCVButton />
-            <ContactMeButton />
-        </section>
-    </aside>
-    <ProfileImage class="right-side md:py-8" />
-    <section
-        class="px-4 md:px-0 flex gap-4 md:hidden justify-center self-center my-4 flex-wrap"
-    >
-        <DownloadCVButton />
-        <ContactMeButton />
+  <aside class="left-side max-w-[26rem]">
+    <p class="text-5xl leading-snug font-light">
+      Hi!, I am<br />
+      <strong
+        class="name text-tertiary-600 dark:text-tertiary-400 text-5xl font-extrabold"
+      >
+        Abdou Aziz Ndao
+      </strong>
+    </p>
+    <p class="text-lg">
+      I am a Creative Developer who is currently based in <b>Birkelene</b>,
+      <b>Senegal</b>.
+    </p>
+    <section class="flex gap-4 flex-wrap">
+      <Pill>#Developer</Pill>
+      <Pill>#Youtuber</Pill>
+      <Pill>#Blogger</Pill>
+      <Pill>#Student</Pill>
     </section>
+    <section class="hidden md:flex gap-4 flex-wrap">
+      <DownloadCVButton />
+      <ContactMeButton />
+    </section>
+  </aside>
+  <ProfileImage class="right-side md:py-8" />
+  <section
+    class="px-4 md:px-0 flex gap-4 md:hidden justify-center self-center my-4 flex-wrap"
+  >
+    <DownloadCVButton />
+    <ContactMeButton />
+  </section>
 </section>
 
 <style>
-    .right-side,
-    .left-side {
-        max-width: calc((var(--max-width) / 2) - 1.4rem);
-        padding: 1.5rem;
-    }
+  .right-side,
+  .left-side {
+    max-width: calc((var(--max-width) / 2) - 1.4rem);
+    padding: 1.5rem;
+  }
 
-    .left-side {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        align-items: flex-start;
-        justify-content: center;
+  .left-side {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .download-bottom.primary {
+    display: block;
+  }
+
+  .download-bottom.secondary {
+    display: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    .header {
+      flex-direction: column;
     }
 
     .download-bottom.primary {
-        display: block;
+      display: none;
     }
 
     .download-bottom.secondary {
-        display: none;
+      display: block;
     }
-
-    @media screen and (max-width: 768px) {
-        .header {
-            flex-direction: column;
-        }
-
-        .download-bottom.primary {
-            display: none;
-        }
-
-        .download-bottom.secondary {
-            display: block;
-        }
-    }
+  }
 </style>

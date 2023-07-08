@@ -10,73 +10,70 @@ import NavList from "./NavList.astro"
 const pathname = Astro.url.pathname
 
 interface Props {
-    class?: string
+  class?: string
 }
 
 const { class: cls } = Astro.props
 ---
 
 <script>
-    document.querySelector(".open-button")?.addEventListener("click", () => {
-        document.body?.setAttribute("open-menu", "")
-    })
+  document.querySelector(".open-button")?.addEventListener("click", () => {
+    document.body?.setAttribute("open-menu", "")
+  })
 </script>
 
 <section
-    id="nav-bar"
-    class={twMerge(
-        "nav-bar bg-background/90 backdrop-blur-2xl backdrop-saturate-200  h-[var(--header-height)]",
-        cls
-    )}
+  id="nav-bar"
+  class={twMerge(
+    "nav-bar bg-background/90 backdrop-blur-2xl backdrop-saturate-200  h-[var(--header-height)]",
+    cls
+  )}
 >
-    <nav
-        class="flex gap-6 items-center h-full px-6 max-w-[var(--max-width)] mx-auto"
-    >
-        <button class="open-button md:hidden rounded-md p-1">
-            <MenuIcon />
-        </button>
-        <a href="/" class="font-bold text-3xl">Aziz</a>
+  <nav
+    class="flex gap-6 items-center h-full px-6 max-w-[var(--max-width)] mx-auto"
+  >
+    <button class="open-button md:hidden rounded-md p-1">
+      <MenuIcon />
+    </button>
+    <a href="/" class="font-bold text-3xl">Aziz</a>
 
-        <span class="grow"></span>
-        <NavList pathname={pathname} />
-        <ul class="contacts">
-            <li>
-                <a href="https://github.com/azizndao" target="_blank">
-                    <GithubLogo />
-                </a>
-            </li>
-            <li>
-                <a href="https://twitter.com/_abdouaziz_" target="_blank">
-                    <TwitterLogo />
-                </a>
-            </li>
-            <li>
-                <a href="https://youtube.com/@abdou-aziz" target="_blank">
-                    <YoutubeLogo />
-                </a>
-            </li>
-            <li>
-                <a
-                    href="https://www.linkedin.com/in/abdou-aziz-ndao"
-                    target="_blank"
-                >
-                    <LinkedInLogo />
-                </a>
-            </li>
-        </ul>
-    </nav>
+    <span class="grow"></span>
+    <NavList pathname={pathname} />
+    <ul class="contacts">
+      <li>
+        <a href="https://github.com/azizndao" target="_blank">
+          <GithubLogo />
+        </a>
+      </li>
+      <li>
+        <a href="https://twitter.com/_abdouaziz_" target="_blank">
+          <TwitterLogo />
+        </a>
+      </li>
+      <li>
+        <a href="https://youtube.com/@abdou-aziz" target="_blank">
+          <YoutubeLogo />
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/abdou-aziz-ndao" target="_blank">
+          <LinkedInLogo />
+        </a>
+      </li>
+    </ul>
+  </nav>
 </section>
 
 <style>
-    @media screen and (max-width: 768px) {
-        ul.nav-items {
-            display: none;
-        }
+  @media screen and (max-width: 768px) {
+    ul.nav-items {
+      display: none;
     }
+  }
 
-    ul.contacts {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
+  ul.contacts {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 </style>

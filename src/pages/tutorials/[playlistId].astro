@@ -10,15 +10,15 @@ const playlistId = Astro.params.playlistId as string
 const data = await getPlaylist(playlistId)
 
 if (!data) {
-    return Astro.redirect("/404")
+  return Astro.redirect("/404")
 }
 
 const videos = data?.items ?? []
 ---
 
 <MainLayout
-    title="My tutorials on youtube"
-    description="My tutorials on youtube"
+  title="My tutorials on youtube"
+  description="My tutorials on youtube"
 >
-    <TutorialPlaylist client:load videos={videos} />
+  <TutorialPlaylist client:load videos={videos} />
 </MainLayout>

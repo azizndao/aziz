@@ -1,5 +1,5 @@
 ---
-import PageFooter from "~components/footer/Footer.astro"
+import PageFooter from "~components/footer/Footer.astro";
 
 interface Props {
     title: string
@@ -57,7 +57,7 @@ const { title, description } = Astro.props
             }
         </script>
     </head>
-    <body class="bg-background text-neutral-900 dark:text-neutral-300">
+    <body >
         <!-- main content slot -->
         <slot />
         <!-- footer slot -->
@@ -70,6 +70,10 @@ const { title, description } = Astro.props
 </html>
 
 <style is:global>
+    body {
+        @apply bg-background/60 text-neutral-900 dark:text-neutral-300;
+    }
+
     *::selection {
         @apply bg-primary-700/10 dark:bg-primary-700/30;
     }

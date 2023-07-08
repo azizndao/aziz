@@ -1,53 +1,53 @@
 ---
-import SquareStack from '~components/svgs/SquareStack.astro'
+import SquareStack from "~components/svgs/SquareStack.astro"
 
 interface Props {
-    title: string
-    description: string
-    class?: string
+  title: string
+  description: string
+  class?: string
 }
 
 const { title, description, class: cls } = Astro.props
 ---
 
-<li class:list={['skill', cls]}>
-    <span class="icon">
-        <slot>
-            <SquareStack />
-        </slot>
-    </span>
-    <h3>{title}</h3>
-    <p>{description}</p>
+<li class:list={["skill", cls]}>
+  <span class="icon">
+    <slot>
+      <SquareStack />
+    </slot>
+  </span>
+  <h3>{title}</h3>
+  <p>{description}</p>
 </li>
 
 <style>
+  .skill {
+    max-width: 24rem;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    justify-content: flex-end;
+  }
+
+  @media (min-width: 1024px) {
     .skill {
-        max-width: 24rem;
-        display: flex;
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        text-align: center;
-        justify-content: flex-end;
+      min-width: 350px;
     }
+  }
 
-    @media (min-width: 1024px) {
-        .skill {
-            min-width: 350px;
-        }
-    }
-
-    .icon {
-        height: 5rem;
-        width: 5rem;
-        @apply text-primary-500 stroke-primary-500
+  .icon {
+    height: 5rem;
+    width: 5rem;
+    @apply text-primary-500 stroke-primary-500
             fill-primary-500;
-    }
+  }
 
-    h3 {
-        font-weight: 700;
-        font-size: 1.5rem;
-        line-height: 2rem;
-    }
+  h3 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 </style>

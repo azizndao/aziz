@@ -7,7 +7,7 @@ import TableOfContent from "~components/toc/TableOfContent.astro"
 import BaseLayout from "./BaseLayout.astro"
 
 interface Props {
-    entry: CollectionEntry<"blog">
+  entry: CollectionEntry<"blog">
 }
 const { entry } = Astro.props
 
@@ -15,90 +15,90 @@ const { Content, headings } = await entry.render()
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description}>
-    <main class="main-wrapper">
-        <Header class="appbar" />
-        <MarkdownArticle class="md-container">
-            <ArticleHeader entry={entry} />
-            <Content />
-        </MarkdownArticle>
-        <aside class="right">
-            <TableOfContent headings={headings} slot="rigth-sidebar" />
-        </aside>
-    </main>
+  <main class="main-wrapper">
+    <Header class="appbar" />
+    <MarkdownArticle class="md-container">
+      <ArticleHeader entry={entry} />
+      <Content />
+    </MarkdownArticle>
+    <aside class="right">
+      <TableOfContent headings={headings} slot="rigth-sidebar" />
+    </aside>
+  </main>
 </BaseLayout>
 
 <style>
-    .main-wrapper {
-        display: flex;
-        margin: 0 auto 3rem;
-        flex-direction: column;
-        overflow-x: visible;
-    }
+  .main-wrapper {
+    display: flex;
+    margin: 0 auto 3rem;
+    flex-direction: column;
+    overflow-x: visible;
+  }
 
-    .md-container {
-        padding: 1.5rem;
+  .md-container {
+    padding: 1.5rem;
+  }
+
+  .appbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  aside.right {
+    display: none;
+  }
+
+  @media screen and (min-width: 769px) {
+    .main-wrapper {
+      grid-gap: 3rem;
+      display: grid;
+      gap: 1.5rem;
+      grid-template-areas: "sidebar main";
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+      padding-left: 1.5rem;
+      padding-right: 3rem;
     }
 
     .appbar {
-        position: sticky;
-        top: 0;
-        z-index: 10;
+      grid-column: 1 / 4;
+      grid-row: 1;
+    }
+
+    .md-container {
+      grid-column: 1;
+      padding: 0;
     }
 
     aside.right {
-        display: none;
+      display: block;
+      --top: calc(3rem + var(--header-height) * 1.75);
+      position: sticky;
+      inset: 0;
+      top: var(--top);
+      height: calc(100dvh - var(--top));
+      width: 100%;
+      box-shadow: none;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    .main-wrapper {
+      max-width: var(--max-width);
+      grid-gap: 3rem;
+      display: grid;
+      gap: 3rem;
+      grid-template-areas: "sidebar main toc";
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 2.5fr)
+        minmax(0, 1fr);
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
 
-    @media screen and (min-width: 769px) {
-        .main-wrapper {
-            grid-gap: 3rem;
-            display: grid;
-            gap: 1.5rem;
-            grid-template-areas: 'sidebar main';
-            grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-            padding-left: 1.5rem;
-            padding-right: 3rem;
-        }
-
-        .appbar {
-            grid-column: 1 / 4;
-            grid-row: 1;
-        }
-
-        .md-container {
-            grid-column: 1;
-            padding: 0;
-        }
-
-        aside.right {
-            display: block;
-            --top: calc(3rem + var(--header-height) * 1.75);
-            position: sticky;
-            inset: 0;
-            top: var(--top);
-            height: calc(100dvh - var(--top));
-            width: 100%;
-            box-shadow: none;
-        }
+    .md-container {
+      grid-column: 2;
     }
-
-    @media screen and (min-width: 1200px) {
-        .main-wrapper {
-            max-width: var(--max-width);
-            grid-gap: 3rem;
-            display: grid;
-            gap: 3rem;
-            grid-template-areas: 'sidebar main toc';
-            grid-template-columns:
-                minmax(0, 1fr)
-                minmax(0, 2.5fr)
-                minmax(0, 1fr);
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-
-        .md-container {
-            grid-column: 2;
-        }
-    }
+  }
 </style>
