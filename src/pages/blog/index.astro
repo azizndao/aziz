@@ -16,8 +16,12 @@ const posts: CardProps[] = entries
     tags: post.data.tags,
     thumbnail: post.data.cover,
   }))
-const title = "Blog"
-const description = "Latest news, updates, and stories for developers"
+
+console.log(posts)
 ---
 
-<CardListLayout cards={posts} title={title} description={description} />
+<CardListLayout
+  cards={posts}
+  title="Blog"
+  description="Latest news, updates, and stories for developers"
+/>
