@@ -26,7 +26,7 @@
 }
 
 .ScrollAreaScrollbar:hover {
-  @apply bg-neutral-800/25;
+  /* @apply bg-neutral-800/25; */
   --scrollbar-size: 0.75rem;
 }
 
@@ -60,5 +60,5 @@
 }
 
 .ScrollAreaCorner {
-  @apply bg-neutral-800;
+  @apply bg-neutral-900/40;
 }

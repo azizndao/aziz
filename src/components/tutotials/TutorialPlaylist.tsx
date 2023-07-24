@@ -1,12 +1,12 @@
-import { HtmlHTMLAttributes, useState } from "react";
-import { twMerge } from "tailwind-merge";
-import CustomScrollArea from "~components/scroll-area/CustomScrollArea";
-import type { Video } from "~types/youtube";
-import CurrentVideoItem from "./CurrentVideoItem";
-import VideoItemCard from "./VideoCard";
+import { HtmlHTMLAttributes, useState } from "react"
+import { twMerge } from "tailwind-merge"
+import CustomScrollArea from "~components/scroll-area/CustomScrollArea"
+import type { Video } from "~types/youtube"
+import CurrentVideoItem from "./CurrentVideoItem"
+import VideoItemCard from "./VideoCard"
 
 interface TutorialPlaylistProps extends HtmlHTMLAttributes<HTMLDivElement> {
-  videos: Video[];
+  videos: Video[]
 }
 
 export default function TutorialPlaylist({
@@ -14,12 +14,12 @@ export default function TutorialPlaylist({
   className,
   ...attrs
 }: TutorialPlaylistProps) {
-  const [currentVideo, setCurrentVideo] = useState(() => videos[0]);
+  const [currentVideo, setCurrentVideo] = useState(() => videos[0])
 
   return (
     <div
       className={twMerge(
-        "max-w-[var(--max-width)] mx-auto w-full flex lg:grid lg:grid-cols-[7fr_3fr] flex-col gap-4 p-6 mb-12 overflow-x-hidden",
+        "mx-auto mb-12 flex w-full max-w-8xl flex-col gap-4 overflow-x-hidden p-6 lg:grid lg:grid-cols-[7fr_3fr]",
         className,
       )}
       {...attrs}
@@ -31,7 +31,7 @@ export default function TutorialPlaylist({
         setVideo={setCurrentVideo}
       />
     </div>
-  );
+  )
 }
 
 function PlaylistSidebar({
@@ -39,22 +39,22 @@ function PlaylistSidebar({
   currentVideoId,
   setVideo: setVideo,
 }: {
-  videos: Video[];
-  currentVideoId: string;
-  setVideo: (video: Video) => void;
+  videos: Video[]
+  currentVideoId: string
+  setVideo: (video: Video) => void
 }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
   return (
     <>
       <div
         className={twMerge(
-          "fixed lg:sticky top-[var(--header-height)] max-w-[350px] lg:max-w-full w-full h-screen lg:h-[calc(100dvh-var(--header-height))] lg:shadow-none lg:p-0 max-w[400px] bg-background shadow-xl px-4 transition-[right] duration-[250ms] -right-[100vw]",
+          "fixed -right-[100vw] h-screen w-full max-w-[350px] bg-background px-4 shadow-xl transition-[right] duration-[250ms] lg:sticky lg:top-0 lg:h-content lg:max-w-full lg:p-0 lg:shadow-none",
           open && "-right-0",
         )}
       >
-        <CustomScrollArea>
+        <CustomScrollArea className="h-full w-full">
           <ul className="flex flex-col gap-3">
-            <h3 className="sticky top-0 font-bold pl-1 text-lg bg-background">
+            <h3 className="sticky top-0 bg-background pl-1 text-lg font-bold">
               Playlist
             </h3>
             {videos.map((video) => (
@@ -63,8 +63,8 @@ function PlaylistSidebar({
                 selected={currentVideoId == video.id}
                 video={video}
                 onClick={() => {
-                  setOpen(false);
-                  setVideo(video);
+                  setOpen(false)
+                  setVideo(video)
                 }}
               />
             ))}
@@ -73,20 +73,20 @@ function PlaylistSidebar({
       </div>
       <CloseButton open={open} onClick={() => setOpen(!open)} />
     </>
-  );
+  )
 }
 
 function CloseButton({
   open,
   onClick,
 }: {
-  open: boolean;
-  onClick: () => void;
+  open: boolean
+  onClick: () => void
 }) {
   return (
     <button
       className={twMerge(
-        "fixed z-10 right-6 bottom-6 bg-primary-500 text-primary-50 rounded-full shadow-2xl h-14 w-14 flex lg:hidden items-center justify-center",
+        "fixed bottom-6 right-6 z-10 flex h-14 w-14 items-center justify-center rounded-full bg-primary-500 text-primary-50 shadow-2xl lg:hidden",
       )}
       onClick={onClick}
     >
@@ -96,7 +96,7 @@ function CloseButton({
         viewBox="0 0 24 24"
         strokeWidth="2"
         stroke="currentColor"
-        className="w-5 h-5"
+        className="h-5 w-5"
       >
         {open ? (
           <path
@@ -113,5 +113,5 @@ function CloseButton({
         )}
       </svg>
     </button>
-  );
+  )
 }

@@ -1,11 +1,11 @@
-import * as ScrollArea from "@radix-ui/react-scroll-area";
-import type { PropsWithChildren } from "react";
-import { twMerge } from "tailwind-merge";
-import styles from "./CustomScrollArea.module.css";
+import * as ScrollArea from "@radix-ui/react-scroll-area"
+import type { PropsWithChildren } from "react"
+import { twMerge } from "tailwind-merge"
+import styles from "./CustomScrollArea.module.css"
 
 type Props = PropsWithChildren<{
-  className?: string;
-}>;
+  className?: string
+}>
 
 export default function CustomScrollArea({ children, className }: Props) {
   return (
@@ -31,5 +31,5 @@ export default function CustomScrollArea({ children, className }: Props) {
       </ScrollArea.Scrollbar>
       <ScrollArea.Corner className={styles.ScrollAreaCorner} />
     </ScrollArea.Root>
-  );
+  )
 }

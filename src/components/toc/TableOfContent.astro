@@ -18,7 +18,7 @@ const headings = Astro.props.headings.filter((heading) => heading.depth > 1)
           <a
             href={`#${heading.slug}`}
             class={twMerge(
-              "block leading-relaxed border-l no-underline border-neutral-300 hover:bg-primary-500/10 hover:text-primary-500"
+              "block leading-relaxed border-l no-underline border-neutral-300 hover:bg-primary-500/10 hover:text-primary-500",
             )}
           >
             {heading.text}
@@ -56,7 +56,7 @@ const headings = Astro.props.headings.filter((heading) => heading.depth > 1)
 
   const observer = new IntersectionObserver(callback, {
     root: document,
-    rootMargin: "0px 80px 0px 80px"
+    rootMargin: "0px 80px 0px 80px",
   })
 
   headings.forEach((heading) => {
@@ -66,7 +66,7 @@ const headings = Astro.props.headings.filter((heading) => heading.depth > 1)
 
 <style>
   li a.active {
-    @apply text-primary-500 bg-primary-500/10 font-medium border-l-2 border-primary-500;
+    @apply border-primary-500 border-l-2 bg-primary-500/10 font-medium text-primary-500;
   }
 
   .toc .heading-2 a {

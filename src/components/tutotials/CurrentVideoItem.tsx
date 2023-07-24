@@ -11,7 +11,7 @@ export default function CurrentVideoItem({ video }: { video: Video }) {
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
-        className={"w-full aspect-video"}
+        className="aspect-video w-full"
       ></iframe>
       <div>
         <h3 className="py-4 text-3xl font-bold">{video.snippet.title}</h3>
@@ -31,8 +31,8 @@ function VideoDescription({ description }: { description: string }) {
   return (
     <article
       className={twJoin(
-        "bg-neutral-200 rounded-xl p-4 lg:rounded-3xl mb-6 lg:mx-4 lg:m-0",
-        !open && "cursor-pointer"
+        "mb-6 rounded-xl bg-neutral-200 p-4 lg:m-0 lg:rounded-3xl",
+        !open && "cursor-pointer",
       )}
       onClick={() => {
         if (!open) setOpen(true)

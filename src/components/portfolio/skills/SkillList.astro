@@ -17,26 +17,28 @@ import SkillItem from "./SkillItem.astro"
     <ul
       class="border-2 border-primary-500 rounded-3xl lg:rounded-[3rem] px-6 lg:px-10 py-10 flex gap-8 lg:gap-6 items-center justify-evenly flex-wrap"
     >
-      <SkillItem
-        class="skill"
-        title="Full Stack Development"
-        description="I have experience building websites and applications using JavaScript, Next.js, Node, and MongoDB."
-      >
-        <SquareStack />
+      <SkillItem class="skill">
+        Full Stack Development
+        <SquareStack slot="icon" />
+        <Fragment slot="description">
+          I have experience building websites and applications using JavaScript,
+          Next.js, Node, and MongoDB.
+        </Fragment>
       </SkillItem>
-      <SkillItem
-        class="skill"
-        title="Mobile Development"
-        description="I have experience building websites and applications using JavaScript, React, Node, and MongoDB."
-      >
-        <Android />
+      <SkillItem class="skill">
+        Mobile Development
+        <Android slot="icon" />
+        <Fragment slot="description">
+          I have experience building applications using Android View Framework,
+          Jetback Compose and Flutter.
+        </Fragment>
       </SkillItem>
-      <SkillItem
-        class="skill"
-        title="UX/UI Design"
-        description="I have experience building websites and applications using JavaScript, React, Node, and MongoDB."
-      >
-        <FigmaLogo />
+      <SkillItem class="skill">
+        UX/UI Design
+        <FigmaLogo slot="icon" />
+        <Fragment slot="description">
+          I often make my app design and prototype using Figma.
+        </Fragment>
       </SkillItem>
     </ul>
   </section>

@@ -1,7 +1,7 @@
 import type { Playlist, Video, YoutubeResponse } from "../types/youtube"
 
 export async function getAllPlaylists(
-  part: string | undefined = "snippet,contentDetails"
+  part: string | undefined = "snippet,contentDetails",
 ) {
   try {
     const channelId = import.meta.env.YOUTUBE_CHANNEL_ID

@@ -12,15 +12,15 @@ export default defineConfig({
   output: "hybrid",
   experimental: {
     assets: true,
-    redirects: true
+    redirects: true,
   },
   integrations: [
     mdx({
-      drafts: true
+      drafts: true,
     }),
     prefetch(),
     react(),
-    tailwind()
+    tailwind(),
   ],
   markdown: {
     drafts: true,
@@ -29,10 +29,10 @@ export default defineConfig({
       [
         rehypeAutolinkHeadings,
         {
-          behavior: "append"
-        }
-      ]
-    ]
+          behavior: "append",
+        },
+      ],
+    ],
   },
-  adapter: vercel()
+  adapter: vercel(),
 })

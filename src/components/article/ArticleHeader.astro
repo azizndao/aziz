@@ -1,25 +1,20 @@
 ---
 import Image from "astro/components/Image.astro"
 import type { CollectionEntry } from "astro:content"
+import { twMerge } from "tailwind-merge"
 
 interface Props {
   entry: CollectionEntry<"blog">
+  class?: string
 }
 
 const { entry } = Astro.props
 ---
 
-<header>
-  <h1 class="mx-1">{entry.data.title}</h1>
-
-  <Image
-    src={entry.data.cover ?? ""}
-    alt={entry.data.title}
-    height={512}
-    width={(512 * 16) / 9}
-    class="rounded-lg"
-  />
-
+<header class={twMerge("flex flex-col gap-4 items-center ", Astro.props.class)}>
+  <h1 class="mx-1 max-w-3xl text-4xl text-center my-2 font-semibold">
+    {entry.data.title}
+  </h1>
   <section
     class="author h-[58px] grid grid-rows-2 grid-cols-[58px_1fr] items-center gap-x-4"
   >
@@ -35,4 +30,11 @@ const { entry } = Astro.props
     </p>
     <small class="!p-0 !m-0">{entry.data.date.toDateString()}</small>
   </section>
+  <Image
+    src={entry.data.cover ?? ""}
+    alt={entry.data.title}
+    height={512}
+    width={(512 * 16) / 9}
+    class="rounded-lg w-full"
+  />
 </header>

@@ -1,58 +1,58 @@
 {
-    "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-    "name": "Abdou Aziz Ndao",
-    "short_name": "Aziz",
-    "display": "standalone",
-    "start_url": "/",
-    "background_color": "#fff",
-    "description": "My name is Abdou Aziz Ndao and this is my personnel website where a make my portfoilio, and courses for web and mobile development and my blog",
-    "icons": [
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "Abdou Aziz Ndao",
+  "short_name": "Aziz",
+  "display": "standalone",
+  "start_url": "/",
+  "background_color": "#fff",
+  "description": "My name is Abdou Aziz Ndao and this is my personnel website where a make my portfoilio, and courses for web and mobile development and my blog",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "scope": ".",
+  "shortcuts": [
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "url": "/blog",
+      "icons": [
         {
-            "src": "favicon.png",
-            "sizes": "144x144",
-            "type": "image/png"
+          "src": "favicon.png",
+          "sizes": "144x144",
+          "type": "image/png"
         }
-    ],
-    "orientation": "portrait-primary",
-    "prefer_related_applications": false,
-    "related_applications": [],
-    "scope": ".",
-    "shortcuts": [
+      ]
+    },
+    {
+      "name": "Courses",
+      "short_name": "Courses",
+      "url": "/courses",
+      "icons": [
         {
-            "name": "Blog",
-            "short_name": "Blog",
-            "url": "/blog",
-            "icons": [
-                {
-                    "src": "favicon.png",
-                    "sizes": "144x144",
-                    "type": "image/png"
-                }
-            ]
-        },
-        {
-            "name": "Courses",
-            "short_name": "Courses",
-            "url": "/courses",
-            "icons": [
-                {
-                    "src": "favicon.png",
-                    "sizes": "144x144",
-                    "type": "image/png"
-                }
-            ]
-        },
-        {
-            "name": "Tutorials",
-            "short_name": "Tutorials",
-            "url": "/tutorials",
-            "icons": [
-                {
-                    "src": "favicon.png",
-                    "sizes": "144x144",
-                    "type": "image/png"
-                }
-            ]
+          "src": "favicon.png",
+          "sizes": "144x144",
+          "type": "image/png"
         }
-    ]
+      ]
+    },
+    {
+      "name": "Tutorials",
+      "short_name": "Tutorials",
+      "url": "/tutorials",
+      "icons": [
+        {
+          "src": "favicon.png",
+          "sizes": "144x144",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
 }

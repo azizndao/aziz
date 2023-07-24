@@ -9,9 +9,11 @@ const { class: cls, ...attrs } = Astro.props
 
 <a
   {...attrs}
+  href="/cv.pdf"
+  download="CV-Abdou-Aziz-NDAO.pdf"
   class={twMerge(
     "block px-8 py-4 rounded-lg bg-tertiary-600 dark:bg-tertiary-500 text-tertiary-50",
-    cls
+    cls,
   )}
 >
   Download my CV

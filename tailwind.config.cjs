@@ -10,6 +10,22 @@ module.exports = {
         sans: ["Poppins", defaultTheme.fontFamily.sans],
       },
       borderColor: ({ theme }) => theme("colors.neutral.400"),
+      spacing: {
+        header: "var(--header-height)",
+      },
+      height: {
+        header: "var(--header-height)",
+        content: 'calc(100vh - var(--header-height))'
+      },
+      maxHeight: {
+        content: 'calc(100vh - var(--header-height))'
+      },
+      minHeight: {
+        content: 'calc(100vh - var(--header-height))'
+      },
+      maxWidth: {
+        "8xl": "90rem",
+      }
     },
     colors: {
       primary: { ...colors.indigo, DEFAULT: colors.indigo[600] },

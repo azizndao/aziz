@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, z } from "astro:content"
 
 export const baseSchema = z
   .object({
@@ -18,7 +18,7 @@ export const baseSchema = z
     i18nReady: z.boolean().default(false),
     draft: z.boolean().default(false),
   })
-  .strict();
+  .strict()
 
 const blog = defineCollection({
   schema: baseSchema.extend({
@@ -27,18 +27,18 @@ const blog = defineCollection({
     author: z.string().optional().default("Abdou Aziz Ndao"),
     category: z.string(),
   }),
-});
+})
 
 export const pythonSchema = baseSchema.extend({
   type: z.literal("python"),
-});
+})
 
 export const flutterSchema = baseSchema.extend({
   type: z.literal("flutter"),
-});
+})
 
 const courses = defineCollection({
   schema: z.union([pythonSchema, flutterSchema]),
-});
+})
 
-export const collections = { courses, blog };
+export const collections = { courses, blog }
