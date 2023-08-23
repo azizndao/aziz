@@ -12,7 +12,7 @@ export default defineConfig({
   output: "hybrid",
   experimental: {
     assets: true,
-    redirects: true,
+    // redirects: true,
   },
   integrations: [
     mdx({
