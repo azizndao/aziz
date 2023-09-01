@@ -10,10 +10,6 @@ import rehypeSlug from "rehype-slug"
 // https://astro.build/config
 export default defineConfig({
   output: "hybrid",
-  experimental: {
-    assets: true,
-    // redirects: true,
-  },
   integrations: [
     mdx({
       drafts: true,
