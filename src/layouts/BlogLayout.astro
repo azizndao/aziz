@@ -19,8 +19,8 @@ const { Content, headings } = await entry.render()
     class="mx-auto flex mb-12 flex-col overflow-x-visible md:grid md:gap-6 grid-cols-[minmax(0,_1fr)_minmax(0,_2fr),_minmax(0,_1fr)] md:pl-6 md:pr-12 lg:px-4 lg:grid-cols-[minmax(0,_2.5fr)_minmax(0,_1fr)] max-w-7xl lg:gap-12 lg:grid"
   >
     <Header class="appbar sticky lg:col-span-full top-0 z-10" />
-    <ArticleHeader entry={entry} class="lg:col-span-full" />
-    <MarkdownArticle class="md-container p-6 md:p-0">
+    <ArticleHeader entry={entry} class="lg:col-span-full mx-5 md:mx-0" />
+    <MarkdownArticle>
       <Content />
     </MarkdownArticle>
     <aside
